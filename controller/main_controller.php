@@ -31,6 +31,12 @@ class main_controller
 	/** @var \phpbb\request\request */
 	private $request;
 
+	/** @var \phpbb\db\driver\driver_interface  */
+	private $db;
+
+	/** @var  string */
+	private $table;
+
 	/**
 	 * @param \phpbb\config\config     $config
 	 * @param \phpbb\controller\helper $helper
@@ -41,15 +47,17 @@ class main_controller
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
 								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
-								$root_path, $php_ext)
+								\phpbb\db\driver\driver_interface $db, $root_path, $php_ext, $table)
 	{
 		$this->config    = $config;
 		$this->helper    = $helper;
 		$this->template  = $template;
 		$this->user      = $user;
 		$this->request   = $request;
+		$this->db        = $db;
 		$this->root_path = $root_path;
 		$this->php_ext   = $php_ext;
+		$this->table     = $table;
 	}
 
 	/**
@@ -64,5 +72,14 @@ class main_controller
 				array()
 			);
 		}
+	}
+	public function getAll()
+	{
+		$sql = 'SELECT * FROM ' . $this->table . ' ORDER BY post_time DESC';
+		$this->db->sql_query_limit($sql, 10);
+		$json_response = new \phpbb\json_response();
+		$json_response->send(
+			array('posts', $this->db->sql_fetchrowset($sql))
+		);
 	}
 }

@@ -19,5 +19,7 @@ services:
             - @template
             - @user
             - @request
+            - @dbal.conn
             - %core.root_path%
             - %core.php_ext%
+            - %paul999.ajaxshoutbox.tables.ajaxshoutbox%
