@@ -1,0 +1,11 @@
+imports:
+    - { resource: tables.yml }
+
+services:
+    paul999.ajaxshoutbox.listener:
+        class: paul999\ajaxshoutbox\event\shoutbox_listener
+        arguments:
+            - @user
+        tags:
+            - { name: event.listener }
+
