@@ -1,5 +1,5 @@
 <?php
-namespace paul999\profileguestbook\migrations;
+namespace paul999\ajaxshoutbox\migrations;
 
 class create_table extends \phpbb\db\migration\migration
 {
@@ -34,7 +34,7 @@ class create_table extends \phpbb\db\migration\migration
 	{
 		return array(
 			'drop_tables' => array(
-				$this->table_prefix . 'profile_guestbook',
+				$this->table_prefix . 'ajax_shoutbox',
 			),
 		);
 	}

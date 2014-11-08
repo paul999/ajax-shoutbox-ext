@@ -1,6 +1,6 @@
 <?php
 
-namespace paul999\profileguestbook\migrations;
+namespace paul999\ajaxshoutbox\migrations;
 
 
 use phpbb\db\migration\migration;

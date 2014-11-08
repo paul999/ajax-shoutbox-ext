@@ -1,6 +1,6 @@
 <?php
 
-namespace paul999\profileguestbook\migrations;
+namespace paul999\ajaxshoutbox\migrations;
 
 use phpbb\db\migration\migration;
 
@@ -9,8 +9,8 @@ class release_100beta1 extends migration
 	static public function depends_on()
 	{
 		return array(
-			'\paul999\profileguestbook\migrations\create_table',
-			'\paul999\profileguestbook\migrations\add_permissions',
+			'\paul999\ajaxshoutbox\migrations\create_table',
+			'\paul999\ajaxshoutbox\migrations\add_permissions',
 		);
 	}
 
