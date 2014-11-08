@@ -20,6 +20,8 @@
     {
         var element = $("row").clone();
         element.id = "shout" + post.id;
+        $(element + ".dt[data-type='user']").html(post.user);
+        $(element + ".dd[data-type='user']").html(post.message);
 
         if (front && lastId) {
             $("#shout" + lastId).before(element);

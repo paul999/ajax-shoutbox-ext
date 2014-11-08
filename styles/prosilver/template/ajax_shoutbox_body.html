@@ -35,13 +35,14 @@
             </ul>
         </noscript>
         <div style="max-height: 200px;overflow:scroll;">
-            <ul class="topiclist forums" id="shoutbox-row" id="shoutbox_content">
+            <ul class="topiclist forums" id="shoutbox_content">
                 <li class="row" style="display: none" id="copy">
                     <dl>
-                        <dt></dt>
-                        <dt><a href="" data-ajax="ajaxshoutbox.remove">{L_SHOUTBOX_DELETE}</a></dt>
-                        <dd></dd>
-                        <dd></dd>
+                        <dt data-type="user"></dt>
+                        <dd data-type="delete"></dd>
+                        <dd data-type="edit"></dd>
+                        <dd data-type="date"></dd>
+                        <dd data-type="message"></dd>
                     </dl>
                 </li>
             </ul>
