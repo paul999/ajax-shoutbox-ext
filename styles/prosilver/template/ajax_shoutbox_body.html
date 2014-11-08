@@ -3,20 +3,34 @@
         <ul class="topiclist shoutboxlist">
             <li class="header">
                 <dl class="icon">
-                    <dt><div class="list-inner">{L_AJAX_SHOUTBOX</div></dt>
+                    <dt>
+                    <div class="list-inner">{L_AJAX_SHOUTBOX</div>
+                    </dt>
                 </dl>
             </li>
         </ul>
-        <ul class="topiclist forums">
-            <li class="row">
-                <dl>
-                    <dt>{L_SHOUTBOX_MESSAGE}{L_COLON} <input type="text" id="text-shoutbox" /></dt>
-                </dl>
-            </li>
-        </ul>
-        <ul class="topiclist forums" id="shoutbox-row">
-
-        </ul>
+        <form action="{U_SUBMIT_SHOUTBOX}" data-ajax="true">
+            <ul class="topiclist forums">
+                <li class="row">
+                    <dl>
+                        <dt>{L_SHOUTBOX_MESSAGE}{L_COLON} <input type="text" id="text-shoutbox"/></dt>
+                    </dl>
+                </li>
+            </ul>
+        </form>
+        <!-- INCLUDEJS @paul999_ajaxshoutbox/ajax_shoutbox.js -->
+        <div style="height: 200px" id="shoutbox_content">
+            <ul class="topiclist forums" id="shoutbox-row">
+                <li class="row" style="display: none" id="copy">
+                    <dl>
+                        <dt></dt>
+                        <dt><a href="" data-ajax="ajaxshoutbox.remove">{L_SHOUTBOX_DELETE}</a></dt>
+                        <dd></dd>
+                        <dd></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
 
     </div>
 </div>

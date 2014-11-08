@@ -47,3 +47,4 @@ class create_table extends \phpbb\db\migration\migration
 		);
 	}
 }
+

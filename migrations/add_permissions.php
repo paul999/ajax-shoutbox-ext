@@ -23,7 +23,6 @@ class add_permissions extends migration
 			array('permission.add', array('u_shoutbox_delete')),
 			array('permission.add', array('m_shoutbox_delete')),
 			array('permission.add', array('m_shoutbox_edit')),
-
 		);
 	}
-} 
+}

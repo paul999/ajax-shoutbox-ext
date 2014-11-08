@@ -39,6 +39,8 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	 */
 	public function index()
 	{
+		$this->user->add_lang_ext("paul999/ajaxshoutbox","ajax_shoutbox");
+
 		$this->template->assign_vars(
 			array(
 				'S_AJAX_SHOUTBOX' => true,
