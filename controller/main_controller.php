@@ -84,7 +84,7 @@ class main_controller
 			$posts[] = array(
 				'id'        => $row['shout_id'],
 			    'user'      => $row['user_id'],
-			    'message'   => $row['message'],
+			    'message'   => $row['post_message'],
 			);
 		}
 		$this->db->sql_freeresult($result);
