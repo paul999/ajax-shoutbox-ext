@@ -1,4 +1,12 @@
 <?php
+/**
+ *
+ * Ajax Shoutbox extension for the phpBB Forum Software package.
+ *
+ * @copyright (c) 2014 Paul Sohier <http://www.ajax-shoutbox.com>
+ * @license GNU General Public License, version 2 (GPL-2.0)
+ *
+ */
 namespace paul999\ajaxshoutbox\migrations;
 
 class create_table extends \phpbb\db\migration\migration
@@ -14,7 +22,7 @@ class create_table extends \phpbb\db\migration\migration
 			'add_tables' => array(
 				$this->table_prefix . 'ajax_shoutbox' => array(
 					'COLUMNS'     => array(
-						'shout_id'    => array('UINT', null, 'auto_increment'),
+						'shout_id'        => array('UINT', null, 'auto_increment'),
 						'user_id'         => array('UINT', 0),
 						'post_time'       => array('TIMESTAMP', 0),
 						'bbcode_bitfield' => array('VCHAR:255', ''),
