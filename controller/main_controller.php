@@ -28,6 +28,9 @@ class main_controller
 	/** @var string phpEx */
 	protected $php_ext;
 
+	/** @var \phpbb\request\request */
+	private $request;
+
 	/**
 	 * @param \phpbb\config\config     $config
 	 * @param \phpbb\controller\helper $helper
@@ -37,18 +40,29 @@ class main_controller
 	 * @param string                   $php_ext
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
-	                            \phpbb\template\template $template, \phpbb\user $user, $root_path, $php_ext)
+	                            \phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
+	                            $root_path, $php_ext)
 	{
 		$this->config    = $config;
 		$this->helper    = $helper;
 		$this->template  = $template;
 		$this->user      = $user;
+		$this->request   = $request;
 		$this->root_path = $root_path;
 		$this->php_ext   = $php_ext;
 	}
 
+	/**
+	 * 
+	 */
 	public function post()
 	{
-
+		if ($this->request->is_ajax())
+		{
+			$json_response = new \phpbb\json_response();
+			$json_response->send(
+				array()
+			);
+		}
 	}
 }
