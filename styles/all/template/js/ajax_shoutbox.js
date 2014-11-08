@@ -1,4 +1,15 @@
 (function($) { // Avoid conflicts with other libraries
+    $(document).load(function(){
+        console.log("Loading ajax shoutbox");
+        $.ajax({
+            url: AJAX_SHOUTBOX_POSTS,
+            success: getAllPosts
+        });
+    });
+    function getAllPosts() {
+
+    }
+
     function loadData() {
         console.log("Load data.");
     }

@@ -15,13 +15,16 @@
                 <li class="row">
                     <dl>
                         <dt>{L_SHOUTBOX_MESSAGE}{L_COLON} <input type="text" name="text_shoutbox"/></dt>
-                        <dd><input type="submit" name="submit" value="{L_SUBMIT}"></dd>
+                        <dd><input type="submit" name="submit" value="{L_SUBMIT}" class="button2"></dd>
                     </dl>
                 </li>
             </ul>
         </form>
         <!-- ENDIF -->
         <!-- INCLUDEJS @paul999_ajaxshoutbox/js/ajax_shoutbox.js -->
+        <script>
+            var AJAX_SHOUTBOX_POSTS = "{UA_GET_POST_ACTION}";
+        </script>
         <noscript>
             <ul class="topiclist forums">
                 <li class="row">

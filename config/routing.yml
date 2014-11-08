@@ -1,3 +1,10 @@
 paul999_ajaxshoutbox_post:
     pattern: /ajaxshoutbox/post
     defaults: { _controller: paul999.ajaxshoutbox.controller:post }
+
+paul999_ajaxshoutbox_get_all:
+    pattern: /ajaxshoutbox/getAll
+    defaults: { _controller: paul999.ajaxshoutbox.controller:getAll }
+paul999_ajaxshoutbox_get_after:
+    pattern: /ajaxshoutbox/getAfter
+    defaults: { _controller: paul999.ajaxshoutbox.controller:getAfter }

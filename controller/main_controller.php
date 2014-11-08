@@ -40,8 +40,8 @@ class main_controller
 	 * @param string                   $php_ext
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
-	                            \phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
-	                            $root_path, $php_ext)
+								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
+								$root_path, $php_ext)
 	{
 		$this->config    = $config;
 		$this->helper    = $helper;
@@ -53,7 +53,7 @@ class main_controller
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public function post()
 	{

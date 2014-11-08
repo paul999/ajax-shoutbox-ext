@@ -18,7 +18,7 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	/** @var \phpbb\template\template */
 	private $template;
 
-	/** @var \phpbb\controller\helper  */
+	/** @var \phpbb\controller\helper */
 	private $helper;
 
 	/**
@@ -43,13 +43,14 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	 */
 	public function index()
 	{
-		$this->user->add_lang_ext("paul999/ajaxshoutbox","ajax_shoutbox");
+		$this->user->add_lang_ext("paul999/ajaxshoutbox", "ajax_shoutbox");
 
 		$this->template->assign_vars(
 			array(
-				'S_AJAX_SHOUTBOX' => true,
-			    'S_CAN_POST_SHOUT'  => true,
-			    'U_SUBMIT_SHOUTBOX' => $this->helper->route("paul999_ajaxshoutbox_post"),
+				'S_AJAX_SHOUTBOX'    => true,
+				'S_CAN_POST_SHOUT'   => true,
+				'U_SUBMIT_SHOUTBOX'  => $this->helper->route("paul999_ajaxshoutbox_post"),
+				'UA_GET_POST_ACTION' => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_all")),
 			)
 		);
 	}
