@@ -7,6 +7,16 @@ services:
         arguments:
             - @user
             - @template
+            - @controller.helper
         tags:
             - { name: event.listener }
 
+    paul999.ajaxshoutbox.controller:
+        class: paul999\ajaxshoutbox\controller\main_controller
+        arguments:
+            - @config
+            - @controller.helper
+            - @template
+            - @user
+            - %core.root_path%
+            - %core.php_ext%

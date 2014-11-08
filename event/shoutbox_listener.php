@@ -18,13 +18,17 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	/** @var \phpbb\template\template */
 	private $template;
 
+	/** @var \phpbb\controller\helper  */
+	private $helper;
+
 	/**
 	 * @param \phpbb\user $user
 	 */
-	public function __construct(\phpbb\user $user, \phpbb\template\template $template)
+	public function __construct(\phpbb\user $user, \phpbb\template\template $template, \phpbb\controller\helper $helper)
 	{
 		$this->user     = $user;
 		$this->template = $template;
+		$this->helper   = $helper;
 	}
 
 	static public function getSubscribedEvents()
@@ -44,6 +48,8 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 		$this->template->assign_vars(
 			array(
 				'S_AJAX_SHOUTBOX' => true,
+			    'S_CAN_POST_SHOUT'  => true,
+			    'U_SUBMIT_SHOUTBOX' => $this->helper->route("paul999_ajaxshoutbox_post"),
 			)
 		);
 	}

@@ -4,21 +4,33 @@
             <li class="header">
                 <dl class="icon">
                     <dt>
-                    <div class="list-inner">{L_AJAX_SHOUTBOX</div>
+                    <div class="list-inner">{L_AJAX_SHOUTBOX}</div>
                     </dt>
                 </dl>
             </li>
         </ul>
+        <!-- IF S_CAN_POST_SHOUT -->
         <form action="{U_SUBMIT_SHOUTBOX}" data-ajax="true">
             <ul class="topiclist forums">
                 <li class="row">
                     <dl>
                         <dt>{L_SHOUTBOX_MESSAGE}{L_COLON} <input type="text" id="text-shoutbox"/></dt>
+                        <dd><input type="submit" value="{L_SUBMIT}"></dd>
                     </dl>
                 </li>
             </ul>
         </form>
+        <!-- ENDIF -->
         <!-- INCLUDEJS @paul999_ajaxshoutbox/js/ajax_shoutbox.js -->
+        <noscript>
+            <ul class="topiclist forums">
+                <li class="row">
+                    <dl>
+                        <dt>{L_NO_JS}</dt>
+                    </dl>
+                </li>
+            </ul>
+        </noscript>
         <div style="max-height: 200px;overflow:scroll;" id="shoutbox_content">
             <ul class="topiclist forums" id="shoutbox-row">
                 <li class="row" style="display: none" id="copy">
