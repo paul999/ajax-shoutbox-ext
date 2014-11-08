@@ -27,7 +27,10 @@
         }
         else
         {
-            $(shoutbox_content).append($element);
+            $("#shoutbox_content").append($element);
+            if (front) {
+                lastId = post.id;
+            }
         }
     }
 
