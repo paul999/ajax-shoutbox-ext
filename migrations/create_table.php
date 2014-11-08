@@ -21,7 +21,7 @@ class create_table extends \phpbb\db\migration\migration
 						'bbcode_uid'      => array('VCHAR:8', ''),
 						'post_message'    => array('MTEXT_UNI', ''),
 					),
-					'PRIMARY_KEY' => 'shoot_id',
+					'PRIMARY_KEY' => 'shout_id',
 					'KEYS'        => array(
 						'u_id' => array('INDEX', 'user_id'),
 					)
