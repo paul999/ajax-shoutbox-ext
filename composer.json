@@ -23,6 +23,11 @@
         "display-name": "Ajax Shoutbox",
         "soft-require": {
             "phpbb/phpbb": ">=3.1.0,<3.2.*@dev"
+        },
+        "version-check": {
+            "host": "ajax-shoutbox.com",
+            "directory": "/version",
+            "filename": "topicpreview.json"
         }
     }
 }
