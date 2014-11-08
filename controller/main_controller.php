@@ -91,7 +91,7 @@ class main_controller
 
 		$json_response = new \phpbb\json_response();
 		$json_response->send(
-			array('posts', $posts)
+			$posts
 		);
 	}
 }

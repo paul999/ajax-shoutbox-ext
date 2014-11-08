@@ -9,7 +9,7 @@
     function getAllPosts(result) {
         console.log(result);
 
-        $.each(result[0].posts, function(  ) {
+        $.each(result, function(  ) {
             addPost(this, true);
         });
     }
