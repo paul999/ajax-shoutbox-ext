@@ -6,6 +6,7 @@ services:
         class: paul999\ajaxshoutbox\event\shoutbox_listener
         arguments:
             - @user
+            - @template
         tags:
             - { name: event.listener }
 
