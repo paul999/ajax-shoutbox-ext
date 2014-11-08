@@ -4,7 +4,7 @@
  * Ajax Shoutbox extension for the phpBB Forum Software package.
  *
  * @copyright (c) 2014 Paul Sohier <http://www.ajax-shoutbox.com>
- * @license GNU General Public License, version 2 (GPL-2.0)
+ * @license       GNU General Public License, version 2 (GPL-2.0)
  *
  */
 
@@ -37,7 +37,9 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
-		"AJAX_SHOUTBOX" => "Shoutbox",
-        "SHOUTBOX_MESSAGE" => "Add message",
-));
+$lang = array_merge(
+	$lang, array(
+		"AJAX_SHOUTBOX"    => "Shoutbox",
+		"SHOUTBOX_MESSAGE" => "Add message",
+	)
+);
