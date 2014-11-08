@@ -83,8 +83,8 @@ class main_controller
 		while ($row = $this->db->sql_fetchrow($result)) {
 			$posts[] = array(
 				'id'        => $row['shout_id'],
-			    'user'      => $row['user_id'],
-			    'message'   => $row['post_message'],
+				'user'      => $row['user_id'],
+				'message'   => $row['post_message'],
 			);
 		}
 		$this->db->sql_freeresult($result);
