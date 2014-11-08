@@ -9,7 +9,8 @@
  */
 namespace paul999\ajaxshoutbox\event;
 
-class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubscriberInterface {
+class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubscriberInterface
+{
 
 	/** @var \phpbb\user */
 	private $user;
@@ -20,12 +21,14 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	/**
 	 * @param \phpbb\user $user
 	 */
-	public function __construct(\phpbb\user $user, \phpbb\template\template $template) {
+	public function __construct(\phpbb\user $user, \phpbb\template\template $template)
+	{
 		$this->user     = $user;
 		$this->template = $template;
 	}
 
-	static public function getSubscribedEvents() {
+	static public function getSubscribedEvents()
+	{
 		return array(
 			'core.index_modify_page_title' => 'index',
 		);
@@ -34,7 +37,8 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	/**
 	 *
 	 */
-	public function index() {
+	public function index()
+	{
 		$this->template->assign_vars(
 			array(
 				'S_AJAX_SHOUTBOX' => true,
@@ -42,5 +46,3 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 		);
 	}
 }
-
-
