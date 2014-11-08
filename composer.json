@@ -27,7 +27,7 @@
         "version-check": {
             "host": "ajax-shoutbox.com",
             "directory": "/version",
-            "filename": "topicpreview.json"
+            "filename": "ajax.json"
         }
     }
 }
