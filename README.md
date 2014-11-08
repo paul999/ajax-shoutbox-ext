@@ -1,6 +1,7 @@
 ajax-shoutbox-ext
 =================
 [![Build Status](https://travis-ci.org/paul999/ajax-shoutbox-ext.svg)](https://travis-ci.org/paul999/ajax-shoutbox-ext)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/paul999/ajax-shoutbox-ext/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/paul999/ajax-shoutbox-ext/?branch=master)
 
 # Installation
 

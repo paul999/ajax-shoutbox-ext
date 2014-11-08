@@ -76,10 +76,22 @@ class main_controller
 	public function getAll()
 	{
 		$sql = 'SELECT * FROM ' . $this->table . ' ORDER BY post_time DESC';
-		$this->db->sql_query_limit($sql, 10);
+		$result = $this->db->sql_query_limit($sql, 10);
+
+		$posts = array();
+
+		while ($row = $this->db->sql_fetchrow($result)) {
+			$posts[] = array(
+				'id'        => $row['shout_id'],
+			    'user'      => $row['user_id'],
+			    'message'   => $row['message'],
+			);
+		}
+		$this->db->sql_freeresult($result);
+
 		$json_response = new \phpbb\json_response();
 		$json_response->send(
-			array('posts', $this->db->sql_fetchrowset($sql))
+			array('posts', $posts)
 		);
 	}
 }

@@ -8,6 +8,27 @@
     });
     function getAllPosts(result) {
         console.log(result);
+
+        result.posts.each(function(  ) {
+            addPost(this, true);
+        });
+    }
+
+    var lastId;
+
+    function addPost(post, front)
+    {
+        var element = $("row").clone();
+        element.id = "shout" + post.id;
+
+        if (front && lastId) {
+            $("#shout" + lastId).before(element);
+            lastId = post.id;
+        }
+        else
+        {
+            $(shoutbox_content).append($element);
+        }
     }
 
     function loadData() {
