@@ -19,7 +19,7 @@
     function addPost(post, front)
     {
         var element = $("#copy").clone();
-        element.id = "shout" + post.id;
+        element.attr('id',  "shout" + post.id);
         $(element).find("dt[data-type='user']").html(post.user);
         $(element).find("dd[data-type='message']").html(post.message);
 
