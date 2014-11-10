@@ -88,7 +88,7 @@ class main_controller
 					' . $this->table . ' c,
 					' . $this->usertable . ' u
 					WHERE
-		                u.user_id = c.poster_id
+		                u.user_id = c.user_id
 		            ORDER BY post_time DESC';
 		$result = $this->db->sql_query_limit($sql, 10);
 
