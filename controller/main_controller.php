@@ -53,8 +53,8 @@ class main_controller
 	 * @param string                            $usertable
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
-	                            \phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
-	                            \phpbb\db\driver\driver_interface $db, $root_path, $php_ext, $table, $usertable)
+								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
+								\phpbb\db\driver\driver_interface $db, $root_path, $php_ext, $table, $usertable)
 	{
 		$this->config    = $config;
 		$this->helper    = $helper;
@@ -75,13 +75,29 @@ class main_controller
 	{
 		if ($this->request->is_ajax())
 		{
+			// TODO: Check permissions.
+			$insert = array(
+				'post_message'  => $this->request->variable('text_shoutbox', ''),
+			    'post_time'     => time(),
+			    'user_id'       => $this->user->data['user_id'],
+			);
+			$sql = 'INSERT INTO ' . $this->table . ' ' . $this->db->sql_build_array('INSERT', $insert);
+			$this->db->sql_query($sql);
+
 			$json_response = new \phpbb\json_response();
 			$json_response->send(
-				array()
+				'OK'
 			);
+		}
+		else
+		{
+			$this->helper->error($this->user->lang('ONLY_AJAX'), 500);
 		}
 	}
 
+	/**
+	 * Get the last 10 shouts
+	 */
 	public function getAll()
 	{
 		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
@@ -89,7 +105,7 @@ class main_controller
 					' . $this->usertable . ' u
 					WHERE
 		                u.user_id = c.user_id
-		            ORDER BY post_time DESC';
+		            ORDER BY post_time ASC';
 		$result = $this->db->sql_query_limit($sql, 10);
 
 		$posts = array();
