@@ -23,3 +23,4 @@ services:
             - %core.root_path%
             - %core.php_ext%
             - %paul999.ajaxshoutbox.tables.ajaxshoutbox%
+            - %tables.users%
