@@ -122,6 +122,7 @@ class main_controller
 						SELECT post_time FROM ' . $this->table . '
 						WHERE shout_id = ' . (int)$id . '
 					)
+					AND u.user_id = c.user_id
 				ORDER BY post_time ASC';
 		$result = $this->db->sql_query($sql);
 
