@@ -66,8 +66,9 @@
         console.log("Load data.");
     }
 
-    $("#shoutbox_content").scroll(function () {
-        if ($("shoutbox_content").scrollTop() == $("#shoutbox_content").height) {
+    $("#shoutbox_scroll").scroll(function () {
+        console.log("shoutbox_scroll");
+        if ($("#shoutbox_scroll").scrollTop() == $("#shoutbox_scroll").height()) {
             loadData();
         }
     });
