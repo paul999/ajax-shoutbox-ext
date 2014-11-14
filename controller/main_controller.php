@@ -53,8 +53,8 @@ class main_controller
 	 * @param string                            $usertable
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
-	                            \phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
-	                            \phpbb\db\driver\driver_interface $db, $root_path, $php_ext, $table, $usertable)
+								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
+								\phpbb\db\driver\driver_interface $db, $root_path, $php_ext, $table, $usertable)
 	{
 		$this->config    = $config;
 		$this->helper    = $helper;
@@ -122,6 +122,7 @@ class main_controller
 						SELECT post_time FROM ' . $this->table . '
 						WHERE shout_id = ' . (int)$id . '
 					)
+					AND c.shout_id != ' . (int)$id . '
 					AND u.user_id = c.user_id
 				ORDER BY post_time ASC';
 		$result = $this->db->sql_query($sql);
