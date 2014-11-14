@@ -80,7 +80,7 @@
         console.log("Load data.");
 
         $.ajax({
-            url: AJAX_SHOUTBOX_POSTS_OLD.replace("0", lastId),
+            url: AJAX_SHOUTBOX_POSTS_OLD.replace("0", firstId),
             success: appendPosts
         });
     }
