@@ -53,8 +53,8 @@ class main_controller
 	 * @param string                            $usertable
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
-								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
-								\phpbb\db\driver\driver_interface $db, $root_path, $php_ext, $table, $usertable)
+	                            \phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
+	                            \phpbb\db\driver\driver_interface $db, $root_path, $php_ext, $table, $usertable)
 	{
 		$this->config    = $config;
 		$this->helper    = $helper;
@@ -77,19 +77,16 @@ class main_controller
 		{
 			// TODO: Check permissions.
 			$insert = array(
-				'post_message'  => $this->request->variable('text_shoutbox', ''),
-				'post_time'     => time(),
-				'user_id'       => $this->user->data['user_id'],
+				'post_message' => $this->request->variable('text_shoutbox', ''),
+				'post_time'    => time(),
+				'user_id'      => $this->user->data['user_id'],
 			);
-			$sql = 'INSERT INTO ' . $this->table . ' ' . $this->db->sql_build_array('INSERT', $insert);
+			$sql    = 'INSERT INTO ' . $this->table . ' ' . $this->db->sql_build_array('INSERT', $insert);
 			$this->db->sql_query($sql);
 
 			$json_response = new \phpbb\json_response();
-			$json_response->send(
-				'OK'
-			);
-		}
-		else
+			$json_response->send(array('OK'));
+		} else
 		{
 			$this->helper->error($this->user->lang('ONLY_AJAX'), 500);
 		}
@@ -108,6 +105,36 @@ class main_controller
 					ORDER BY post_time ASC';
 		$result = $this->db->sql_query_limit($sql, 10);
 
+		$this->getPost($result);
+	}
+
+	/**
+	 * Get all shouts since a specific shout ID.
+	 *
+	 * @param int $id Last selected ID.
+	 */
+	public function getAfter($id)
+	{
+		$sql    = 'SELECT c.*, u.username, u.user_color FROM
+				' . $this->table . ' c,
+				' . $this->usertable . '
+				WHERE post_time >= (
+						SELECT post_time FROM ' . $this->table . '
+						WHERE shout_id = ' . (int)$id . '
+					)
+				ORDER BY post_time ASC';
+		$result = $this->$db->sql_query($sql);
+
+		$this->getPosts($result);
+	}
+
+	/**
+	 * Loop over a SQL result set, and generate a JSON array based on the post data.
+	 *
+	 * @param mixed $result return the data for the posts
+	 */
+	private function getPosts($result)
+	{
 		$posts = array();
 
 		while ($row = $this->db->sql_fetchrow($result))
@@ -134,7 +161,8 @@ class main_controller
 		return array(
 			'id'      => $row['shout_id'],
 			'user'    => get_username_string('full', $row['username'], $row['username'], $row['user_colour']),
-			'date'    => $this->user->format_date($row['post_time']), // This will cause issues with non refreshing posts.
+			'date'    => $this->user->format_date($row['post_time']),
+			// This will cause issues with non refreshing posts.
 			'message' => $row['post_message'],
 		);
 	}

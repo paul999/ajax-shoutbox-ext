@@ -30,8 +30,7 @@
      */
     function getPostsAfter() {
         $.ajax({
-            url: AJAX_SHOUTBOX_POSTS_NEW,
-            data: {"last": lastId},
+            url: AJAX_SHOUTBOX_POSTS_NEW.replace("0", lastId),
             success: addPostsFront
         });
     }
