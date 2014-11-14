@@ -117,7 +117,7 @@ class main_controller
 	{
 		$sql    = 'SELECT c.*, u.username, u.user_color FROM
 				' . $this->table . ' c,
-				' . $this->usertable . '
+				' . $this->usertable . ' u
 				WHERE post_time >= (
 						SELECT post_time FROM ' . $this->table . '
 						WHERE shout_id = ' . (int)$id . '
