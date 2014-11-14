@@ -34,7 +34,8 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.index_modify_page_title' => 'index',
+			'core.index_modify_page_title'  => 'index',
+			'core.permissions'				=> 'add_permission',
 		);
 	}
 
@@ -52,8 +53,32 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 				'U_SUBMIT_SHOUTBOX'  => $this->helper->route("paul999_ajaxshoutbox_post"),
 				'UA_GET_POST_ACTION' => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_all")),
 				'UA_GET_POST_ACTION_NEW'    => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_after", array('id' => 0))),
-			    'UA_GET_POST_ACTION_OLD'    => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_before", array('id' => 0))),
+				'UA_GET_POST_ACTION_OLD'    => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_before", array('id' => 0))),
 			)
 		);
+	}
+
+
+	/**
+	 * Add administrative permissions
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
+	public function add_permission($event)
+	{
+		$permissions = $event['permissions'];
+		$permissions['a_pages'] = array('lang' => 'ACL_A_PAGES', 'cat' => 'misc');
+
+		$permissions['u_shoutbox_view'] = array('lang' => 'ACL_U_SHOUTBOX_VIEW', 'cat' => 'misc');
+		$permissions['u_shoutbox_post'] = array('lang' => 'ACL_U_SHOUTBOX_POST', 'cat' => 'misc');
+		$permissions['u_shoutbox_quote'] = array('lang' => 'ACL_U_SHOUTBOX_QUOTE', 'cat' => 'misc');
+		$permissions['u_shoutbox_bbcode'] = array('lang' => 'ACL_U_SHOUTBOX_BBCODE', 'cat' => 'misc');
+		$permissions['u_shoutbox_delete'] = array('lang' => 'ACL_U_SHOUTBOX_DELETE', 'cat' => 'misc');
+		$permissions['m_shoutbox_delete'] = array('lang' => 'ACL_M_SHOUTBOX_DELETE', 'cat' => 'misc');
+		$permissions['m_shoutbox_edit'] = array('lang' => 'ACL_M_SHOUTBOX_EDIT', 'cat' => 'misc');
+
+		$event['permissions'] = $permissions;
 	}
 }

@@ -86,7 +86,6 @@
     }
 
     $("#shoutbox_scroll").scroll(function () {
-        console.log("shoutbox_scroll");
         if ($("#shoutbox_scroll").scrollTop() == $("#shoutbox_content").height() - $("#shoutbox_scroll").height()) {
             loadData();
         }
