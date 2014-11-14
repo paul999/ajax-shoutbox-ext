@@ -105,7 +105,7 @@ class main_controller
 					ORDER BY post_time ASC';
 		$result = $this->db->sql_query_limit($sql, 10);
 
-		$this->getPost($result);
+		$this->returnPosts($result);
 	}
 
 	/**
@@ -123,9 +123,9 @@ class main_controller
 						WHERE shout_id = ' . (int)$id . '
 					)
 				ORDER BY post_time ASC';
-		$result = $this->$db->sql_query($sql);
+		$result = $this->db->sql_query($sql);
 
-		$this->getPosts($result);
+		$this->returnPosts($result);
 	}
 
 	/**
@@ -133,7 +133,7 @@ class main_controller
 	 *
 	 * @param mixed $result return the data for the posts
 	 */
-	private function getPosts($result)
+	private function returnPosts($result)
 	{
 		$posts = array();
 
