@@ -102,7 +102,7 @@ class main_controller
 					' . $this->usertable . ' u
 					WHERE
 						u.user_id = c.user_id
-					ORDER BY post_time ASC';
+					ORDER BY post_time DESC';
 		$result = $this->db->sql_query_limit($sql, 10);
 
 		$this->returnPosts($result);
@@ -124,7 +124,7 @@ class main_controller
 					)
 					AND c.shout_id != ' . (int) $id . '
 					AND u.user_id = c.user_id
-				ORDER BY post_time ASC';
+				ORDER BY post_time DESC';
 		$result = $this->db->sql_query($sql);
 
 		$this->returnPosts($result);
@@ -145,7 +145,7 @@ class main_controller
 					)
 					AND c.shout_id != ' . (int) $id . '
 					AND u.user_id = c.user_id
-				ORDER BY post_time DESC'; // Different ORDER here as the others!
+				ORDER BY post_time ASC'; // Different ORDER here as the others!
 		$result = $this->db->sql_query_limit($sql, 10);
 
 		$this->returnPosts($result);
@@ -168,7 +168,7 @@ class main_controller
 
 		$json_response = new \phpbb\json_response();
 		$json_response->send(
-			$posts
+			array_reverse($posts)
 		);
 	}
 
