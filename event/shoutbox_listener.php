@@ -52,6 +52,7 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 				'U_SUBMIT_SHOUTBOX'  => $this->helper->route("paul999_ajaxshoutbox_post"),
 				'UA_GET_POST_ACTION' => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_all")),
 				'UA_GET_POST_ACTION_NEW'    => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_after", array('id' => 0))),
+			    'UA_GET_POST_ACTION_OLD'    => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_before", array('id' => 0))),
 			)
 		);
 	}

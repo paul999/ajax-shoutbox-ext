@@ -1,6 +1,7 @@
 (function($) { // Avoid conflicts with other libraries
     var timeout;
     var lastId;
+    var firstId;
 
     $(document).ready(function(){
         console.log("Loading ajax shoutbox");
@@ -23,6 +24,18 @@
 
         clearTimeout(timeout);
         timeout = setTimeout(getPostsAfter, 5000);
+    }
+
+    /**
+     * Append older posts at the back
+     * @param result
+     */
+    function appendPosts(result) {
+        console.log(result);
+
+        $.each(result, function(  ) {
+            addPost(this, false);
+        });
     }
 
     /**
@@ -55,6 +68,7 @@
         else
         {
             $("#shoutbox_content").append(element);
+            firstId = post.id;
             if (front) {
                 lastId = post.id;
             }
@@ -64,11 +78,16 @@
 
     function loadData() {
         console.log("Load data.");
+
+        $.ajax({
+            url: AJAX_SHOUTBOX_POSTS_OLD.replace("0", lastId),
+            success: appendPosts
+        });
     }
 
     $("#shoutbox_scroll").scroll(function () {
         console.log("shoutbox_scroll");
-        if ($("#shoutbox_scroll").scrollTop() == $("#shoutbox_scroll").height()) {
+        if ($("#shoutbox_scroll").scrollTop() == $("#shoutbox_content").height() - $("#shoutbox_scroll").height()) {
             loadData();
         }
     });

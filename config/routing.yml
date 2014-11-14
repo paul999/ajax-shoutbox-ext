@@ -8,3 +8,7 @@ paul999_ajaxshoutbox_get_all:
 paul999_ajaxshoutbox_get_after:
     pattern: /ajaxshoutbox/getAfter/{id}
     defaults: { _controller: paul999.ajaxshoutbox.controller:getAfter }
+paul999_ajaxshoutbox_get_before:
+    pattern: /ajaxshoutbox/getBefore/{id}
+    defaults: { _controller: paul999.ajaxshoutbox.controller:getBefore }
+

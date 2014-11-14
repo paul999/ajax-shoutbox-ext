@@ -120,12 +120,33 @@ class main_controller
 				' . $this->usertable . ' u
 				WHERE post_time >= (
 						SELECT post_time FROM ' . $this->table . '
-						WHERE shout_id = ' . (int)$id . '
+						WHERE shout_id = ' . (int) $id . '
 					)
-					AND c.shout_id != ' . (int)$id . '
+					AND c.shout_id != ' . (int) $id . '
 					AND u.user_id = c.user_id
 				ORDER BY post_time ASC';
 		$result = $this->db->sql_query($sql);
+
+		$this->returnPosts($result);
+	}
+
+	/**
+	 * Get 10 shouts before the current shout ID.
+	 * @param $id
+	 */
+	public function getBefore($id)
+	{
+		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
+				' . $this->table . ' c,
+				' . $this->usertable . ' u
+				WHERE post_time <= (
+						SELECT post_time FROM ' . $this->table . '
+						WHERE shout_id = ' . (int) $id . '
+					)
+					AND c.shout_id != ' . (int) $id . '
+					AND u.user_id = c.user_id
+				ORDER BY post_time DESC'; // Different ORDER here as the others!
+		$result = $this->db->sql_query_limit($sql, 10);
 
 		$this->returnPosts($result);
 	}
