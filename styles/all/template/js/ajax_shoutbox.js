@@ -1,21 +1,46 @@
 (function($) { // Avoid conflicts with other libraries
+    var timeout;
+    var lastId;
+
     $(document).ready(function(){
         console.log("Loading ajax shoutbox");
         $.ajax({
             url: AJAX_SHOUTBOX_POSTS,
-            success: getAllPosts
+            success: addPostsFront
         });
     });
-    function getAllPosts(result) {
+    /**
+     * Add a resultset of posts in front of current posts.
+     *
+     * @param result
+     */
+    function addPostsFront(result) {
         console.log(result);
 
         $.each(result, function(  ) {
             addPost(this, true);
         });
+
+        clearTimeout(timeout);
+        timeout = setTimeout('getPostsAfter()', 5000);
     }
 
-    var lastId;
+    /**
+     * Get posts after the last post.
+     */
+    function getPostsAfter() {
+        $.ajax({
+            url: AJAX_SHOUTBOX_POSTS_NEW,
+            data: {"last": lastId},
+            success: addPostsFront
+        });
+    }
 
+    /**
+     * Add a new post to the shoutbox.
+     * @param post
+     * @param front if true, add the post in front (new posts)
+     */
     function addPost(post, front)
     {
         var element = $("#copy").clone();

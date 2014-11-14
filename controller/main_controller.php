@@ -78,8 +78,8 @@ class main_controller
 			// TODO: Check permissions.
 			$insert = array(
 				'post_message'  => $this->request->variable('text_shoutbox', ''),
-			    'post_time'     => time(),
-			    'user_id'       => $this->user->data['user_id'],
+				'post_time'     => time(),
+				'user_id'       => $this->user->data['user_id'],
 			);
 			$sql = 'INSERT INTO ' . $this->table . ' ' . $this->db->sql_build_array('INSERT', $insert);
 			$this->db->sql_query($sql);
@@ -104,8 +104,8 @@ class main_controller
 					' . $this->table . ' c,
 					' . $this->usertable . ' u
 					WHERE
-		                u.user_id = c.user_id
-		            ORDER BY post_time ASC';
+						u.user_id = c.user_id
+					ORDER BY post_time ASC';
 		$result = $this->db->sql_query_limit($sql, 10);
 
 		$posts = array();
