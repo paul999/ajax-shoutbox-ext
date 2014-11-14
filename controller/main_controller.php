@@ -34,6 +34,9 @@ class main_controller
 	/** @var \phpbb\db\driver\driver_interface */
 	private $db;
 
+	/** @var \phpbb\auth\auth  */
+	private $auth;
+
 	/** @var  string */
 	private $table;
 
@@ -47,6 +50,7 @@ class main_controller
 	 * @param \phpbb\user                       $user
 	 * @param \phpbb\request\request            $request
 	 * @param \phpbb\db\driver\driver_interface $db
+	 * @param \phpbb\auth\auth                  $auth
 	 * @param string                            $root_path
 	 * @param string                            $php_ext
 	 * @param string                            $table
@@ -54,7 +58,7 @@ class main_controller
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
 								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
-								\phpbb\db\driver\driver_interface $db, $root_path, $php_ext, $table, $usertable)
+								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, $root_path, $php_ext, $table, $usertable)
 	{
 		$this->config    = $config;
 		$this->helper    = $helper;
@@ -62,6 +66,7 @@ class main_controller
 		$this->user      = $user;
 		$this->request   = $request;
 		$this->db        = $db;
+		$this->auth      = $auth;
 		$this->root_path = $root_path;
 		$this->php_ext   = $php_ext;
 		$this->table     = $table;
@@ -73,6 +78,11 @@ class main_controller
 	 */
 	public function post()
 	{
+		if (!$this->auth->acl_get('u_shoutbox_post'))
+		{
+			$this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
+		}
+
 		if ($this->request->is_ajax())
 		{
 			// TODO: Check permissions.
@@ -97,6 +107,11 @@ class main_controller
 	 */
 	public function getAll()
 	{
+		if (!$this->auth->acl_get('u_shoutbox_view'))
+		{
+			$this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
+		}
+
 		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
 					' . $this->table . ' c,
 					' . $this->usertable . ' u
@@ -115,6 +130,11 @@ class main_controller
 	 */
 	public function getAfter($id)
 	{
+		if (!$this->auth->acl_get('u_shoutbox_view'))
+		{
+			$this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
+		}
+
 		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
 				' . $this->table . ' c,
 				' . $this->usertable . ' u
@@ -136,6 +156,11 @@ class main_controller
 	 */
 	public function getBefore($id)
 	{
+		if (!$this->auth->acl_get('u_shoutbox_view'))
+		{
+			$this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
+		}
+		
 		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
 				' . $this->table . ' c,
 				' . $this->usertable . ' u

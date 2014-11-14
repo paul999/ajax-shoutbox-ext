@@ -39,12 +39,12 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
-		'ACL_U_SHOUTBOX_VIEW' => 'Can view ajax shoutbox',
-		'ACL_U_SHOUTBOX_POST' => 'Can post ajax shoutbox',
-		'ACL_U_SHOUTBOX_QUOTE' => 'Can quote ajax shoutbox',
+		'ACL_U_SHOUTBOX_VIEW'   => 'Can view ajax shoutbox',
+		'ACL_U_SHOUTBOX_POST'   => 'Can post ajax shoutbox',
+		'ACL_U_SHOUTBOX_QUOTE'  => 'Can quote ajax shoutbox',
 		'ACL_U_SHOUTBOX_BBCODE' => 'Can use BBCode in ajax shoutbox',
 		'ACL_U_SHOUTBOX_DELETE' => 'Can delete own posts in ajax shoutbox',
 		'ACL_M_SHOUTBOX_DELETE' => 'Can delete posts in ajax shoutbox',
-		'ACL_M_SHOUTBOX_EDIT' => 'Can edit in ajax shoutbox',
+		'ACL_M_SHOUTBOX_EDIT'   => 'Can edit in ajax shoutbox',
 	)
 );

@@ -8,6 +8,7 @@ services:
             - @user
             - @template
             - @controller.helper
+            - @auth
         tags:
             - { name: event.listener }
 
@@ -20,6 +21,7 @@ services:
             - @user
             - @request
             - @dbal.conn
+            - @auth
             - %core.root_path%
             - %core.php_ext%
             - %paul999.ajaxshoutbox.tables.ajaxshoutbox%

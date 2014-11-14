@@ -21,14 +21,21 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	/** @var \phpbb\controller\helper */
 	private $helper;
 
+	/** @var \phpbb\auth\auth  */
+	private $auth;
+
 	/**
-	 * @param \phpbb\user $user
+	 * @param \phpbb\user              $user
+	 * @param \phpbb\template\template $template
+	 * @param \phpbb\controller\helper $helper
+	 * @param \phpbb\auth\auth         $auth
 	 */
-	public function __construct(\phpbb\user $user, \phpbb\template\template $template, \phpbb\controller\helper $helper)
+	public function __construct(\phpbb\user $user, \phpbb\template\template $template, \phpbb\controller\helper $helper, \phpbb\auth\auth $auth)
 	{
 		$this->user     = $user;
 		$this->template = $template;
 		$this->helper   = $helper;
+		$this->auth     = $auth;
 	}
 
 	static public function getSubscribedEvents()
@@ -48,8 +55,8 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 
 		$this->template->assign_vars(
 			array(
-				'S_AJAX_SHOUTBOX'    => true,
-				'S_CAN_POST_SHOUT'   => true,
+				'S_AJAX_SHOUTBOX'    => $this->auth->acl_get('u_shoutbox_view'),
+				'S_CAN_POST_SHOUT'   => $this->auth->acl_get('u_shoutbox_post'),
 				'U_SUBMIT_SHOUTBOX'  => $this->helper->route("paul999_ajaxshoutbox_post"),
 				'UA_GET_POST_ACTION' => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_all")),
 				'UA_GET_POST_ACTION_NEW'    => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_after", array('id' => 0))),
