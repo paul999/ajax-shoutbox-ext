@@ -22,7 +22,7 @@
         });
 
         clearTimeout(timeout);
-        timeout = setTimeout('getPostsAfter()', 5000);
+        timeout = setTimeout('getPostsAfter', 5000);
     }
 
     /**
