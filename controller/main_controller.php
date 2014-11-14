@@ -115,7 +115,7 @@ class main_controller
 	 */
 	public function getAfter($id)
 	{
-		$sql    = 'SELECT c.*, u.username, u.user_color FROM
+		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
 				' . $this->table . ' c,
 				' . $this->usertable . ' u
 				WHERE post_time >= (
