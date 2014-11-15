@@ -17,6 +17,8 @@
 
         clearTimeout(timeout);
         timeout = setTimeout(getPostsAfter, 5000);
+
+        $("ajaxshoutbox_loadbefore").hide();
     }
 
     /**
@@ -29,6 +31,8 @@
         $.each(result, function(  ) {
             addPost(this, false);
         });
+
+        $("ajaxshoutbox_loadafter").hide();
     }
 
     /**
@@ -37,6 +41,7 @@
     function getPostsAfter() {
         clearTimeout(timeout);
         $("#submit_shoutbox").fadeIn();
+        $("ajaxshoutbox_loadbefore").fadeIn();
 
         $.ajax({
             url: AJAX_SHOUTBOX_POSTS_NEW.replace("0", lastId),
@@ -76,6 +81,7 @@
      * Load data when we are scrolled to the end.
      */
     function loadData() {
+        $("ajaxshoutbox_loadafter").fadeIn();
         $.ajax({
             url: AJAX_SHOUTBOX_POSTS_OLD.replace("0", firstId),
             success: appendPosts
@@ -92,7 +98,7 @@
     });
 
     $("#shoutbox_scroll").scroll(function () {
-        if ($("#shoutbox_scroll").scrollTop() == $("#shoutbox_content").height() - $("#shoutbox_scroll").height()) {
+        if ($("#shoutbox_scroll").scrollTop() >= $("#shoutbox_content").height() - $("#shoutbox_scroll").height() - 25) {
             loadData();
         }
     });
