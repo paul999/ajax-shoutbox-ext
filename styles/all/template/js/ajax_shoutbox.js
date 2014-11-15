@@ -58,6 +58,10 @@
      */
     function addPost(post, front)
     {
+        if ($("#shout" + post.id).length != 0) {
+            return;
+        }
+
         var element = $("#copy").clone();
         element.attr('id',  "shout" + post.id);
         $(element).find("dt[data-type='user']").html(post.user);
