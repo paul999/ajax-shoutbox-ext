@@ -109,10 +109,10 @@
             loadData();
         }
     });
-    phpbb.addAjaxCallback('phpbb.ajax_shoutbox_callback', function() {
+    phpbb.addAjaxCallback('paul999.ajaxshoutbox.post_callback', function() {
         console.log("Finished ajax callback");
         getPostsAfter();
     });
 
-    phpbb.ajaxify({selector: $("#ajaxshoutbox_post"), filter: beforePost }, false, 'ajax_shoutbox_callback');
+    phpbb.ajaxify({selector: $("#ajaxshoutbox_post"), filter: beforePost }, false, 'paul999.ajaxshoutbox.post_callback');
 })(jQuery);
