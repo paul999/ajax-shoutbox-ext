@@ -229,7 +229,7 @@ class main_controller
 
 		return array(
 			'id'      => $row['shout_id'],
-			'user'    => get_username_string('full', $row['username'], $row['username'], $row['user_colour']),
+			'user'    => get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']),
 			'date'    => $this->user->format_date($row['post_time']),
 			// This will cause issues with non refreshing posts.
 			'message' => $text,
