@@ -82,19 +82,6 @@
         });
     }
 
-    /**
-     * Empty the textbox and hide the submit button.
-     */
-    function beforePost(data) {
-        console.log(data);
-
-        $("#text_shoutbox").val('');
-        $("#submit_shoutbox").hide();
-        clearTimeout(timeout);
-
-        return true;
-    }
-
     // Once the document is ready, we start collecting posts.
     $(document).ready(function(){
         console.log("Loading ajax shoutbox");
@@ -114,5 +101,14 @@
         getPostsAfter();
     });
 
-    phpbb.ajaxify({selector: $("#ajaxshoutbox_post"), filter: beforePost }, false, 'paul999.ajaxshoutbox.post_callback');
+    phpbb.ajaxify({selector: $("#ajaxshoutbox_post"), filter: function() {
+        console.log("Posting message");
+
+        $("#text_shoutbox").val('');
+        $("#submit_shoutbox").hide();
+        clearTimeout(timeout);
+
+        return true;
+    }
+    }, false, 'paul999.ajaxshoutbox.post_callback');
 })(jQuery);
