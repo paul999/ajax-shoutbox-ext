@@ -102,13 +102,14 @@
     });
 
     phpbb.ajaxify({selector: $("#ajaxshoutbox_post"), filter: function() {
-        console.log("Posting message");
+            console.log("Posting message");
 
-        $("#text_shoutbox").val('');
-        $("#submit_shoutbox").hide();
-        clearTimeout(timeout);
+            $("#text_shoutbox").val('');
+            $("#submit_shoutbox").hide();
+            clearTimeout(timeout);
 
-        return true;
-    }
-    }, false, 'paul999.ajaxshoutbox.post_callback');
+            return true;
+        },
+        callback: 'paul999.ajaxshoutbox.post_callback'
+    });
 })(jQuery);
