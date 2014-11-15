@@ -36,16 +36,16 @@
                 </li>
             </ul>
         </noscript>
-        <div style="max-height: 200px;overflow:scroll;" id="shoutbox_scroll">
+        <div id="shoutbox_scroll">
             <div id="ajaxshoutbox_loadbefore"><div class="ajaxshoutbox_loadingbar"></div></div>
-            <ul class="topiclist forums" id="shoutbox_content">
-                <li class="row" style="display: none" id="copy">
+            <ul class="shoutboxlist forums" id="shoutbox_content">
+                <li class="row" id="copy">
                     <dl>
                         <dt data-type="user"></dt>
+                        <dd data-type="date" class="ajaxshoutbox_date"></dd>
+                        <dd data-type="message" class="ajaxshoutbox_message"></dd>
                         <dd data-type="delete"></dd>
                         <dd data-type="edit"></dd>
-                        <dd data-type="date"></dd>
-                        <dd data-type="message"></dd>
                     </dl>
                 </li>
             </ul>

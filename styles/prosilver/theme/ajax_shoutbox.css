@@ -1,9 +1,52 @@
 .ajaxshoutbox_loadingbar {
-    background-color: #000000;
-    background-image: url("./images/loading.gif");
-    display:none;
+    background: #000000 url("./images/loading.gif");
     height: 40px;
     widht: 40px;
     margin-left: auto ;
     margin-right: auto ;
+}
+
+#ajaxshoutbox_loadbefore, #ajaxshoutbox_loadafter {
+    display: none;
+}
+
+#shoutbox_scroll {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+#copy { /* This element is used to copy data from. Do not show */
+    display: none;
+}
+
+ul.shoutboxlist {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+}
+
+ul.shoutboxlist li {
+    color: #4C5D77;
+    display: block;
+    list-style-type: none;
+    margin: 0;
+}
+
+ul.shoutboxlist li.row dl {
+    padding: 2px 0;
+}
+
+ul.shoutboxlist dl {
+    position: relative;
+}
+
+ul.shoutboxlist dt {
+    width: 10%;
+    font-size: 1.1em;
+}
+ul.shoutboxlist dd.ajaxshoutbox_date {
+    width: 10%;
+}
+ul.shoutboxlist dd.ajaxshoutbox_message {
+    width: 80%;
 }
