@@ -56,7 +56,7 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 		$this->template->assign_vars(
 			array(
 				'S_AJAX_SHOUTBOX'    => $this->auth->acl_get('u_shoutbox_view'),
-				'S_CAN_POST_SHOUT'   => $this->auth->acl_get('u_shoutbox_post'),
+				'S_CAN_POST_SHOUT'   => $this->auth->acl_get('u_shoutbox_post') && $this->user->data['user_id'] != ANONYMOUS,
 				'U_SUBMIT_SHOUTBOX'  => $this->helper->route("paul999_ajaxshoutbox_post"),
 				'UA_GET_POST_ACTION' => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_all")),
 				'UA_GET_POST_ACTION_NEW'    => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_after", array('id' => 0))),

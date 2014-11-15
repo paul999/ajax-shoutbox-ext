@@ -34,7 +34,7 @@ class main_controller
 	/** @var \phpbb\db\driver\driver_interface */
 	private $db;
 
-	/** @var \phpbb\auth\auth  */
+	/** @var \phpbb\auth\auth */
 	private $auth;
 
 	/** @var  string */
@@ -58,7 +58,8 @@ class main_controller
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
 								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
-								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, $root_path, $php_ext, $table, $usertable)
+								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, $root_path, $php_ext,
+								$table, $usertable)
 	{
 		$this->config    = $config;
 		$this->helper    = $helper;
@@ -78,18 +79,33 @@ class main_controller
 	 */
 	public function post()
 	{
-		if (!$this->auth->acl_get('u_shoutbox_post'))
+		// We always disallow guests to post in the shoutbox.
+		if (!$this->auth->acl_get('u_shoutbox_post') || $this->user->data['user_id'] == ANONYMOUS)
 		{
 			$this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
 		}
 
 		if ($this->request->is_ajax())
 		{
-			// TODO: Check permissions.
+			$message      = utf8_normalize_nfc($this->request->variable('text_shoutbox', '', true));
+			$uid          = $bitfield = $options = '';
+			$allow_bbcode = $this->auth->acl_get('u_shoutbox_bbcode');
+			$allow_urls   = $allow_smilies = true;
+
+			if (!function_exists('generate_text_for_storage'))
+			{
+				include($this->root_path . 'includes/functions_content.' . $this->php_ext);
+			}
+
+			generate_text_for_storage($message, $uid, $bitfield, $options, $allow_bbcode, $allow_urls, $allow_smilies);
+
 			$insert = array(
-				'post_message' => $this->request->variable('text_shoutbox', ''),
-				'post_time'    => time(),
-				'user_id'      => $this->user->data['user_id'],
+				'post_message'    => $message,
+				'post_time'       => time(),
+				'user_id'         => $this->user->data['user_id'],
+				'bbcode_options'  => $options,
+				'bbcode_bitfield' => $bitfield,
+				'bbcode_uid'      => $uid,
 			);
 			$sql    = 'INSERT INTO ' . $this->table . ' ' . $this->db->sql_build_array('INSERT', $insert);
 			$this->db->sql_query($sql);
@@ -140,9 +156,9 @@ class main_controller
 				' . $this->usertable . ' u
 				WHERE post_time >= (
 						SELECT post_time FROM ' . $this->table . '
-						WHERE shout_id = ' . (int) $id . '
+						WHERE shout_id = ' . (int)$id . '
 					)
-					AND c.shout_id != ' . (int) $id . '
+					AND c.shout_id != ' . (int)$id . '
 					AND u.user_id = c.user_id
 				ORDER BY post_time DESC';
 		$result = $this->db->sql_query($sql);
@@ -152,6 +168,7 @@ class main_controller
 
 	/**
 	 * Get 10 shouts before the current shout ID.
+	 *
 	 * @param $id
 	 */
 	public function getBefore($id)
@@ -160,15 +177,15 @@ class main_controller
 		{
 			$this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
 		}
-		
+
 		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
 				' . $this->table . ' c,
 				' . $this->usertable . ' u
 				WHERE post_time <= (
 						SELECT post_time FROM ' . $this->table . '
-						WHERE shout_id = ' . (int) $id . '
+						WHERE shout_id = ' . (int)$id . '
 					)
-					AND c.shout_id != ' . (int) $id . '
+					AND c.shout_id != ' . (int)$id . '
 					AND u.user_id = c.user_id
 				ORDER BY post_time ASC'; // Different ORDER here as the others!
 		$result = $this->db->sql_query_limit($sql, 10);
@@ -206,12 +223,16 @@ class main_controller
 	 */
 	private function getPost($row)
 	{
+		$text = generate_text_for_display(
+			$row['post_message'], $row['bbcode_uid'], $row['bbcode_bitfield'], $row['bbcode_options']
+		);
+
 		return array(
 			'id'      => $row['shout_id'],
 			'user'    => get_username_string('full', $row['username'], $row['username'], $row['user_colour']),
 			'date'    => $this->user->format_date($row['post_time']),
 			// This will cause issues with non refreshing posts.
-			'message' => $row['post_message'],
+			'message' => $text,
 		);
 	}
 }
