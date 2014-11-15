@@ -3,13 +3,6 @@
     var lastId;
     var firstId;
 
-    $(document).ready(function(){
-        console.log("Loading ajax shoutbox");
-        $.ajax({
-            url: AJAX_SHOUTBOX_POSTS,
-            success: addPostsFront
-        });
-    });
     /**
      * Add a resultset of posts in front of current posts.
      *
@@ -42,6 +35,9 @@
      * Get posts after the last post.
      */
     function getPostsAfter() {
+        clearTimeout(timeout);
+        $("#submit_shoutbox").fadeIn();
+
         $.ajax({
             url: AJAX_SHOUTBOX_POSTS_NEW.replace("0", lastId),
             success: addPostsFront
@@ -76,18 +72,39 @@
         $("#shout" + post.id).fadeIn();
     }
 
+    /**
+     * Load data when we are scrolled to the end.
+     */
     function loadData() {
-        console.log("Load data.");
-
         $.ajax({
             url: AJAX_SHOUTBOX_POSTS_OLD.replace("0", firstId),
             success: appendPosts
         });
     }
 
+    /**
+     * Empty the textbox and hide the submit button.
+     */
+    function beforePost() {
+        $("#text_shoutbox").val('');
+        $("#submit_shoutbox").hide();
+        clearTimeout(timeout);
+    }
+
+    // Once the document is ready, we start collecting posts.
+    $(document).ready(function(){
+        console.log("Loading ajax shoutbox");
+        $.ajax({
+            url: AJAX_SHOUTBOX_POSTS,
+            success: addPostsFront
+        });
+    });
+
     $("#shoutbox_scroll").scroll(function () {
         if ($("#shoutbox_scroll").scrollTop() == $("#shoutbox_content").height() - $("#shoutbox_scroll").height()) {
             loadData();
         }
     });
+
+    phpbb.ajaxify({selector: $("#ajaxshoutbox_post"), filter: beforePost }, false, getPostsAfter);
 })(jQuery);

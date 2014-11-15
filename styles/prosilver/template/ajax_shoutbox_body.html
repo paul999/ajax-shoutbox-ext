@@ -10,12 +10,12 @@
             </li>
         </ul>
         <!-- IF S_CAN_POST_SHOUT -->
-        <form action="{U_SUBMIT_SHOUTBOX}" data-ajax="true" method="post">
+        <form action="{U_SUBMIT_SHOUTBOX}" id="ajaxshoutbox_post" method="post">
             <ul class="topiclist forums">
                 <li class="row">
                     <dl>
-                        <dt>{L_SHOUTBOX_MESSAGE}{L_COLON} <input type="text" name="text_shoutbox"/></dt>
-                        <dd><input type="submit" name="submit" value="{L_SUBMIT}" class="button2"></dd>
+                        <dt>{L_SHOUTBOX_MESSAGE}{L_COLON} <input type="text" name="text_shoutbox" id="text_shoutbox"/></dt>
+                        <dd><input type="submit" name="submit" value="{L_SUBMIT}" class="button2" id="submit_shoutbox"></dd>
                     </dl>
                 </li>
             </ul>

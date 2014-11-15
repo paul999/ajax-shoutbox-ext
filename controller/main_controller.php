@@ -156,9 +156,9 @@ class main_controller
 				' . $this->usertable . ' u
 				WHERE post_time >= (
 						SELECT post_time FROM ' . $this->table . '
-						WHERE shout_id = ' . (int)$id . '
+						WHERE shout_id = ' . (int) $id . '
 					)
-					AND c.shout_id != ' . (int)$id . '
+					AND c.shout_id != ' . (int) $id . '
 					AND u.user_id = c.user_id
 				ORDER BY post_time DESC';
 		$result = $this->db->sql_query($sql);
@@ -183,9 +183,9 @@ class main_controller
 				' . $this->usertable . ' u
 				WHERE post_time <= (
 						SELECT post_time FROM ' . $this->table . '
-						WHERE shout_id = ' . (int)$id . '
+						WHERE shout_id = ' . (int) $id . '
 					)
-					AND c.shout_id != ' . (int)$id . '
+					AND c.shout_id != ' . (int) $id . '
 					AND u.user_id = c.user_id
 				ORDER BY post_time ASC'; // Different ORDER here as the others!
 		$result = $this->db->sql_query_limit($sql, 10);
