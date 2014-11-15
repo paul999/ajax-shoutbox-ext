@@ -1,7 +1,7 @@
 .ajaxshoutbox_loadingbar {
     background: #000000 url("./images/loading.gif");
     height: 40px;
-    widht: 40px;
+    width: 40px;
     margin-left: auto ;
     margin-right: auto ;
 }
@@ -10,6 +10,9 @@
     display: none;
 }
 
+ul.waitinglist dt {
+    width: 100%;
+}
 #shoutbox_scroll {
     max-height: 200px;
     overflow-y: scroll;

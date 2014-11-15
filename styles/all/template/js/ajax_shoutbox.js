@@ -2,6 +2,7 @@
     var timeout;
     var lastId;
     var firstId;
+    var waitingEarlier;
 
     /**
      * Add a resultset of posts in front of current posts.
@@ -33,6 +34,7 @@
         });
 
         $("#ajaxshoutbox_loadafter").hide();
+        waitingEarlier = false;
     }
 
     /**
@@ -95,10 +97,12 @@
             url: AJAX_SHOUTBOX_POSTS,
             success: addPostsFront
         });
+        waitingEarlier = false;
     });
 
     $("#shoutbox_scroll").scroll(function () {
-        if ($("#shoutbox_scroll").scrollTop() >= $("#shoutbox_content").height() - $("#shoutbox_scroll").height() - 25) {
+        if (!waitingEarlier && $("#shoutbox_scroll").scrollTop() >= $("#shoutbox_content").height() - $("#shoutbox_scroll").height() - 25) {
+            waitingEarlier = true;
             loadData();
         }
     });
