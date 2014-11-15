@@ -18,7 +18,7 @@
         clearTimeout(timeout);
         timeout = setTimeout(getPostsAfter, 5000);
 
-        $("ajaxshoutbox_loadbefore").hide();
+        $("#ajaxshoutbox_loadbefore").hide();
     }
 
     /**
@@ -32,7 +32,7 @@
             addPost(this, false);
         });
 
-        $("ajaxshoutbox_loadafter").hide();
+        $("#ajaxshoutbox_loadafter").hide();
     }
 
     /**
@@ -41,7 +41,7 @@
     function getPostsAfter() {
         clearTimeout(timeout);
         $("#submit_shoutbox").fadeIn();
-        $("ajaxshoutbox_loadbefore").fadeIn();
+        $("#ajaxshoutbox_loadbefore").fadeIn();
 
         $.ajax({
             url: AJAX_SHOUTBOX_POSTS_NEW.replace("0", lastId),
@@ -81,7 +81,7 @@
      * Load data when we are scrolled to the end.
      */
     function loadData() {
-        $("ajaxshoutbox_loadafter").fadeIn();
+        $("#ajaxshoutbox_loadafter").fadeIn();
         $.ajax({
             url: AJAX_SHOUTBOX_POSTS_OLD.replace("0", firstId),
             success: appendPosts
