@@ -46,13 +46,13 @@ ul.shoutboxlist dl {
 ul.shoutboxlist dt {
     width: 10%;
     font-size: 1.1em;
-    margin-right: 20px;
+    margin-right: 5px;
 }
 ul.shoutboxlist dd.ajaxshoutbox_date {
-    width: 10%;
-    margin-right: 20px
+    width: 15%;
+    margin-right: 5px
 }
 ul.shoutboxlist dd.ajaxshoutbox_message {
-    width: 75%;
+    width: 70%;
 
 }
