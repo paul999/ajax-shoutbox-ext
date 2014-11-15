@@ -187,18 +187,19 @@ class main_controller
 					)
 					AND c.shout_id != ' . (int) $id . '
 					AND u.user_id = c.user_id
-				ORDER BY post_time DESC'; 
+				ORDER BY post_time DESC';
 		$result = $this->db->sql_query_limit($sql, 10);
 
-		$this->returnPosts($result);
+		$this->returnPosts($result, false);
 	}
 
 	/**
 	 * Loop over a SQL result set, and generate a JSON array based on the post data.
 	 *
 	 * @param mixed $result return the data for the posts
+	 * @param bool  $reverse
 	 */
-	private function returnPosts($result)
+	private function returnPosts($result, $reverse = true)
 	{
 		$posts = array();
 
@@ -210,7 +211,7 @@ class main_controller
 
 		$json_response = new \phpbb\json_response();
 		$json_response->send(
-			array_reverse($posts)
+			$reverse ? array_reverse($posts) : $posts
 		);
 	}
 
