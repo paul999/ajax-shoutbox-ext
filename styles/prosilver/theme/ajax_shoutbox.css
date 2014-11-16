@@ -62,6 +62,9 @@ ul.shoutboxlist dd.ajaxshoutbox_message {
     width: 70%;
 
 }
+ul.ajaxshoutboxpost {
+    min-height: 16px;
+}
 ul.ajaxshoutboxpost dt{
     padding-left: 5px;
     width: 100%;

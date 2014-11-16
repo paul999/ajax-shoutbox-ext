@@ -81,7 +81,7 @@ class main_controller
 	public function validate()
 	{
 		$result = array();
-		if (!$this->config['ajaxshoutbox_push_enabled']) {
+		if ($this->config['ajaxshoutbox_push_enabled']) {
 			$result['key'] = $this->config['ajaxshoutbox_validation_id'];
 		} else {
 			$result['error'] = 'disabled';
