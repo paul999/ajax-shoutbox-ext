@@ -19,6 +19,7 @@ class release_100beta1 extends migration
 			'\paul999\ajaxshoutbox\migrations\create_table',
 			'\paul999\ajaxshoutbox\migrations\add_permissions',
 			'\paul999\ajaxshoutbox\migrations\update_table',
+		    '\paul999\ajaxshoutbox\migrations\add_push_config',
 		);
 	}
 

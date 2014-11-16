@@ -75,6 +75,23 @@ class main_controller
 	}
 
 	/**
+	 * Validate the push connection with shoutbox-app.com
+	 *
+	 */
+	public function validate()
+	{
+		$result = array();
+		if (!$this->config['ajaxshoutbox_push_enabled']) {
+			$result['key'] = $this->config['ajaxshoutbox_validation_id'];
+		} else {
+			$result['error'] = 'disabled';
+		}
+
+		$json_response = new \phpbb\json_response();
+		$json_response->send(array($result));
+	}
+
+	/**
 	 *
 	 */
 	public function post()
