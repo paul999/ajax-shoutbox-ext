@@ -1,7 +1,7 @@
 .ajaxshoutbox_loadingbar {
-    background: #000000 url("./images/loading.gif");
-    height: 34px;
-    width: 34px;
+    background-image: url("./images/ajax-loader.gif");
+    height: 16px;
+    width: 16px;
     margin-left: auto ;
     margin-right: auto ;
 }
@@ -10,8 +10,8 @@
     display: none;
 }
 #ajaxshoutbox_loadbefore {
-    height: 8px;
-    width: 8px;
+    height: 16px;
+    width: 16px;
 }
 
 ul.waitinglist dt {
