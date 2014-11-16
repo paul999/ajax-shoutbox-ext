@@ -43,5 +43,6 @@ $lang = array_merge(
 		"SHOUTBOX_MESSAGE" => "Add message",
 		"ONLY_AJAX"        => "Sorry, posting in the shoutbox is only supported when JavaScript is enabled",
 		"AJAX_SHOUTBOX_NO_PERMISSION"   => 'No permission for the selected action',
+	    'AJAX_SHOUTBOX_MESSAGE_EMPTY'   => 'Message empty',
 	)
 );

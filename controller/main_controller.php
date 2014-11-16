@@ -87,7 +87,12 @@ class main_controller
 
 		if ($this->request->is_ajax())
 		{
-			$message      = utf8_normalize_nfc($this->request->variable('text_shoutbox', '', true));
+			$message      = trim(utf8_normalize_nfc($this->request->variable('text_shoutbox', '', true)));
+
+			if (empty($message)) {
+				$this->helper->error('AJAX_SHOUTBOX_MESSAGE_EMPTY');
+			}
+
 			$uid          = $bitfield = $options = '';
 			$allow_bbcode = $this->auth->acl_get('u_shoutbox_bbcode');
 			$allow_urls   = $allow_smilies = true;
