@@ -82,7 +82,7 @@ class main_controller
 		// We always disallow guests to post in the shoutbox.
 		if (!$this->auth->acl_get('u_shoutbox_post') || $this->user->data['user_id'] == ANONYMOUS)
 		{
-			$this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
+			return $this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
 		}
 
 		if ($this->request->is_ajax())
@@ -90,7 +90,7 @@ class main_controller
 			$message      = trim(utf8_normalize_nfc($this->request->variable('text_shoutbox', '', true)));
 
 			if (empty($message)) {
-				$this->helper->error('AJAX_SHOUTBOX_MESSAGE_EMPTY');
+				return $this->helper->error('AJAX_SHOUTBOX_MESSAGE_EMPTY');
 			}
 
 			$uid          = $bitfield = $options = '';
@@ -119,7 +119,7 @@ class main_controller
 			$json_response->send(array('OK'));
 		} else
 		{
-			$this->helper->error($this->user->lang('ONLY_AJAX'), 500);
+			return $this->helper->error($this->user->lang('ONLY_AJAX'), 500);
 		}
 	}
 
