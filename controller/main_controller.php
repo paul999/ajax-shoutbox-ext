@@ -80,7 +80,7 @@ class main_controller
 	public function post()
 	{
 		$this->user->add_lang_ext("paul999/ajaxshoutbox", "ajax_shoutbox");
-		
+
 		// We always disallow guests to post in the shoutbox.
 		if (!$this->auth->acl_get('u_shoutbox_post') || $this->user->data['user_id'] == ANONYMOUS)
 		{

@@ -9,6 +9,10 @@
 #ajaxshoutbox_loadbefore, #ajaxshoutbox_loadafter {
     display: none;
 }
+#ajaxshoutbox_loadbefore {
+    height: 8px;
+    width: 8px;
+}
 
 ul.waitinglist dt {
     width: 100%;
