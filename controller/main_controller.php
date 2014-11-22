@@ -166,7 +166,7 @@ class main_controller
 		}
 		if (empty($this->config['ajaxshoutbox_api_server'])) {
 			// hmmm.
-			$this->config['ajaxshoutbox_api_server'] = 'https://api.shoutbox-app.com/post';
+			$this->config['ajaxshoutbox_api_server'] = 'https://www.shoutbox-app.com/post'; // API is for the app only.
 		}
 		if (!function_exists('curl_version') || !function_exists('curl_init') || !function_exists('curl_exec'))
 		{
@@ -186,7 +186,7 @@ class main_controller
 		try
 		{
 			$headers = array('Content-Type' => 'application/json');
-			$data = json_decode(array(
+			$data = json_encode(array(
 				'message'   => $message,
 			    'date'      => $date,
 			    'user'      => $user,
