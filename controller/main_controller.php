@@ -186,7 +186,7 @@ class main_controller
 		try
 		{
 			$headers = array('Content-Type' => 'application/json');
-			$data = json_encode(array(
+			$data = json_decode(array(
 				'message'   => $message,
 			    'date'      => $date,
 			    'user'      => $user,
