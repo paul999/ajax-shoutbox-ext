@@ -63,7 +63,7 @@ ul.shoutboxlist dd.ajaxshoutbox_message {
 
 }
 ul.ajaxshoutboxpost {
-    min-height: 16px;
+    min-height: 25px;
 }
 
 ul.ajaxshoutboxpost dt {
@@ -76,6 +76,10 @@ ul.ajaxshoutboxpost dd {
     margin-right: 5px;
     padding-left: 5px;
 }
+#text_shoutbox {
+    width: 75%;
+}
+
 @media only screen and (max-width: 550px), only screen and (max-device-width: 550px) {
     ul.shoutboxlist dd.ajaxshoutbox_date {
         display: none;
