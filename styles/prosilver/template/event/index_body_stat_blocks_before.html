@@ -1,3 +1,4 @@
-<!-- IF S_AJAX_SHOUTBOX -->
-        <!-- INCLUDE ajax_shoutbox_body.html -->
+<!-- IF S_AJAX_SHOUTBOX and not $AJAX_SHOUTBOX_INCLUDED -->
+    <!-- INCLUDE ajax_shoutbox_body.html -->
+    <!-- DEFINE $AJAX_SHOUTBOX_INCLUDED = true -->
 <!-- ENDIF -->
