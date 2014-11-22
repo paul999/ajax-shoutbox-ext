@@ -9,7 +9,7 @@
  */
 namespace paul999\ajaxshoutbox\migrations;
 
-class add_push_config extends \phpbb\db\migration\migration
+class add_push_config2 extends \phpbb\db\migration\migration
 {
 	static public function depends_on()
 	{
@@ -19,10 +19,6 @@ class add_push_config extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return array(
-			array('config.add', array('ajaxshoutbox_validation_id', uniqid())),
-		    array('config.add', array('ajaxshoutbox_push_enabled', false)),
-		    array('config.add', array('ajaxshoutbox_api_key', '')),
-		    array('config.add', array('ajaxshoutbox_connection_key', '')),
 		    array('config.add', array('ajaxshoutbox_api_server')),
 		    array('config.add', array('ajaxshoutbox_ssl_key')),
 		);

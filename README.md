@@ -16,6 +16,8 @@ git clone https://github.com/paul999/profile-guestbook-ext.git phpBB3/ext/paul99
 
 After that enable it in ACP -> Customise -> Extensions and enable the ajax shoutbox extension.
 
+If you want to use the Push functionality, please make sure to run composer.phar install prior to using it.
+
 # Translations
 Only complete translations of the extension will be accepted. 
 Please submit your translation as pull request in github. Make sure to use a proper commit message and PR name.
