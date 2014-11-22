@@ -9,6 +9,8 @@
  */
 
 namespace paul999\ajaxshoutbox\controller;
+use Buzz\Browser;
+use Buzz\Client\Curl;
 
 /**
  * Main controller
@@ -37,6 +39,9 @@ class main_controller
 	/** @var \phpbb\auth\auth */
 	private $auth;
 
+	/** @var \phpbb\log\log  */
+	private $log;
+
 	/** @var  string */
 	private $table;
 
@@ -58,7 +63,7 @@ class main_controller
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
 								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
-								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, $root_path, $php_ext,
+								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\log\log $log, $root_path, $php_ext,
 								$table, $usertable)
 	{
 		$this->config    = $config;
@@ -68,6 +73,7 @@ class main_controller
 		$this->request   = $request;
 		$this->db        = $db;
 		$this->auth      = $auth;
+		$this->log       = $log;
 		$this->root_path = $root_path;
 		$this->php_ext   = $php_ext;
 		$this->table     = $table;
@@ -136,7 +142,7 @@ class main_controller
 
 			if ($this->validatePush()) {
 				// User configured us to submit the shoutbox post to the iOS/Android app
-				$this->submitToApp($msg, $insert['post_time'], $insert['user_id']);
+				$this->submitToApp($msg, $insert['post_time'], $this->user->data['username']);
 			}
 
 			$json_response = new \phpbb\json_response();
@@ -170,27 +176,40 @@ class main_controller
 	}
 
 	/**
-	 * @param $message
-	 * @param $date
-	 * @param $user
+	 * @param string $message Message that has been send
+	 * @param int $date Date in UNIX timestamp
+	 * @param string $user Username (Not the user id!)
 	 */
 	private function submitToApp($message, $date, $user) {
 
-		$browser = new \Buzz\Browser(new \Buzz\Client\Curl());
+		$browser = new Browser(new Curl());
 		try
 		{
+			$headers = array('Content-Type' => 'application/json');
+			$data = json_decode(array(
+				'message'   => $message,
+			    'date'      => $date,
+			    'user'      => $user,
+			    'authkey'   => $this->config['ajaxshoutbox_api_key'],
+			));
+
 			/** @var \Buzz\Message\Response $response */
-			$response = $browser->post($this->config['https://api.shoutbox-app.com/post']);
+			$response = $browser->post($this->config['ajaxshoutbox_api_server'], $headers, $data);
 
 			if ($response->isSuccessful())
 			{
 				$rsp = $response->getContent();
 				$rsp = @json_decode($rsp, true);
+
+				if (isset($rsp['error'])) {
+					throw new \Exception(htmlspecialchars($rsp['error'])); // ;)
+				}
 			}
 		}
 		catch (\Exception $e)
 		{
-
+			// TODO: Missing lang
+			$this->log->add('critical', $this->user->data['user_id'], $this->user->ip, 'LOG_AJAX_SHOUTBOX_ERROR', time(), array($e->getMessage()));
 		}
 	}
 

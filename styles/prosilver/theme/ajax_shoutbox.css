@@ -80,6 +80,15 @@ ul.ajaxshoutboxpost dd {
 
 @media only screen and (max-width: 550px), only screen and (max-device-width: 550px) {
     ul.shoutboxlist dd.ajaxshoutbox_date {
+        display: block;
+    }
+    ul.shoutboxlist dd.ajaxshoutbox_message {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 550px), only screen and (max-device-width: 550px) {
+    ul.shoutboxlist dd.ajaxshoutbox_date {
         display: none;
     }
     ul.shoutboxlist dd.ajaxshoutbox_message {
