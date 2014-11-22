@@ -88,5 +88,7 @@ ul.ajaxshoutboxpost dd {
     }
     ul.shoutboxlist dt {
         padding-left: 1px;
+        margin-left: 1px;
     }
+
 }
