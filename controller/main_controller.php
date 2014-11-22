@@ -106,7 +106,7 @@ class main_controller
 
 		if ($this->request->is_ajax())
 		{
-			$message      = trim(utf8_normalize_nfc($this->request->variable('text_shoutbox', '', true)));
+			$message = $msg     = trim(utf8_normalize_nfc($this->request->variable('text_shoutbox', '', true)));
 
 			if (empty($message)) {
 				return $this->helper->error('AJAX_SHOUTBOX_MESSAGE_EMPTY');
@@ -134,11 +134,63 @@ class main_controller
 			$sql    = 'INSERT INTO ' . $this->table . ' ' . $this->db->sql_build_array('INSERT', $insert);
 			$this->db->sql_query($sql);
 
+			if ($this->validatePush()) {
+				// User configured us to submit the shoutbox post to the iOS/Android app
+				$this->submitToApp($msg, $insert['post_time'], $insert['user_id']);
+			}
+
 			$json_response = new \phpbb\json_response();
 			$json_response->send(array('OK'));
 		} else
 		{
 			return $this->helper->error($this->user->lang('ONLY_AJAX'), 500);
+		}
+	}
+
+	/**
+	 * check if the push to iOS app is enabled, and all requirements are met.
+	 * @return bool
+	 */
+	private function validatePush(){
+		if (!isset($this->config['ajaxshoutbox_push_enabled']) || !$this->config['ajaxshoutbox_push_enabled']) {
+			return false;
+		}
+		if (!empty($this->config['ajaxshoutbox_api_key'])) {
+			return false;
+		}
+		if (empty($this->config['ajaxshoutbox_api_server'])) {
+			// hmmm.
+			$this->config['ajaxshoutbox_api_server'] = 'https://api.shoutbox-app.com/post';
+		}
+		if (!function_exists('curl_version') || !function_exists('curl_init') || !function_exists('curl_exec'))
+		{
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * @param $message
+	 * @param $date
+	 * @param $user
+	 */
+	private function submitToApp($message, $date, $user) {
+
+		$browser = new \Buzz\Browser(new \Buzz\Client\Curl());
+		try
+		{
+			/** @var \Buzz\Message\Response $response */
+			$response = $browser->post($this->config['https://api.shoutbox-app.com/post']);
+
+			if ($response->isSuccessful())
+			{
+				$rsp = $response->getContent();
+				$rsp = @json_decode($rsp, true);
+			}
+		}
+		catch (\Exception $e)
+		{
+
 		}
 	}
 
