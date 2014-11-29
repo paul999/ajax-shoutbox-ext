@@ -13,5 +13,5 @@ paul999_ajaxshoutbox_get_before:
     defaults: { _controller: paul999.ajaxshoutbox.controller:getBefore }
 
 paul999_ajaxshoutbox_validate_connect:
-    pattern: /ajaxshoutbox/validate
+    pattern: /ajaxshoutbox/validate/{id}
     defaults: { _controller: paul999.ajaxshoutbox.controller:validate }

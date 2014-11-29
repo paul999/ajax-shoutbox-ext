@@ -85,11 +85,18 @@ class main_controller
 	 * Validate the push connection with shoutbox-app.com
 	 *
 	 */
-	public function validate()
+	public function validate($id)
 	{
 		$result = array();
 		if ($this->config['ajaxshoutbox_push_enabled']) {
-			$result['key'] = $this->config['ajaxshoutbox_validation_id'];
+			if ($id == $this->config['ajaxshoutbox_validation_id']) {
+				$result['ok'] = 'ok';
+				$result['key'] = $this->config['ajaxshoutbox_validation_id'];
+			}
+			else
+			{
+				$result['error'] = 'Incorrect key';
+			}
 		} else {
 			$result['error'] = 'disabled';
 		}
