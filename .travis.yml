@@ -23,6 +23,7 @@ matrix:
     - php: hhvm
       env: DB=mysqli
     - php: hhvm
+      env: DB=mysqli
   fast_finish: true
 
 env:
