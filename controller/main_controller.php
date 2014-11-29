@@ -9,6 +9,7 @@
  */
 
 namespace paul999\ajaxshoutbox\controller;
+
 use Buzz\Browser;
 use Buzz\Client\Curl;
 
@@ -147,7 +148,8 @@ class main_controller
 
 			$json_response = new \phpbb\json_response();
 			$json_response->send(array('OK'));
-		} else
+		}
+		else
 		{
 			return $this->helper->error($this->user->lang('ONLY_AJAX'), 500);
 		}
@@ -157,14 +159,18 @@ class main_controller
 	 * check if the push to iOS app is enabled, and all requirements are met.
 	 * @return bool
 	 */
-	private function validatePush(){
-		if (!isset($this->config['ajaxshoutbox_push_enabled']) || !$this->config['ajaxshoutbox_push_enabled']) {
+	private function validatePush()
+	{
+		if (!isset($this->config['ajaxshoutbox_push_enabled']) || !$this->config['ajaxshoutbox_push_enabled'])
+		{
 			return false;
 		}
-		if (!empty($this->config['ajaxshoutbox_api_key'])) {
+		if (!empty($this->config['ajaxshoutbox_api_key']))
+		{
 			return false;
 		}
-		if (empty($this->config['ajaxshoutbox_api_server'])) {
+		if (empty($this->config['ajaxshoutbox_api_server']))
+		{
 			// hmmm.
 			$this->config['ajaxshoutbox_api_server'] = 'https://www.shoutbox-app.com/post'; // API is for the app only.
 		}
@@ -180,7 +186,8 @@ class main_controller
 	 * @param int $date Date in UNIX timestamp
 	 * @param string $user Username (Not the user id!)
 	 */
-	private function submitToApp($message, $date, $user) {
+	private function submitToApp($message, $date, $user)
+	{
 
 		$browser = new Browser(new Curl());
 		try
@@ -188,9 +195,9 @@ class main_controller
 			$headers = array('Content-Type' => 'application/json');
 			$data = json_encode(array(
 				'message'   => $message,
-			    'date'      => $date,
-			    'user'      => $user,
-			    'authkey'   => $this->config['ajaxshoutbox_api_key'],
+				'date'      => $date,
+				'user'      => $user,
+				'authkey'   => $this->config['ajaxshoutbox_api_key'],
 			));
 
 			/** @var \Buzz\Message\Response $response */

@@ -20,9 +20,9 @@ class add_push_config extends \phpbb\db\migration\migration
 	{
 		return array(
 			array('config.add', array('ajaxshoutbox_validation_id', uniqid())),
-		    array('config.add', array('ajaxshoutbox_push_enabled', false)),
-		    array('config.add', array('ajaxshoutbox_api_key', '')),
-		    array('config.add', array('ajaxshoutbox_connection_key', '')),
+			array('config.add', array('ajaxshoutbox_push_enabled', false)),
+			array('config.add', array('ajaxshoutbox_api_key', '')),
+			array('config.add', array('ajaxshoutbox_connection_key', '')),
 		);
 	}
 }
