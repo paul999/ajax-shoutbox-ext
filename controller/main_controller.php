@@ -335,7 +335,9 @@ class main_controller
 		);
 
 		$username = get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']);
-		$username = str_replace('./../../', './', $username); // Fix paths
+		$username = str_replace('./../../', generate_board_url() . '/', $username); // Fix paths
+		$username = str_replace('./../', generate_board_url() . '/', $username); // Fix paths
+
 
 		return array(
 			'id'      => $row['shout_id'],
