@@ -330,9 +330,16 @@ class main_controller
 			$row['post_message'], $row['bbcode_uid'], $row['bbcode_bitfield'], $row['bbcode_options']
 		);
 
+		$username = get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']);
+		$username = str_replace($this->root_path, './', $username); // Fix paths
+
+		if (!defined('PHPBB_USE_BOARD_URL_PATH')) {
+			define('PHPBB_USE_BOARD_URL_PATH', true); // Require full URL to smilies.
+		}
+
 		return array(
 			'id'      => $row['shout_id'],
-			'user'    => get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']),
+			'user'    => $username,
 			'date'    => $this->user->format_date($row['post_time']),
 			// This will cause issues with non refreshing posts.
 			'message' => $text,
