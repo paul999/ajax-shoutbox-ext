@@ -3,6 +3,9 @@ ajax-shoutbox-ext
 [![Build Status](https://travis-ci.org/paul999/ajax-shoutbox-ext.svg)](https://travis-ci.org/paul999/ajax-shoutbox-ext)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/paul999/ajax-shoutbox-ext/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/paul999/ajax-shoutbox-ext/?branch=master)
 
+# Support
+Support is only provide at [http://www.ajax-shoutbox.com](http://www.ajax-shoutbox.com). Support requested at other places will be ignored or redirected.
+
 # Installation
 
 ## From release
@@ -27,3 +30,7 @@ PRs with incomplete translations or without proper commit message will be closed
 # License
 
 [GPLv2](license.txt)
+
+# Known issues
+ - The time is not updated when the shoutbox refreshes, causing issues when using relative time.
+
