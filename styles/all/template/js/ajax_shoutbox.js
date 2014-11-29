@@ -64,9 +64,9 @@
 
         var element = $("#copy").clone();
         element.attr('id',  "shout" + post.id);
-        $(element).find("dt[data-type='user']").html(post.user);
-        $(element).find("dd[data-type='message']").html(post.message);
-        $(element).find("dd[data-type='date']").html(post.date);
+        $(element).find("[data-type='user']").html(post.user);
+        $(element).find("[data-type='message']").html(post.message);
+        $(element).find("[data-type='date']").html(post.date);
 
         if (front && lastId) {
             $("#shout" + lastId).before(element);
