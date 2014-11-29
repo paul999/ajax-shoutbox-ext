@@ -326,16 +326,16 @@ class main_controller
 	 */
 	private function getPost($row)
 	{
+		if (!defined('PHPBB_USE_BOARD_URL_PATH')) {
+			define('PHPBB_USE_BOARD_URL_PATH', true); // Require full URL to smilies.
+		}
+
 		$text = generate_text_for_display(
 			$row['post_message'], $row['bbcode_uid'], $row['bbcode_bitfield'], $row['bbcode_options']
 		);
 
 		$username = get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']);
-		$username = str_replace($this->root_path, './', $username); // Fix paths
-
-		if (!defined('PHPBB_USE_BOARD_URL_PATH')) {
-			define('PHPBB_USE_BOARD_URL_PATH', true); // Require full URL to smilies.
-		}
+		$username = str_replace('./../../', './', $username); // Fix paths
 
 		return array(
 			'id'      => $row['shout_id'],
