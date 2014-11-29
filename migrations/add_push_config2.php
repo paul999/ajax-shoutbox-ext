@@ -19,8 +19,8 @@ class add_push_config2 extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return array(
-		    array('config.add', array('ajaxshoutbox_api_server', 'https://www.shoutbox-app.com/post')), // We can't use the API.
-		    array('config.add', array('ajaxshoutbox_ssl_key', '')),
+			array('config.add', array('ajaxshoutbox_api_server', 'https://www.shoutbox-app.com/post')), // We can't use the API.
+			array('config.add', array('ajaxshoutbox_ssl_key', '')),
 		);
 	}
 }
