@@ -172,7 +172,7 @@ class main_controller
 		{
 			return false;
 		}
-		if (!empty($this->config['ajaxshoutbox_api_key']))
+		if (empty($this->config['ajaxshoutbox_api_key']))
 		{
 			return false;
 		}
