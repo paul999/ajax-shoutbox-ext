@@ -110,7 +110,12 @@
             loadData();
         }
     });
-    phpbb.addAjaxCallback('paul999.ajaxshoutbox.post_callback', function() {
+    phpbb.addAjaxCallback('paul999.ajaxshoutbox.post_callback', function(data) {
+        if (data.error) {
+            console.log(data.error);
+            phpbb.alert(data.title, data.error);
+        }
+
         console.log("Finished ajax callback");
         getPostsAfter();
     });

@@ -123,7 +123,11 @@ class main_controller
 			$message = $msg     = trim(utf8_normalize_nfc($this->request->variable('text_shoutbox', '', true)));
 
 			if (empty($message)) {
-				return $this->helper->error('AJAX_SHOUTBOX_MESSAGE_EMPTY');
+				$json_response = new \phpbb\json_response();
+				$json_response->send(array(
+					'error' => $this->user->lang['AJAX_SHOUTBOX_MESSAGE_EMPTY'],
+					'title' => $this->user->lang['AJAX_SHOUTBOX_ERROR'],
+				));
 			}
 
 			$uid          = $bitfield = $options = '';
