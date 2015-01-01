@@ -16,6 +16,6 @@ paul999_ajaxshoutbox_validate_connect:
     pattern: /ajaxshoutbox/validate/{id}
     defaults: { _controller: paul999.ajaxshoutbox.controller:validate }
 
-paul999_ajaxshoutbox_post:
+paul999_ajaxshoutbox_deletet:
     pattern: /ajaxshoutbox/delete
     defaults: { _controller: paul999.ajaxshoutbox.controller:delete }
