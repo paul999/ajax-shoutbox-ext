@@ -69,9 +69,10 @@
         $(element).find("[data-type='date']").html(post.date);
 
         if (post.delete) {
-            $(element).find("[data-type='delete']").show()
+            $(element).find("[data-type='delete']").show();
             $(element).find("[data-type='submit-delete']").attr('data-type', 'submit-delete-' + post.id);
             $(element).find("[data-type='delete-id']").attr('value', post.id);
+            $(element).find("[data-type='message']").addClass('ajaxshoutbox_message_with_delete');
 
             phpbb.addAjaxCallback('paul999.ajaxshoutbox.delete_callback_' + post.id, function(data) {
                 if (data.error) {

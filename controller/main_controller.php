@@ -210,7 +210,7 @@ class main_controller
 				'date'      => $date,
 				'user'      => $user,
 				'authkey'   => $this->config['ajaxshoutbox_api_key'],
-			    'localId'   => $userId,
+				'localId'   => $userId,
 			));
 
 			/** @var \Buzz\Message\Response $response */
