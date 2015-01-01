@@ -354,6 +354,7 @@ class main_controller
 			'date'    => $this->user->format_date($row['post_time']),
 			// This will cause issues with non refreshing posts.
 			'message' => $text,
+			'delete'  => ($this->auth->acl_get('m_shoutbox_delete') || ($this->auth->acl_get('u_shoutbox_delete') && $row['user_id'] == $this->user->data['user_id'])),
 		);
 	}
 }

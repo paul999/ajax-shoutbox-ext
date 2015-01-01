@@ -68,6 +68,25 @@
         $(element).find("[data-type='message']").html(post.message);
         $(element).find("[data-type='date']").html(post.date);
 
+        if (post.delete) {
+            $(element).find("[data-type='delete']").show()
+            $(element).find("[data-type='submit-delete']").attr('data-type', 'submit-delete-' + post.id);
+            $(element).find("[data-type='delete-id']").attr('value', post.id);
+
+            phpbb.addAjaxCallback('paul999.ajaxshoutbox.delete_callback_' + post.id, function(data) {
+                if (data.error) {
+                    console.log(data.error);
+                    phpbb.alert(data.title, data.error);
+                }
+                $("#shout" + post.id).hide()
+            });
+
+            phpbb.ajaxify({selector: $("[data-type='submit-delete-" + post.id + "']"), filter: function (){
+            },
+                callback: 'paul999.ajaxshoutbox.delete_callback_' + post.id
+            });
+        }
+
         if (front && lastId) {
             $("#shout" + lastId).before(element);
             lastId = post.id;
@@ -131,4 +150,5 @@
         },
         callback: 'paul999.ajaxshoutbox.post_callback'
     });
+
 })(jQuery);
