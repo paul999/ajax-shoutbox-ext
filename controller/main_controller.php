@@ -226,7 +226,6 @@ class main_controller
 		}
 		catch (\Exception $e)
 		{
-			// TODO: Missing lang
 			$this->log->add('critical', $this->user->data['user_id'], $this->user->ip, 'LOG_AJAX_SHOUTBOX_ERROR', time(), array($e->getMessage()));
 		}
 	}
