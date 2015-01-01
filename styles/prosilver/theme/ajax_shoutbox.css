@@ -62,10 +62,10 @@ ul.shoutboxlist dd.ajaxshoutbox_message {
     width: 70%;
 }
 ul.shoutboxlist dd.ajaxshoutbox_message_with_delete {
-    width: 60% !important;
+    width: 65% !important;
 }
 ul.shoutboxlist dd.ajaxshoutbox_delete {
-    width: 10%;
+    width: 5%;
     display: none;
 }
 
@@ -93,10 +93,10 @@ ul.ajaxshoutboxpost dd {
         width: 85%;
     }
     ul.shoutboxlist dd.ajaxshoutbox_message_with_delete {
-        width: 75% !important;
+        width: 80% !important;
     }
     ul.shoutboxlist dd.ajaxshoutbox_delete {
-        width: 10%;
+        width: 5%;
     }
     ul.shoutboxlist dt {
         padding-left: 1px;

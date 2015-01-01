@@ -51,16 +51,17 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	 */
 	public function index()
 	{
-		$this->user->add_lang_ext("paul999/ajaxshoutbox", "ajax_shoutbox");
+		$this->user->add_lang_ext('paul999/ajaxshoutbox', 'ajax_shoutbox');
 
 		$this->template->assign_vars(
 			array(
 				'S_AJAX_SHOUTBOX'    => $this->auth->acl_get('u_shoutbox_view'),
 				'S_CAN_POST_SHOUT'   => $this->auth->acl_get('u_shoutbox_post') && $this->user->data['user_id'] != ANONYMOUS,
-				'U_SUBMIT_SHOUTBOX'  => $this->helper->route("paul999_ajaxshoutbox_post"),
-				'UA_GET_POST_ACTION' => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_all")),
-				'UA_GET_POST_ACTION_NEW'    => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_after", array('id' => 0))),
-				'UA_GET_POST_ACTION_OLD'    => htmlspecialchars($this->helper->route("paul999_ajaxshoutbox_get_before", array('id' => 0))),
+				'U_SUBMIT_SHOUTBOX'  => $this->helper->route('paul999_ajaxshoutbox_post'),
+				'U_DELETE_SHOUTBOX'  => $this->helper->route('paul999_ajaxshoutbox_delete'),
+				'UA_GET_POST_ACTION' => htmlspecialchars($this->helper->route('paul999_ajaxshoutbox_get_all')),
+				'UA_GET_POST_ACTION_NEW'    => htmlspecialchars($this->helper->route('paul999_ajaxshoutbox_get_after', array('id' => 0))),
+				'UA_GET_POST_ACTION_OLD'    => htmlspecialchars($this->helper->route('paul999_ajaxshoutbox_get_before', array('id' => 0))),
 			)
 		);
 	}
@@ -76,7 +77,6 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	public function add_permission($event)
 	{
 		$permissions = $event['permissions'];
-		$permissions['a_pages'] = array('lang' => 'ACL_A_PAGES', 'cat' => 'misc');
 
 		$permissions['u_shoutbox_view'] = array('lang' => 'ACL_U_SHOUTBOX_VIEW', 'cat' => 'misc');
 		$permissions['u_shoutbox_post'] = array('lang' => 'ACL_U_SHOUTBOX_POST', 'cat' => 'misc');
