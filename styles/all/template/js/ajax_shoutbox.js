@@ -74,18 +74,7 @@
             $(element).find("[data-type='delete-id']").attr('value', post.id);
             $(element).find("[data-type='message']").addClass('ajaxshoutbox_message_with_delete');
 
-            phpbb.addAjaxCallback('paul999.ajaxshoutbox.delete_callback_' + post.id, function(data) {
-                if (data.error) {
-                    console.log(data.error);
-                    phpbb.alert(data.title, data.error);
-                }
-                $("#shout" + post.id).hide()
-            });
-
-            phpbb.ajaxify({selector: $("[data-type='submit-delete-" + post.id + "']"), filter: function (){
-            },
-                callback: 'paul999.ajaxshoutbox.delete_callback_' + post.id
-            });
+            // The ajaxify call for the form will be called later in the method!
         }
 
         if (front && lastId) {
@@ -101,6 +90,22 @@
             }
         }
         $("#shout" + post.id).fadeIn();
+
+        if (post.delete) {
+            // The ajaxify can't be called before it exists in the DOM (So after the append or before above)
+            phpbb.addAjaxCallback('paul999.ajaxshoutbox.delete_callback_' + post.id, function(data) {
+                if (data.error) {
+                    console.log(data.error);
+                    phpbb.alert(data.title, data.error);
+                }
+                $("#shout" + post.id).hide()
+            });
+
+            phpbb.ajaxify({selector: $("[data-type='submit-delete-" + post.id + "']"), filter: function (){
+            },
+                callback: 'paul999.ajaxshoutbox.delete_callback_' + post.id
+            });
+        }
     }
 
     /**
