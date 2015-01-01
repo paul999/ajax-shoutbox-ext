@@ -154,7 +154,7 @@ class main_controller
 
 			if ($this->validatePush()) {
 				// User configured us to submit the shoutbox post to the iOS/Android app
-				$this->submitToApp($msg, $insert['post_time'], $this->user->data['username']);
+				$this->submitToApp($msg, $insert['post_time'], $this->user->data['username'], $this->user->data['user_id']);
 			}
 
 			$json_response = new \phpbb\json_response();
@@ -176,7 +176,7 @@ class main_controller
 		{
 			return false;
 		}
-		if (!empty($this->config['ajaxshoutbox_api_key']))
+		if (empty($this->config['ajaxshoutbox_api_key']))
 		{
 			return false;
 		}
@@ -194,10 +194,11 @@ class main_controller
 
 	/**
 	 * @param string $message Message that has been send
-	 * @param int $date Date in UNIX timestamp
-	 * @param string $user Username (Not the user id!)
+	 * @param int    $date    Date in UNIX timestamp
+	 * @param string $user    Username (Not the user id!)
+	 * @param int    $userId  User id
 	 */
-	private function submitToApp($message, $date, $user)
+	private function submitToApp($message, $date, $user, $userId)
 	{
 
 		$browser = new Browser(new Curl());
@@ -209,6 +210,7 @@ class main_controller
 				'date'      => $date,
 				'user'      => $user,
 				'authkey'   => $this->config['ajaxshoutbox_api_key'],
+			    'localId'   => $userId,
 			));
 
 			/** @var \Buzz\Message\Response $response */
