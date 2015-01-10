@@ -12,6 +12,7 @@ namespace paul999\ajaxshoutbox\controller;
 
 use Buzz\Browser;
 use Buzz\Client\Curl;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Main controller
@@ -84,6 +85,9 @@ class main_controller
 	/**
 	 * Validate the push connection with shoutbox-app.com
 	 *
+	 * @param $id
+	 *
+	 * @return \Symfony\Component\HttpFoundation\JsonResponse
 	 */
 	public function validate($id)
 	{
@@ -101,12 +105,13 @@ class main_controller
 			$result['error'] = 'disabled';
 		}
 
-		$json_response = new \phpbb\json_response();
-		$json_response->send(array($result));
+		return new JsonResponse(array($result));
 	}
 
 	/**
+	 * Post a new message to the shoutbox.
 	 *
+	 * @return \Symfony\Component\HttpFoundation\JsonResponse
 	 */
 	public function post()
 	{
@@ -115,7 +120,7 @@ class main_controller
 		// We always disallow guests to post in the shoutbox.
 		if (!$this->auth->acl_get('u_shoutbox_post') || $this->user->data['user_id'] == ANONYMOUS)
 		{
-			return $this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
+			return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_NO_PERMISSION', 403);
 		}
 
 		if ($this->request->is_ajax())
@@ -123,11 +128,7 @@ class main_controller
 			$message = $msg     = trim(utf8_normalize_nfc($this->request->variable('text_shoutbox', '', true)));
 
 			if (empty($message)) {
-				$json_response = new \phpbb\json_response();
-				$json_response->send(array(
-					'error' => $this->user->lang['AJAX_SHOUTBOX_MESSAGE_EMPTY'],
-					'title' => $this->user->lang['AJAX_SHOUTBOX_ERROR'],
-				));
+				return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_MESSAGE_EMPTY', 500);
 			}
 
 			$uid          = $bitfield = $options = '';
@@ -157,12 +158,11 @@ class main_controller
 				$this->submitToApp($msg, $insert['post_time'], $this->user->data['username'], $this->user->data['user_id']);
 			}
 
-			$json_response = new \phpbb\json_response();
-			$json_response->send(array('OK'));
+			return new JsonResponse(array('OK'));
 		}
 		else
 		{
-			return $this->helper->error($this->user->lang('ONLY_AJAX'), 500);
+			return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_ONLY_AJAX', 500);
 		}
 	}
 
@@ -234,12 +234,14 @@ class main_controller
 
 	/**
 	 * Get the last 10 shouts
+	 *
+	 * @return \Symfony\Component\HttpFoundation\JsonResponse
 	 */
 	public function getAll()
 	{
 		if (!$this->auth->acl_get('u_shoutbox_view'))
 		{
-			$this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
+			return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_NO_PERMISSION', 403);
 		}
 
 		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
@@ -250,19 +252,21 @@ class main_controller
 					ORDER BY post_time DESC';
 		$result = $this->db->sql_query_limit($sql, 10);
 
-		$this->returnPosts($result);
+		return $this->returnPosts($result);
 	}
 
 	/**
 	 * Get all shouts since a specific shout ID.
 	 *
 	 * @param int $id Last selected ID.
+	 *
+	 * @return \Symfony\Component\HttpFoundation\JsonResponse
 	 */
 	public function getAfter($id)
 	{
 		if (!$this->auth->acl_get('u_shoutbox_view'))
 		{
-			$this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
+			return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_NO_PERMISSION', 403);
 		}
 
 		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
@@ -284,12 +288,14 @@ class main_controller
 	 * Get 10 shouts before the current shout ID.
 	 *
 	 * @param $id
+	 *
+	 * @return \Symfony\Component\HttpFoundation\JsonResponse
 	 */
 	public function getBefore($id)
 	{
 		if (!$this->auth->acl_get('u_shoutbox_view'))
 		{
-			$this->helper->error('AJAX_SHOUTBOX_NO_PERMISSION');
+			return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_NO_PERMISSION', 403);
 		}
 
 		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
@@ -304,7 +310,7 @@ class main_controller
 				ORDER BY post_time DESC';
 		$result = $this->db->sql_query_limit($sql, 10);
 
-		$this->returnPosts($result, false);
+		return $this->returnPosts($result, false);
 	}
 
 	/**
@@ -312,6 +318,8 @@ class main_controller
 	 *
 	 * @param mixed $result return the data for the posts
 	 * @param bool  $reverse
+	 *
+	 * @return \Symfony\Component\HttpFoundation\JsonResponse
 	 */
 	private function returnPosts($result, $reverse = true)
 	{
@@ -323,10 +331,7 @@ class main_controller
 		}
 		$this->db->sql_freeresult($result);
 
-		$json_response = new \phpbb\json_response();
-		$json_response->send(
-			$reverse ? array_reverse($posts) : $posts
-		);
+		return new JsonResponse($reverse ? array_reverse($posts) : $posts);
 	}
 
 	/**
@@ -358,5 +363,31 @@ class main_controller
 			'message' => $text,
 			'delete'  => ($this->auth->acl_get('m_shoutbox_delete') || ($this->auth->acl_get('u_shoutbox_delete') && $row['user_id'] == $this->user->data['user_id'])),
 		);
+	}
+
+	/**
+	 * Send a error to the user.
+	 *
+	 * Important: phpBB (<= 3.1.2) handles non 200 status as error.
+	 * Due to the way this is implemented, phpBB will display the browser
+	 * generated error, instead of the user returned error.
+	 * This method will result in a 200 OK, but the correct status is in
+	 * the JsonResponse.status.
+	 *
+	 * @param $title
+	 * @param $message
+	 * @param $status
+	 *
+	 * @return \Symfony\Component\HttpFoundation\JsonResponse
+	 */
+	private function error($title, $message, $status)
+	{
+		$json = new JsonResponse(array(
+			'title'     => $this->user->lang[$title],
+            'error'     => $this->user->lang[$message],
+            'status'    => $status,
+        ));
+
+		return $json;
 	}
 }

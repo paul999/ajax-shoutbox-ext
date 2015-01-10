@@ -12,10 +12,15 @@
     function addPostsFront(result) {
         console.log(result);
 
-        $.each(result, function(  ) {
-            addPost(this, true);
-        });
-
+        if (result.error) {
+            phpbb.alert(result.title, result.error);
+        }
+        else
+        {
+            $.each(result, function(  ) {
+                addPost(this, true);
+            });
+        }
         clearTimeout(timeout);
         timeout = setTimeout(getPostsAfter, 5000);
 
@@ -29,9 +34,15 @@
     function appendPosts(result) {
         console.log(result);
 
-        $.each(result, function(  ) {
-            addPost(this, false);
-        });
+        if (result.error) {
+            phpbb.alert(result.title, result.error);
+        }
+        else
+        {
+            $.each(result, function(  ) {
+                addPost(this, false);
+            });
+        }
 
         $("#ajaxshoutbox_loadafter").hide();
         waitingEarlier = false;
@@ -97,6 +108,8 @@
                 if (data.error) {
                     console.log(data.error);
                     phpbb.alert(data.title, data.error);
+
+                    return;
                 }
                 $("#shout" + post.id).hide()
             });
@@ -139,6 +152,8 @@
         if (data.error) {
             console.log(data.error);
             phpbb.alert(data.title, data.error);
+
+            return;
         }
 
         console.log("Finished ajax callback");
