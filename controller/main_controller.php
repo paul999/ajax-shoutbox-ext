@@ -374,9 +374,9 @@ class main_controller
 	 * This method will result in a 200 OK, but the correct status is in
 	 * the JsonResponse.status.
 	 *
-	 * @param $title
-	 * @param $message
-	 * @param $status
+	 * @param string $title
+	 * @param string $message
+	 * @param integer $status
 	 *
 	 * @return \Symfony\Component\HttpFoundation\JsonResponse
 	 */
