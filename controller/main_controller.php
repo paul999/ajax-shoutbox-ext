@@ -265,7 +265,7 @@ class main_controller
 					)
 					AND c.shout_id != ' . (int) $id . '
 					AND u.user_id = c.user_id
-				ORDER BY post_time DESC, shout_id DESC';
+				ORDER BY post_time DESC, shout_id ASC';
 		$result = $this->db->sql_query_limit($sql, 10);
 
 		return $this->returnPosts($result, false);
