@@ -115,6 +115,7 @@
             });
 
             phpbb.ajaxify({selector: $("[data-type='submit-delete-" + post.id + "']"), filter: function (){
+                console.log("delete post:" + post.id);
             },
                 callback: 'paul999.ajaxshoutbox.delete_callback_' + post.id
             });
