@@ -10,7 +10,7 @@
 
 namespace paul999\ajaxshoutbox\actions;
 
-class Delete
+class delete
 {
 	/** @var \phpbb\config\config  */
 	private $config;
@@ -49,7 +49,7 @@ class Delete
 	 *
 	 * @param int $id
 	 */
-	public function delete($id)
+	public function delete_post($id)
 	{
 		if ($this->push->canPush())
 		{

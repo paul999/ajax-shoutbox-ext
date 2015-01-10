@@ -13,7 +13,7 @@ namespace paul999\ajaxshoutbox\actions;
 use Buzz\Browser;
 use Buzz\Client\Curl;
 
-class Push
+class push
 {
 	/** @var \phpbb\config\config  */
 	private $config;
