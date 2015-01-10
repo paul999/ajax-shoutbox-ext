@@ -186,7 +186,7 @@ class main_controller
 			return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_MISSING_ID', 500);
 		}
 
-		$this->delete->delete($id);
+		$this->delete->delete_post($id);
 
 		return new JsonResponse(array('OK'));
 	}
