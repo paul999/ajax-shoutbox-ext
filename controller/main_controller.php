@@ -165,7 +165,7 @@ class main_controller
 
 			if ($this->push->canPush()) {
 				// User configured us to submit the shoutbox post to the iOS/Android app
-				$this->post($msg, $insert['post_time'], $this->user->data['username'], $this->user->data['user_id']);
+				$this->push->post($msg, $insert['post_time'], $this->user->data['username'], $this->user->data['user_id']);
 			}
 
 			return new JsonResponse(array('OK'));
