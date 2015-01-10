@@ -384,9 +384,9 @@ class main_controller
 	{
 		$json = new JsonResponse(array(
 			'title'     => $this->user->lang[$title],
-            'error'     => $this->user->lang[$message],
-            'status'    => $status,
-        ));
+			'error'     => $this->user->lang[$message],
+			'status'    => $status,
+		));
 
 		return $json;
 	}
