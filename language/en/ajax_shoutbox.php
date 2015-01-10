@@ -39,11 +39,11 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
-		"AJAX_SHOUTBOX"    => "Shoutbox",
-		"SHOUTBOX_MESSAGE" => "Add message",
-		"ONLY_AJAX"        => "Sorry, posting in the shoutbox is only supported when JavaScript is enabled",
-		"AJAX_SHOUTBOX_NO_PERMISSION"   => 'No permission for the selected action',
-		'AJAX_SHOUTBOX_MESSAGE_EMPTY'   => 'Message empty',
-		'AJAX_SHOUTBOX_ERROR'           => 'Error',
+		'AJAX_SHOUTBOX'                  => 'Shoutbox',
+		'AJAX_SHOUTBOX_MESSAGE'          => 'Add message',
+		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'Sorry, posting in the shoutbox is only supported when JavaScript is enabled',
+		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'No permission for the selected action',
+		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'Message empty',
+		'AJAX_SHOUTBOX_ERROR'            => 'Error',
 	)
 );
