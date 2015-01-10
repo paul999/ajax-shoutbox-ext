@@ -13,14 +13,14 @@ services:
             - { name: event.listener }
 
     paul999.ajaxshoutbox.push:
-            class: paul999\ajaxshoutbox\actions\Push
+            class: paul999\ajaxshoutbox\actions\push
             arguments:
                 - @config
                 - @user
                 - @log
 
     paul999.ajaxshoutbox.delete:
-        class: paul999\ajaxshoutbox\actions\Delete
+        class: paul999\ajaxshoutbox\actions\delete
         arguments:
             - @config
             - @dbal.conn
