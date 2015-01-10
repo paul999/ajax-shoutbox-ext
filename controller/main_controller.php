@@ -10,8 +10,6 @@
 
 namespace paul999\ajaxshoutbox\controller;
 
-use Buzz\Browser;
-use Buzz\Client\Curl;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -47,6 +45,9 @@ class main_controller
 	/** @var \paul999\ajaxshoutbox\actions\Delete  */
 	private $delete;
 
+	/** @var \paul999\ajaxshoutbox\actions\Push  */
+	private $push;
+
 	/** @var  string */
 	private $table;
 
@@ -63,6 +64,7 @@ class main_controller
 	 * @param \phpbb\auth\auth                     $auth
 	 * @param \phpbb\log\log                       $log
 	 * @param \paul999\ajaxshoutbox\actions\Delete $delete
+	 * @param \paul999\ajaxshoutbox\actions\Push   $push
 	 * @param string                               $root_path
 	 * @param string                               $php_ext
 	 * @param string                               $table
@@ -71,8 +73,8 @@ class main_controller
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
 								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
 								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\log\log $log,
-								\paul999\ajaxshoutbox\actions\Delete $delete, $root_path, $php_ext,
-								$table, $usertable)
+								\paul999\ajaxshoutbox\actions\Delete $delete, \paul999\ajaxshoutbox\actions\Push $push,
+								$root_path, $php_ext, $table, $usertable)
 	{
 		$this->config    = $config;
 		$this->helper    = $helper;
@@ -83,10 +85,14 @@ class main_controller
 		$this->auth      = $auth;
 		$this->log       = $log;
 		$this->delete    = $delete;
+		$this->push      = $push;
 		$this->root_path = $root_path;
 		$this->php_ext   = $php_ext;
 		$this->table     = $table;
 		$this->usertable = $usertable;
+
+
+		$this->user->add_lang_ext("paul999/ajaxshoutbox", "ajax_shoutbox");
 	}
 
 	/**
@@ -122,8 +128,6 @@ class main_controller
 	 */
 	public function post()
 	{
-		$this->user->add_lang_ext("paul999/ajaxshoutbox", "ajax_shoutbox");
-
 		// We always disallow guests to post in the shoutbox.
 		if (!$this->auth->acl_get('u_shoutbox_post') || $this->user->data['user_id'] == ANONYMOUS)
 		{
@@ -160,9 +164,9 @@ class main_controller
 			$sql    = 'INSERT INTO ' . $this->table . ' ' . $this->db->sql_build_array('INSERT', $insert);
 			$this->db->sql_query($sql);
 
-			if ($this->validatePush()) {
+			if ($this->push->canPush()) {
 				// User configured us to submit the shoutbox post to the iOS/Android app
-				$this->submitToApp($msg, $insert['post_time'], $this->user->data['username'], $this->user->data['user_id']);
+				$this->post($msg, $insert['post_time'], $this->user->data['username'], $this->user->data['user_id']);
 			}
 
 			return new JsonResponse(array('OK'));
@@ -173,82 +177,18 @@ class main_controller
 		}
 	}
 
-	public function delete() {
+	public function delete()
+	{
 		$id = $this->request->variable('id', 0, false, \phpbb\request\request_interface::POST);
 
-		if (!$id) {
-			return $this->error('AJAX_SHOUTBOX_ERRPR', 'AJAX_SHOUTBOX_MISSING_ID', 500);
+		if (!$id)
+		{
+			return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_MISSING_ID', 500);
 		}
 
 		$this->delete->delete($id);
 
 		return new JsonResponse(array('OK'));
-	}
-
-	/**
-	 * check if the push to iOS app is enabled, and all requirements are met.
-	 * @return bool
-	 */
-	private function validatePush()
-	{
-		if (!isset($this->config['ajaxshoutbox_push_enabled']) || !$this->config['ajaxshoutbox_push_enabled'])
-		{
-			return false;
-		}
-		if (empty($this->config['ajaxshoutbox_api_key']))
-		{
-			return false;
-		}
-		if (empty($this->config['ajaxshoutbox_api_server']))
-		{
-			// hmmm.
-			$this->config['ajaxshoutbox_api_server'] = 'https://www.shoutbox-app.com/post'; // API is for the app only.
-		}
-		if (!function_exists('curl_version') || !function_exists('curl_init') || !function_exists('curl_exec'))
-		{
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * @param string $message Message that has been send
-	 * @param int    $date    Date in UNIX timestamp
-	 * @param string $user    Username (Not the user id!)
-	 * @param int    $userId  User id
-	 */
-	private function submitToApp($message, $date, $user, $userId)
-	{
-
-		$browser = new Browser(new Curl());
-		try
-		{
-			$headers = array('Content-Type' => 'application/json');
-			$data = json_encode(array(
-				'message'   => $message,
-				'date'      => $date,
-				'user'      => $user,
-				'authkey'   => $this->config['ajaxshoutbox_api_key'],
-				'localId'   => $userId,
-			));
-
-			/** @var \Buzz\Message\Response $response */
-			$response = $browser->post($this->config['ajaxshoutbox_api_server'], $headers, $data);
-
-			if ($response->isSuccessful())
-			{
-				$rsp = $response->getContent();
-				$rsp = @json_decode($rsp, true);
-
-				if (isset($rsp['error'])) {
-					throw new \Exception(htmlspecialchars($rsp['error'])); // ;)
-				}
-			}
-		}
-		catch (\Exception $e)
-		{
-			$this->log->add('critical', $this->user->data['user_id'], $this->user->ip, 'LOG_AJAX_SHOUTBOX_ERROR', time(), array($e->getMessage()));
-		}
 	}
 
 	/**

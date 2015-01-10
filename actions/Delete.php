@@ -25,7 +25,7 @@ class Delete
 	private $log;
 
 	/** @var string */
-	private $string;
+	private $table;
 	/**
 	 * @param \phpbb\config\config              $config
 	 * @param \phpbb\db\driver\driver_interface $db
@@ -34,13 +34,14 @@ class Delete
 	 * @param string                            $table
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db,
-								\phpbb\auth\auth $auth, \phpbb\log\log $log, $table)
+								\phpbb\auth\auth $auth, \phpbb\log\log $log, \paul999\ajaxshoutbox\actions\Push $push, $table)
 	{
-		$this->config = $config;
-		$this->db = $db;
-		$this->auth = $auth;
-		$this->log = $log;
-		$this->table = $table;
+		$this->config   = $config;
+		$this->db       = $db;
+		$this->auth     = $auth;
+		$this->log      = $log;
+		$this->push     = $push;
+		$this->table    = $table;
 	}
 
 	/**
@@ -48,7 +49,11 @@ class Delete
 	 *
 	 * @param int $id
 	 */
-	public function delete($id) {
-
+	public function delete($id)
+	{
+		if ($this->push->canPush())
+		{
+			$this->push->delete($id);
+		}
 	}
 }
