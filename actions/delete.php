@@ -24,6 +24,9 @@ class delete
 	/** @var \phpbb\log\log  */
 	private $log;
 
+	/** @var \paul999\ajaxshoutbox\actions\Push  */
+	private $push;
+
 	/** @var string */
 	private $table;
 	/**

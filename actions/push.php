@@ -41,7 +41,8 @@ class push
 	 *
 	 * @param int $id
 	 */
-	public function delete($id) {
+	public function delete($id)
+	{
 
 	}
 
@@ -51,7 +52,7 @@ class push
 	 * @param string $user    Username (Not the user id!)
 	 * @param int    $userId  User id
 	 */
-	private function post($message, $date, $user, $userId)
+	public function post($message, $date, $user, $userId)
 	{
 
 		$browser = new Browser(new Curl());

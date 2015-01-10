@@ -91,7 +91,6 @@ class main_controller
 		$this->table     = $table;
 		$this->usertable = $usertable;
 
-
 		$this->user->add_lang_ext("paul999/ajaxshoutbox", "ajax_shoutbox");
 	}
 
