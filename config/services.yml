@@ -12,6 +12,15 @@ services:
         tags:
             - { name: event.listener }
 
+    paul999.ajaxshoutbox.delete:
+        class: paul999\ajaxshoutbox\actions\Delete
+        arguments:
+            - @config
+            - @dbal.conn
+            - @auth
+            - @log
+            - %paul999.ajaxshoutbox.tables.ajaxshoutbox%
+
     paul999.ajaxshoutbox.controller:
         class: paul999\ajaxshoutbox\controller\main_controller
         arguments:
@@ -23,6 +32,7 @@ services:
             - @dbal.conn
             - @auth
             - @log
+            - @paul999.ajaxshoutbox.delete
             - %core.root_path%
             - %core.php_ext%
             - %paul999.ajaxshoutbox.tables.ajaxshoutbox%

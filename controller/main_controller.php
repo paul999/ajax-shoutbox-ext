@@ -44,6 +44,9 @@ class main_controller
 	/** @var \phpbb\log\log  */
 	private $log;
 
+	/** @var \paul999\ajaxshoutbox\actions\Delete  */
+	private $delete;
+
 	/** @var  string */
 	private $table;
 
@@ -51,21 +54,24 @@ class main_controller
 	private $usertable;
 
 	/**
-	 * @param \phpbb\config\config              $config
-	 * @param \phpbb\controller\helper          $helper
-	 * @param \phpbb\template\template          $template
-	 * @param \phpbb\user                       $user
-	 * @param \phpbb\request\request            $request
-	 * @param \phpbb\db\driver\driver_interface $db
-	 * @param \phpbb\auth\auth                  $auth
-	 * @param string                            $root_path
-	 * @param string                            $php_ext
-	 * @param string                            $table
-	 * @param string                            $usertable
+	 * @param \phpbb\config\config                 $config
+	 * @param \phpbb\controller\helper             $helper
+	 * @param \phpbb\template\template             $template
+	 * @param \phpbb\user                          $user
+	 * @param \phpbb\request\request               $request
+	 * @param \phpbb\db\driver\driver_interface    $db
+	 * @param \phpbb\auth\auth                     $auth
+	 * @param \phpbb\log\log                       $log
+	 * @param \paul999\ajaxshoutbox\actions\Delete $delete
+	 * @param string                               $root_path
+	 * @param string                               $php_ext
+	 * @param string                               $table
+	 * @param string                               $usertable
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
 								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
-								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\log\log $log, $root_path, $php_ext,
+								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\log\log $log,
+								\paul999\ajaxshoutbox\actions\Delete $delete, $root_path, $php_ext,
 								$table, $usertable)
 	{
 		$this->config    = $config;
@@ -76,6 +82,7 @@ class main_controller
 		$this->db        = $db;
 		$this->auth      = $auth;
 		$this->log       = $log;
+		$this->delete    = $delete;
 		$this->root_path = $root_path;
 		$this->php_ext   = $php_ext;
 		$this->table     = $table;
@@ -164,6 +171,18 @@ class main_controller
 		{
 			return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_ONLY_AJAX', 500);
 		}
+	}
+
+	public function delete() {
+		$id = $this->request->variable('id', 0, false, \phpbb\request\request_interface::POST);
+
+		if (!$id) {
+			return $this->error('AJAX_SHOUTBOX_ERRPR', 'AJAX_SHOUTBOX_MISSING_ID', 500);
+		}
+
+		$this->delete->delete($id);
+
+		return new JsonResponse(array('OK'));
 	}
 
 	/**
