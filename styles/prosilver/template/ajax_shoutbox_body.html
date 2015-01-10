@@ -11,6 +11,14 @@
         </ul>
         <!-- IF S_CAN_POST_SHOUT -->
         <form action="{U_SUBMIT_SHOUTBOX}" id="ajaxshoutbox_post" method="post">
+            <!--
+                Note: Do not include CSRF protection here. Besides that someone would only be able to post a message
+                to the shoutbox, it will add all kind of issues. phpBB only expects 1 active CSRF key in 1 browser,
+                but with the possible usage of a shoutbox, you might see that users keep the index open for a long time,
+                and start browsing in a different window. When this happen, the CSRF key valid for this form will expire,
+                fail for other places and give the user form invalid errors.
+            -->
+            <input type="hidden" name="sid" value="{SID}" />
             <ul class="topiclist ajaxshoutboxpost forums">
                 <li class="row">
                     <dl>
@@ -47,6 +55,7 @@
                         <dd data-type="message" class="ajaxshoutbox_message"></dd>
                         <dd data-type="delete" class="ajaxshoutbox_delete">
                             <form action="{U_DELETE_SHOUTBOX}" data-type="submit-delete">
+                                <input type="hidden" name="sid" value="{SID}" />
                                 <input data-type="delete-id" type="hidden" name="id" value="" />
                                 <input type="submit" name="delete" value="{L_DELETE}" class="button2" />
                             </form>
