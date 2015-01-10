@@ -281,7 +281,7 @@ class main_controller
 				ORDER BY post_time DESC';
 		$result = $this->db->sql_query($sql);
 
-		$this->returnPosts($result);
+		return $this->returnPosts($result);
 	}
 
 	/**
