@@ -18,7 +18,7 @@
                 and start browsing in a different window. When this happen, the CSRF key valid for this form will expire,
                 fail for other places and give the user form invalid errors.
             -->
-            <input type="hidden" name="sid" value="{SID}" />
+            <input type="hidden" name="sid" value="{SESSION_ID}" />
             <ul class="topiclist ajaxshoutboxpost forums">
                 <li class="row">
                     <dl>
@@ -55,7 +55,7 @@
                         <dd data-type="message" class="ajaxshoutbox_message"></dd>
                         <dd data-type="delete" class="ajaxshoutbox_delete">
                             <form action="{U_DELETE_SHOUTBOX}" data-type="submit-delete">
-                                <input type="hidden" name="sid" value="{SID}" />
+                                <input type="hidden" name="sid" value="{SESSION_ID}" />
                                 <input data-type="delete-id" type="hidden" name="id" value="" />
                                 <input type="submit" name="delete" value="{L_DELETE}" class="button2" />
                             </form>
