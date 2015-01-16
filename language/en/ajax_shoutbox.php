@@ -46,5 +46,6 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'Message empty',
 		'AJAX_SHOUTBOX_ERROR'            => 'Error',
 		'AJAX_SHOUTBOX_MISSING_ID'       => 'Unable to delete post',
+		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Unable to find post',
 	)
 );

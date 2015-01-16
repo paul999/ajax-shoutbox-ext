@@ -10,6 +10,7 @@
 
 namespace paul999\ajaxshoutbox\controller;
 
+use paul999\ajaxshoutbox\exceptions\ShoutboxException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -184,9 +185,14 @@ class main_controller
 		{
 			return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_MISSING_ID', 500);
 		}
-
-		$this->delete->delete_post($id);
-
+		try
+		{
+			$this->delete->delete_post($id);
+		}
+		catch (ShoutboxException $exception)
+		{
+			return $this->error('AJAX_SHOUTBOX_ERROR', $exception->getMessage(), 500);
+		}
 		return new JsonResponse(array('OK'));
 	}
 

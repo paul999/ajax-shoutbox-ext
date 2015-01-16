@@ -54,7 +54,7 @@
                         <dd data-type="date" class="ajaxshoutbox_date"></dd>
                         <dd data-type="message" class="ajaxshoutbox_message"></dd>
                         <dd data-type="delete" class="ajaxshoutbox_delete">
-                            <form action="{U_DELETE_SHOUTBOX}" data-type="submit-delete" action="post">
+                            <form action="{U_DELETE_SHOUTBOX}" data-type="submit-delete" method="post">
                                 <input type="hidden" name="sid" value="{SESSION_ID}" />
                                 <input data-type="delete-id" type="hidden" name="id" value="" />
                                 <input type="submit" name="delete" value="{L_DELETE}" class="button2" />
