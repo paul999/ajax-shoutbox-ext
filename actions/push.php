@@ -43,32 +43,49 @@ class push
 	 */
 	public function delete($id)
 	{
-
+		$data = array(
+			'authkey'   => $this->config['ajaxshoutbox_api_key'],
+			'localId'   => $id,
+		);
+		$this->postData($data, 'post');
 	}
 
 	/**
 	 * @param string $message Message that has been send
 	 * @param int    $date    Date in UNIX timestamp
 	 * @param string $user    Username (Not the user id!)
-	 * @param int    $userId  User id
+	 * @param int    $post_id ID of the post (used for deletion)
 	 */
-	public function post($message, $date, $user, $userId)
+	public function post($message, $date, $user, $post_id)
 	{
+		$data = array(
+			'message'   => $message,
+			'date'      => $date,
+			'user'      => $user,
+			'authkey'   => $this->config['ajaxshoutbox_api_key'],
+			'localId'   => $post_id,
+		);
+		$this->postData($data, 'post');
+	}
 
+	/**
+	 * Post to the shoutbox-app server
+	 *
+	 * @param array $data
+	 * @param string $path
+	 *
+	 * @return mixed
+	 */
+	private function postData($data, $path)
+	{
 		$browser = new Browser(new Curl());
 		try
 		{
 			$headers = array('Content-Type' => 'application/json');
-			$data = json_encode(array(
-									'message'   => $message,
-									'date'      => $date,
-									'user'      => $user,
-									'authkey'   => $this->config['ajaxshoutbox_api_key'],
-									'localId'   => $userId,
-								));
+			$data = @json_encode($data);
 
 			/** @var \Buzz\Message\Response $response */
-			$response = $browser->post($this->config['ajaxshoutbox_api_server'], $headers, $data);
+			$response = $browser->post($this->config['ajaxshoutbox_api_server'] . $path, $headers, $data);
 
 			if ($response->isSuccessful())
 			{
@@ -78,11 +95,13 @@ class push
 				if (isset($rsp['error'])) {
 					throw new \Exception(htmlspecialchars($rsp['error'])); // ;)
 				}
+				return $rsp;
 			}
 		}
 		catch (\Exception $e)
 		{
 			$this->log->add('critical', $this->user->data['user_id'], $this->user->ip, 'LOG_AJAX_SHOUTBOX_ERROR', time(), array($e->getMessage()));
+			return false;
 		}
 	}
 
@@ -103,7 +122,7 @@ class push
 		if (empty($this->config['ajaxshoutbox_api_server']))
 		{
 			// hmmm.
-			$this->config['ajaxshoutbox_api_server'] = 'https://www.shoutbox-app.com/post'; // API is for the app only.
+			$this->config['ajaxshoutbox_api_server'] = 'https://www.shoutbox-app.com/'; // API is for the app only.
 		}
 		if (!function_exists('curl_version') || !function_exists('curl_init') || !function_exists('curl_exec'))
 		{

@@ -24,6 +24,9 @@ class delete
 	/** @var \phpbb\log\log  */
 	private $log;
 
+	/** @var \phpbb\request\request  */
+	private $request;
+
 	/** @var \paul999\ajaxshoutbox\actions\Push  */
 	private $push;
 
@@ -37,12 +40,14 @@ class delete
 	 * @param string                            $table
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db,
-								\phpbb\auth\auth $auth, \phpbb\log\log $log, \paul999\ajaxshoutbox\actions\Push $push, $table)
+								\phpbb\auth\auth $auth, \phpbb\log\log $log, \phpbb\request\request $request,
+								\paul999\ajaxshoutbox\actions\Push $push, $table)
 	{
 		$this->config   = $config;
 		$this->db       = $db;
 		$this->auth     = $auth;
 		$this->log      = $log;
+		$this->request  = $request;
 		$this->push     = $push;
 		$this->table    = $table;
 	}
@@ -54,6 +59,13 @@ class delete
 	 */
 	public function delete_post($id)
 	{
+		if (!$id)
+		{
+			$id = $this->request->variable('id', 0);
+		}
+		$sql = 'DELETE FROM ' . $this->table .' WHERE shout_id =  ' . (int)$id;
+		$this->db->sql_query($sql);
+
 		if ($this->push->canPush())
 		{
 			$this->push->delete($id);

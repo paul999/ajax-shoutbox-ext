@@ -9,23 +9,19 @@
  */
 namespace paul999\ajaxshoutbox\migrations;
 
-use phpbb\db\migration\migration;
-
-class release_100beta2 extends migration
+class update_push_config extends \phpbb\db\migration\migration
 {
 	static public function depends_on()
 	{
 		return array(
-			'\paul999\ajaxshoutbox\migrations\release_100beta1',
-			'\paul999\ajaxshoutbox\migrations\set_role_data',
-			'\paul999\ajaxshoutbox\migrations\update_push_config',
+			'\paul999\ajaxshoutbox\migrations\add_push_config2',
 		);
 	}
 
 	public function update_data()
 	{
 		return array(
-			array('config.update', array('profile_guestbook_version', '1.0.0-BETA2'))
+			array('config.update', array('ajaxshoutbox_api_server', 'https://www.shoutbox-app.com/')),
 		);
 	}
 }

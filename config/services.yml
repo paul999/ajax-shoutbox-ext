@@ -26,6 +26,7 @@ services:
             - @dbal.conn
             - @auth
             - @log
+            - @request
             - @paul999.ajaxshoutbox.push
             - %paul999.ajaxshoutbox.tables.ajaxshoutbox%
 
