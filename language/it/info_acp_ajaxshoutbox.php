@@ -39,6 +39,6 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
-		'LOG_AJAX_SHOUTBOX_ERROR'    => 'Si è verificato un imprevisto durante l\'inoltro del messaggio al server remoto',
+		'LOG_AJAX_SHOUTBOX_ERROR'    => 'Si è verificato un imprevisto durante l’inoltro del messaggio al server remoto',
 	)
 );
