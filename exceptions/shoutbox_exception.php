@@ -11,6 +11,6 @@
 namespace paul999\ajaxshoutbox\exceptions;
 
 
-class ShoutboxException  extends \Exception {
+class shoutbox_exception  extends \Exception {
 
 }

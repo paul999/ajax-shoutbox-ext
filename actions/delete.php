@@ -10,7 +10,7 @@
 
 namespace paul999\ajaxshoutbox\actions;
 
-use paul999\ajaxshoutbox\exceptions\ShoutboxException;
+use paul999\ajaxshoutbox\exceptions\shoutbox_exception;
 
 class delete
 {
@@ -65,7 +65,7 @@ class delete
 	 *
 	 * @param int $id
 	 *
-	 * @throws \paul999\ajaxshoutbox\exceptions\ShoutboxException
+	 * @throws \paul999\ajaxshoutbox\exceptions\shoutbox_exception
 	 */
 	public function delete_post($id)
 	{
@@ -80,7 +80,7 @@ class delete
 
 		if (!$row)
 		{
-			throw new ShoutboxException('AJAX_SHOUTBOX_NO_SUCH_POST');
+			throw new shoutbox_exception('AJAX_SHOUTBOX_NO_SUCH_POST');
 		}
 		if (!$this->auth->acl_get('m_shoutbox_delete'))
 		{
@@ -88,11 +88,11 @@ class delete
 
 			if ($row['user_id'] != $this->user->data['user_id'])
 			{
-				throw new ShoutboxException('AJAX_SHOUTBOX_NO_SUCH_POST');
+				throw new shoutbox_exception('AJAX_SHOUTBOX_NO_SUCH_POST');
 			}
 			if (!$this->auth->acl_get('u_shoutbox_delete'))
 			{
-				throw new ShoutboxException('AJAX_SHOUTBOX_NO_PERMISSION');
+				throw new shoutbox_exception('AJAX_SHOUTBOX_NO_PERMISSION');
 			}
 		}
 
