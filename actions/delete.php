@@ -75,7 +75,8 @@ class delete
 		}
 		$sql = 'SELECT user_id FROM ' . $this->table . ' WHERE shout_id = ' . (int) $id;
 		$result = $this->db->sql_query($sql);
-		$row = $this->db->sql_freeresult($result);
+		$row = $this->db->sql_fetchrow();
+		$this->db->sql_freeresult($result);
 
 		if (!$row)
 		{
