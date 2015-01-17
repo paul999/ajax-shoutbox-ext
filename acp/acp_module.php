@@ -26,13 +26,11 @@ class acp_module {
 
 	function main($id, $mode)
 	{
-		global $db, $user, $auth, $template;
-		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
-		global $cache, $phpbb_container, $phpbb_dispatcher;
+		global $user, $template;
+		global $config, $phpbb_dispatcher, $phpbb_log;
 
 		$user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
 
-		$action	= request_var('action', '');
 		$submit = (isset($_POST['submit']) || isset($_POST['allow_quick_reply_enable'])) ? true : false;
 
 		$form_key = 'acp_board';
@@ -65,7 +63,7 @@ class acp_module {
 				);
 				break;
 			default:
-				trigger_error('NO_MODE', E_USER_ERROR);
+				trigger_error('NO_MODE: ' . $id, E_USER_ERROR);
 				break;
 		}
 
@@ -120,13 +118,13 @@ class acp_module {
 
 			if ($submit)
 			{
-				set_config($config_name, $config_value);
+				$config->set($config_name, $config_value);
 			}
 		}
 
 		if ($submit)
 		{
-			add_log('admin', 'LOG_AJAX_SHOUTBOX_CONFIG_' . strtoupper($mode));
+			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'LOG_AJAX_SHOUTBOX_CONFIG_' . strtoupper($mode));
 
 			$message = $user->lang('CONFIG_UPDATED');
 			$message_type = E_USER_NOTICE;
