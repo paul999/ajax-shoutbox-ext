@@ -30,7 +30,7 @@ class acp_module {
 		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
 		global $cache, $phpbb_container, $phpbb_dispatcher;
 
-		$user->add_lang('acp/board');
+		$this->user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
 
 		$action	= request_var('action', '');
 		$submit = (isset($_POST['submit']) || isset($_POST['allow_quick_reply_enable'])) ? true : false;
@@ -50,26 +50,11 @@ class acp_module {
 				$display_vars = array(
 					'title'	=> 'ACP_BOARD_SETTINGS',
 					'vars'	=> array(
-						/*'legend1'				=> 'ACP_BOARD_SETTINGS',
-						'sitename'				=> array('lang' => 'SITE_NAME',				'validate' => 'string',	'type' => 'text:40:255', 'explain' => false),
-						'site_desc'				=> array('lang' => 'SITE_DESC',				'validate' => 'string',	'type' => 'text:40:255', 'explain' => false),
-						'site_home_url'			=> array('lang' => 'SITE_HOME_URL',			'validate' => 'string',	'type' => 'url:40:255', 'explain' => true),
-						'site_home_text'		=> array('lang' => 'SITE_HOME_TEXT',		'validate' => 'string',	'type' => 'text:40:255', 'explain' => true),
-						'board_index_text'		=> array('lang' => 'BOARD_INDEX_TEXT',		'validate' => 'string',	'type' => 'text:40:255', 'explain' => true),
-						'board_disable'			=> array('lang' => 'DISABLE_BOARD',			'validate' => 'bool',	'type' => 'custom', 'method' => 'board_disable', 'explain' => true),
-						'board_disable_msg'		=> false,
-						'default_lang'			=> array('lang' => 'DEFAULT_LANGUAGE',		'validate' => 'lang',	'type' => 'select', 'function' => 'language_select', 'params' => array('{CONFIG_VALUE}'), 'explain' => false),
-						'default_dateformat'	=> array('lang' => 'DEFAULT_DATE_FORMAT',	'validate' => 'string',	'type' => 'custom', 'method' => 'dateformat_select', 'explain' => true),
-						'board_timezone'		=> array('lang' => 'SYSTEM_TIMEZONE',		'validate' => 'timezone',	'type' => 'custom', 'method' => 'timezone_select', 'explain' => true),
+						'legend1'				=> 'ACP_AJAXSHOUTBOX_PRUNE',
+						'ajaxshoutbox_enable_prune'			=> array('lang' => 'AJAXSHOUTBOX_ENABLE_PRUNE',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => false),
+						'ajaxshoutbox_prune_days'			=> array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS',			'validate' => 'int',	'type' => 'number:0:9999','explain' => false, 'append' => ' ' . $user->lang['DAYS']),
 
-						'legend2'				=> 'BOARD_STYLE',
-						'default_style'			=> array('lang' => 'DEFAULT_STYLE',			'validate' => 'int',	'type' => 'select', 'function' => 'style_select', 'params' => array('{CONFIG_VALUE}', false), 'explain' => true),
-						'guest_style'			=> array('lang' => 'GUEST_STYLE',			'validate' => 'int',	'type' => 'select', 'function' => 'style_select', 'params' => array($this->guest_style_get(), false), 'explain' => true),
-						'override_user_style'	=> array('lang' => 'OVERRIDE_STYLE',		'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => true),
 
-						'legend3'				=> 'WARNINGS',
-						'warnings_expire_days'	=> array('lang' => 'WARNINGS_EXPIRE',		'validate' => 'int:0:9999',	'type' => 'number:0:9999', 'explain' => true, 'append' => ' ' . $user->lang['DAYS']),
-*/
 						'legend4'					=> 'ACP_SUBMIT_CHANGES',
 					)
 				);
