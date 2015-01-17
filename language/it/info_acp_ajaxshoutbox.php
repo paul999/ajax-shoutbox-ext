@@ -41,6 +41,8 @@ $lang = array_merge(
 	$lang, array(
 		'LOG_AJAX_SHOUTBOX_ERROR'    => '<strong>Si è verificato un imprevisto durante l’inoltro del messaggio al server remoto</strong>',
 		'LOG_AJAX_SHOUTBOX_PRUNED'   => '<strong>Bacheca cancellata: rimossi %d messaggi</strong>',
+		'LOG_AJAX_SHOUTBOX_CONFIG_SETTINGS' => '<strong>Impostazioni bacheca AJAX aggiornate</strong>',
+
 		'ACP_AJAX_SHOUTBOX'          => 'Bacheca AJAX',
 		'ACP_AJAX_SHOUTBOX_SETTINGS' => 'Impostazioni bacheca',
 	)
