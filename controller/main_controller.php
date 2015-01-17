@@ -10,7 +10,6 @@
 
 namespace paul999\ajaxshoutbox\controller;
 
-use paul999\ajaxshoutbox\exceptions\shoutbox_exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -177,6 +176,11 @@ class main_controller
 		}
 	}
 
+	/**
+	 * Delete a post from the client.
+	 *
+	 * @return \Symfony\Component\HttpFoundation\JsonResponse
+	 */
 	public function delete()
 	{
 		$id = $this->request->variable('id', 0, false, \phpbb\request\request_interface::POST);
@@ -189,7 +193,7 @@ class main_controller
 		{
 			$this->delete->delete_post($id);
 		}
-		catch (shoutbox_exception $exception)
+		catch (\paul999\ajaxshoutbox\exceptions\shoutbox_exception $exception)
 		{
 			return $this->error('AJAX_SHOUTBOX_ERROR', $exception->getMessage(), 500);
 		}
