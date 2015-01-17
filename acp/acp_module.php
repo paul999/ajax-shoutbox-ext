@@ -33,39 +33,25 @@ class acp_module {
 
 		$submit = (isset($_POST['submit']) || isset($_POST['allow_quick_reply_enable'])) ? true : false;
 
-		$form_key = 'acp_board';
+		$form_key = 'acp_shoutbox';
 		add_form_key($form_key);
 
-		/**
-		 *	Validation types are:
-		 *		string, int, bool,
-		 *		script_path (absolute path in url - beginning with / and no trailing slash),
-		 *		rpath (relative), rwpath (realtive, writable), path (relative path, but able to escape the root), wpath (writable)
-		 */
-		switch ($mode)
-		{
-			case 'settings':
-				$display_vars = array(
-					'title'	=> 'ACP_AJAXSHOUTBOX_SETTINGS',
-					'vars'	=> array(
-						'legend1'				=> 'ACP_AJAXSHOUTBOX_PRUNE',
-						'ajaxshoutbox_enable_prune'			=> array('lang' => 'AJAXSHOUTBOX_ENABLE_PRUNE',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => false),
-						'ajaxshoutbox_prune_days'			=> array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS',			'validate' => 'int',	'type' => 'number:0:9999','explain' => false, 'append' => ' ' . $user->lang['DAYS']),
+		$display_vars = array(
+			'title'	=> 'ACP_AJAXSHOUTBOX_SETTINGS',
+			'vars'	=> array(
+				'legend1'				=> 'ACP_AJAXSHOUTBOX_PRUNE',
+				'ajaxshoutbox_enable_prune'			=> array('lang' => 'AJAXSHOUTBOX_ENABLE_PRUNE',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => false),
+				'ajaxshoutbox_prune_days'			=> array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS',			'validate' => 'int',	'type' => 'number:0:9999','explain' => false, 'append' => ' ' . $user->lang['DAYS']),
 
-						'legend2'               => 'ACP_AJAXSHOUTBOX_PUSH',
-						'ajaxshoutbox_validation_id'		=> array('lang' => 'AJAXSHOUTBOX_ACTIVATION_KEY',			'validate' => 'string',	'type' => 'custom','explain' => false, 'method' => 'key'),
-						'ajaxshoutbox_push_enabled'		    => array('lang' => 'ACP_AJAXSHOUTBOX_ENABLE_PUSH',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => true),
-						'ajaxshoutbox_api_key'		        => array('lang' => 'ACP_AJAXSHOUTBOX_API_KEY_PUSH',			'validate' => 'string',	'type' => 'text:40:255','explain' => true),
-						'ajaxshoutbox_connection_key'       => array('lang' => 'ACP_AJAXSHOUTBOX_CON_KEY_PUSH',			'validate' => 'string',	'type' => 'text:40:255','explain' => true),
+				'legend2'               => 'ACP_AJAXSHOUTBOX_PUSH',
+				'ajaxshoutbox_validation_id'		=> array('lang' => 'AJAXSHOUTBOX_ACTIVATION_KEY',			'validate' => 'string',	'type' => 'custom','explain' => false, 'method' => 'key'),
+				'ajaxshoutbox_push_enabled'		    => array('lang' => 'ACP_AJAXSHOUTBOX_ENABLE_PUSH',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => true),
+				'ajaxshoutbox_api_key'		        => array('lang' => 'ACP_AJAXSHOUTBOX_API_KEY_PUSH',			'validate' => 'string',	'type' => 'text:40:255','explain' => true),
+				'ajaxshoutbox_connection_key'       => array('lang' => 'ACP_AJAXSHOUTBOX_CON_KEY_PUSH',			'validate' => 'string',	'type' => 'text:40:255','explain' => true),
 
-						'legend4'				=> 'ACP_SUBMIT_CHANGES',
-					)
-				);
-				break;
-			default:
-				trigger_error('NO_MODE: ' . $id, E_USER_ERROR);
-				break;
-		}
+				'legend4'				=> 'ACP_SUBMIT_CHANGES',
+			)
+		);
 
 		/**
 		* Event to add and/or modify acp_board configurations
@@ -78,11 +64,6 @@ class acp_module {
 		*/
 		$vars = array('display_vars', 'mode', 'submit');
 		extract($phpbb_dispatcher->trigger_event('paul999.ajaxshoutbox.shoutbox_config_edit_add', compact($vars)));
-
-		if (isset($display_vars['lang']))
-		{
-			$user->add_lang($display_vars['lang']);
-		}
 
 		$this->new_config = $config;
 		$cfg_array = (isset($_REQUEST['config'])) ? utf8_normalize_nfc($request->variable('config', array('' => ''), true)) : $this->new_config;
@@ -104,14 +85,9 @@ class acp_module {
 		// We go through the display_vars to make sure no one is trying to set variables he/she is not allowed to...
 		foreach ($display_vars['vars'] as $config_name => $null)
 		{
-			if (!isset($cfg_array[$config_name]) || strpos($config_name, 'legend') !== false)
+			if (!isset($cfg_array[$config_name]) || strpos($config_name, 'legend') !== false || $config_name == 'ajaxshoutbox_validation_id')
 			{
 				continue;
-			}
-
-			if ($config_name == 'ajaxshoutbox_validation_id')
-			{
-				continue; // Do not allow changing
 			}
 
 			$this->new_config[$config_name] = $config_value = $cfg_array[$config_name];
