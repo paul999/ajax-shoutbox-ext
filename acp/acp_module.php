@@ -26,7 +26,7 @@ class acp_module {
 
 	function main($id, $mode)
 	{
-		global $user, $template;
+		global $user, $template, $request;
 		global $config, $phpbb_dispatcher, $phpbb_log;
 
 		$user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
@@ -85,7 +85,7 @@ class acp_module {
 		}
 
 		$this->new_config = $config;
-		$cfg_array = (isset($_REQUEST['config'])) ? utf8_normalize_nfc(request_var('config', array('' => ''), true)) : $this->new_config;
+		$cfg_array = (isset($_REQUEST['config'])) ? utf8_normalize_nfc($request->variable('config', array('' => ''), true)) : $this->new_config;
 		$error = array();
 
 		// We validate the complete config if wished
