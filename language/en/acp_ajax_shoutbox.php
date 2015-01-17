@@ -39,6 +39,14 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
+		'ACP_AJAXSHOUTBOX_SETTINGS'     => 'Ajax Shoutbox settings',
+		'ACP_AJAXSHOUTBOX_SETTINGS_EXPLAIN'     => 'On this page you can change the settings specific for the shoutbox. <br /><br />
+			If you want to enable your users to use the iOS and android APPs (Currently in closed BETA, however users can still use it with
+			your board if they have access to the beta.
+			See <a href="http://www.ajax-shoutbox.com/viewtopic.php?f=2&t=9">here</a> for more information), you need to create a account on
+			<a href="https://www.shoutbox-app.com/">www.shoutbox-app.com</a> and add a new forum. You will be asked for a activation code. This code is displayed below.
+		',
+
 		'ACP_AJAXSHOUTBOX_PRUNE'        => 'Prune settings',
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'Enable pruning of posts',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'Prune posts after',

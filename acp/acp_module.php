@@ -48,12 +48,11 @@ class acp_module {
 		{
 			case 'settings':
 				$display_vars = array(
-					'title'	=> 'ACP_BOARD_SETTINGS',
+					'title'	=> 'ACP_AJAXSHOUTBOX_SETTINGS',
 					'vars'	=> array(
 						'legend1'				=> 'ACP_AJAXSHOUTBOX_PRUNE',
 						'ajaxshoutbox_enable_prune'			=> array('lang' => 'AJAXSHOUTBOX_ENABLE_PRUNE',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => false),
 						'ajaxshoutbox_prune_days'			=> array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS',			'validate' => 'int',	'type' => 'number:0:9999','explain' => false, 'append' => ' ' . $user->lang['DAYS']),
-
 
 						'legend4'					=> 'ACP_SUBMIT_CHANGES',
 					)
