@@ -49,7 +49,7 @@ services:
             - %paul999.ajaxshoutbox.tables.ajaxshoutbox%
             - %tables.users%
     paul999.ajaxshoutbox.cron.task.shoutbox_prune:
-        class: paul999.ajaxshoutbox.shoutbox_prune
+        class: paul999.ajaxshoutbox.cron.shoutbox_prune
         arguments:
             - @config
             - @dbal.conn
