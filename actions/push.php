@@ -49,7 +49,7 @@ class push
 			'authkey'   => $this->config['ajaxshoutbox_api_key'],
 			'localId'   => $id,
 		);
-		return $this->postData($data, 'post');
+		return $this->postData($data, 'delete');
 	}
 
 	/**
