@@ -41,9 +41,23 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.index_modify_page_title'  => 'index',
-			'core.permissions'				=> 'add_permission',
+			'core.index_modify_page_title'          => 'index',
+			'core.permissions'			        	=> 'add_permission',
+			'forumhulp.cronstatus.modify_cron_task' => 'modify_cron_date',
 		);
+	}
+
+	public function modify_cron_date($event)
+	{
+		if ($event['task_name'] == 'cron.task.shoutbox_prune')
+		{
+			if ($event['task_date'] > 0)
+			{
+				$new_task = $event['task_date'] + 24 * 3600;
+				$event['new_task_date'] = $new_task;
+			}
+		}
+		return $event;
 	}
 
 	/**
