@@ -30,7 +30,7 @@ class acp_module {
 		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
 		global $cache, $phpbb_container, $phpbb_dispatcher;
 
-		$this->user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
+		$user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
 
 		$action	= request_var('action', '');
 		$submit = (isset($_POST['submit']) || isset($_POST['allow_quick_reply_enable'])) ? true : false;
