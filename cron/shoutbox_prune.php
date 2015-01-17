@@ -23,7 +23,8 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	private $delete;
 
 	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db,
-	                            \paul999\ajaxshoutbox\actions\delete $delete) {
+								\paul999\ajaxshoutbox\actions\delete $delete)
+	{
 		$this->config   = $config;
 		$this->delete   = $delete;
 		$this->db       = $db;
@@ -32,7 +33,8 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	/**
 	 * Run the cronjob.
 	 */
-	public function run() {
+	public function run()
+	{
 		$this->config->set('shoutbox_prune_gc', time(), false);
 	}
 
@@ -40,14 +42,16 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	 * Should this cron run?
 	 * @return bool
 	 */
-	public function is_runnable() {
+	public function is_runnable()
+	{
 		return (bool) $this->config['ajaxshoutbox_enable_prune'];
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function should_run() {
+	public function should_run()
+	{
 		return $this->config['shoutbox_prune_gc'] < strtotime('24 hours ago');
 	}
 }

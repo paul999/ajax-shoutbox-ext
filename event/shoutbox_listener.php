@@ -33,7 +33,7 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	 * @param \phpbb\auth\auth         $auth
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\user $user, \phpbb\template\template $template,
-	                            \phpbb\controller\helper $helper, \phpbb\auth\auth $auth)
+								\phpbb\controller\helper $helper, \phpbb\auth\auth $auth)
 	{
 		$this->config   = $config;
 		$this->user     = $user;
