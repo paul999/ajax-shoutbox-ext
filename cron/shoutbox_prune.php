@@ -82,7 +82,14 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 		{
 			$sql = 'DELETE FROM ' . $this->table . ' WHERE ' . $this->db->sql_in_set('shout_id', $delete);
 			$this->db->sql_query($sql);
-			$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_AJAX_SHOUTBOX_PRUNED', time(), array(sizeof($delete)));
+			$uuid = $this->user->data['user_id'];
+
+			if (!$uuid)
+			{
+				$uuid = ANONYMOUS;
+			}
+
+			$this->log->add('admin', $uuid, $this->user->ip, 'LOG_AJAX_SHOUTBOX_PRUNED', time(), array(sizeof($delete)));
 		}
 
 		$this->config->set('shoutbox_prune_gc', time(), false);
