@@ -50,5 +50,14 @@ $lang = array_merge(
 		'ACP_AJAXSHOUTBOX_PRUNE'        => 'Prune settings',
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'Enable pruning of posts',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'Prune posts after',
+
+		'ACP_AJAXSHOUTBOX_PUSH'         => 'App configuration',
+		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'Activation code',
+		'ACP_AJAXSHOUTBOX_ENABLE_PUSH'  => 'Enable android and iOS app',
+		'ACP_AJAXSHOUTBOX_ENABLE_PUSH_EXPLAIN'  => 'Before you can register your site, you need to enable this feature.',
+		'ACP_AJAXSHOUTBOX_API_KEY_PUSH' => 'API Key',
+		'ACP_AJAXSHOUTBOX_API_KEY_PUSH_EXPLAIN' => 'You will receive this key after adding your forum on www.shoutbox-app.com',
+		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH' => 'Connection ID',
+		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH_EXPLAIN' => 'You will receive this key after adding your forum on www.shoutbox-app.com.<br />Your users will use this ID to find your board in the APP.',
 	)
 );

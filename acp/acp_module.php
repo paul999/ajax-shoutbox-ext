@@ -54,7 +54,13 @@ class acp_module {
 						'ajaxshoutbox_enable_prune'			=> array('lang' => 'AJAXSHOUTBOX_ENABLE_PRUNE',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => false),
 						'ajaxshoutbox_prune_days'			=> array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS',			'validate' => 'int',	'type' => 'number:0:9999','explain' => false, 'append' => ' ' . $user->lang['DAYS']),
 
-						'legend4'					=> 'ACP_SUBMIT_CHANGES',
+						'legend2'               => 'ACP_AJAXSHOUTBOX_PUSH',
+						'ajaxshoutbox_validation_id'		=> array('lang' => 'AJAXSHOUTBOX_ACTIVATION_KEY',			'validate' => 'string',	'type' => 'custom','explain' => false, 'method' => 'key'),
+						'ajaxshoutbox_push_enabled'		    => array('lang' => 'ACP_AJAXSHOUTBOX_ENABLED_PUSH',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => true),
+						'ajaxshoutbox_api_key'		        => array('lang' => 'ACP_AJAXSHOUTBOX_API_KEY_PUSH',			'validate' => 'string',	'type' => 'text:40:255','explain' => true),
+						'ajaxshoutbox_connection_key'       => array('lang' => 'ACP_AJAXSHOUTBOX_CON_KEY_PUSH',			'validate' => 'string',	'type' => 'text:40:255','explain' => true),
+
+						'legend4'				=> 'ACP_SUBMIT_CHANGES',
 					)
 				);
 				break;
@@ -103,6 +109,11 @@ class acp_module {
 			if (!isset($cfg_array[$config_name]) || strpos($config_name, 'legend') !== false)
 			{
 				continue;
+			}
+
+			if ($config_name == 'ajaxshoutbox_validation_id')
+			{
+				continue; // Do not allow changing
 			}
 
 			$this->new_config[$config_name] = $config_value = $cfg_array[$config_name];
@@ -184,5 +195,12 @@ class acp_module {
 
 			unset($display_vars['vars'][$config_key]);
 		}
+	}
+
+	function key()
+	{
+		global $config;
+
+		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong>';
 	}
 }
