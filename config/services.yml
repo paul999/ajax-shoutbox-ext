@@ -54,7 +54,10 @@ services:
         arguments:
             - @config
             - @dbal.conn
-            - @paul999.ajaxshoutbox.delete
+            - @log
+            - @user
+            - @paul999.ajaxshoutbox.push
+            - %paul999.ajaxshoutbox.tables.ajaxshoutbox%
         calls:
             - [set_name, [cron.task.shoutbox_prune]]
         tags:

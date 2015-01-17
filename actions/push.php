@@ -40,6 +40,8 @@ class push
 	 * Delete a shoutbox post
 	 *
 	 * @param int $id
+	 *
+	 * @return mixed
 	 */
 	public function delete($id)
 	{
@@ -47,7 +49,7 @@ class push
 			'authkey'   => $this->config['ajaxshoutbox_api_key'],
 			'localId'   => $id,
 		);
-		$this->postData($data, 'post');
+		return $this->postData($data, 'post');
 	}
 
 	/**

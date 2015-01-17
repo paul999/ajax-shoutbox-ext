@@ -96,12 +96,14 @@ class delete
 			}
 		}
 
-		$sql = 'DELETE FROM ' . $this->table .' WHERE shout_id =  ' . (int) $id;
-		$this->db->sql_query($sql);
-
 		if ($this->push->canPush())
 		{
-			$this->push->delete($id);
+			if ($this->push->delete($id) === false)
+			{
+				throw new shoutbox_exception('AJAX_SHOUTBOX_PUSH_NOT_AVAIL');
+			}
 		}
+		$sql = 'DELETE FROM ' . $this->table .' WHERE shout_id =  ' . (int) $id;
+		$this->db->sql_query($sql);
 	}
 }

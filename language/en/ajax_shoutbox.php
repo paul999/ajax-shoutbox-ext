@@ -47,5 +47,6 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_ERROR'            => 'Error',
 		'AJAX_SHOUTBOX_MISSING_ID'       => 'Unable to delete post',
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Unable to find post',
+		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'The remote push server is currently not available',
 	)
 );

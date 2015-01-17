@@ -19,15 +19,35 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	/** @var \phpbb\db\driver\driver_interface  */
 	private $db;
 
-	/** @var \paul999\ajaxshoutbox\actions\delete  */
-	private $delete;
+	/** @var \paul999\ajaxshoutbox\actions\push  */
+	private $push;
 
+	/** @var string  */
+	private $table;
+
+	/** @var \phpbb\log\log  */
+	private $log;
+
+	/** @var \phpbb\user */
+	private $user;
+
+	/**
+	 * @param \phpbb\config\config               $config
+	 * @param \phpbb\db\driver\driver_interface  $db
+	 * @param \phpbb\log\log                     $log
+	 * @param \phpbb\user                        $user
+	 * @param \paul999\ajaxshoutbox\actions\push $push
+	 * @param                                    $table
+	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db,
-								\paul999\ajaxshoutbox\actions\delete $delete)
+	                            \phpbb\log\log $log, \phpbb\user $user, \paul999\ajaxshoutbox\actions\push $push, $table)
 	{
 		$this->config   = $config;
-		$this->delete   = $delete;
+		$this->push     = $push;
 		$this->db       = $db;
+		$this->log      = $log;
+		$this->table    = $table;
+		$this->user     = $user;
 	}
 
 	/**
@@ -35,6 +55,36 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	 */
 	public function run()
 	{
+		$time = strtotime('- ' . $this->config['ajaxshoutbox_prune_days']  . ' days');
+		$sql = 'SELECT * FROM ' . $this->table . ' WHERE post_time <= ' . $time;
+
+		$result = $this->db->sql_query($sql);
+		$canpush = $this->push->canPush();
+		$delete = array();
+
+		while ($row = $this->db->sql_fetchrow($result))
+		{
+			if ($canpush)
+			{
+				if ($this->push->delete($row['shout_id']) !== false)
+				{
+					$delete[] = $row['shout_id'];
+				}
+			}
+			else
+			{
+				$delete[] = $row['shout_id'];
+			}
+		}
+		$this->db->sql_freeresult();
+
+		if (sizeof($delete))
+		{
+			$sql = 'DELETE FROM ' . $this->table . ' WHERE ' . $this->db->sql_in_set('shout_id', $delete);
+			$this->db->sql_query($sql);
+			$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_AJAX_SHOUTBOX_PRUNED', time(), array(sizeof($delete)));
+		}
+
 		$this->config->set('shoutbox_prune_gc', time(), false);
 	}
 

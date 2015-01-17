@@ -40,5 +40,6 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge(
 	$lang, array(
 		'LOG_AJAX_SHOUTBOX_ERROR'    => 'An exception occurred when pushing a shoutbox message to the remote server',
+		'LOG_AJAX_SHOUTBOX_PRUNED'   => 'Pruned shoutbox and deleted %d messages',
 	)
 );
