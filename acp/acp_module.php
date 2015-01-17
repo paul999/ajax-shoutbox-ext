@@ -82,14 +82,14 @@ class acp_module {
 		}
 
 		/**
-		 * Event to add and/or modify shoutbox configurations
-		 *
-		 * @event paul999.ajaxshoutbox.shoutbox_config_edit_add
-		 * @var	array	display_vars	Array of config values to display and process
-		 * @var	string	mode			Mode of the config page we are displaying
-		 * @var	boolean	submit			Do we display the form or process the submission
-		 * @since 1.0.0-BETA2
-		 */
+		* Event to add and/or modify acp_board configurations
+		*
+		* @event paul999.ajaxshoutbox.shoutbox_config_edit_add
+		* @var	array	display_vars	Array of config values to display and process
+		* @var	string	mode			Mode of the config page we are displaying
+		* @var	boolean	submit			Do we display the form or process the submission
+		* @since 1.0.0-b2
+		*/
 		$vars = array('display_vars', 'mode', 'submit');
 		extract($phpbb_dispatcher->trigger_event('paul999.ajaxshoutbox.shoutbox_config_edit_add', compact($vars)));
 
