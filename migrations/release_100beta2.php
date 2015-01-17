@@ -19,6 +19,7 @@ class release_100beta2 extends migration
 			'\paul999\ajaxshoutbox\migrations\release_100beta1',
 			'\paul999\ajaxshoutbox\migrations\set_role_data',
 			'\paul999\ajaxshoutbox\migrations\update_push_config',
+			'\paul999\ajaxshoutbox\migrations\add_prune_config',
 		);
 	}
 
