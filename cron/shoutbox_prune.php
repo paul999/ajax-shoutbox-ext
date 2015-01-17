@@ -40,7 +40,7 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	 * @param                                    $table
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db,
-	                            \phpbb\log\log $log, \phpbb\user $user, \paul999\ajaxshoutbox\actions\push $push, $table)
+								\phpbb\log\log $log, \phpbb\user $user, \paul999\ajaxshoutbox\actions\push $push, $table)
 	{
 		$this->config   = $config;
 		$this->push     = $push;
