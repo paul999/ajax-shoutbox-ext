@@ -31,7 +31,7 @@ class acp_module {
 
 		$user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
 
-		$submit = (isset($_POST['submit']) || isset($_POST['allow_quick_reply_enable'])) ? true : false;
+		$submit = isset($_POST['submit']);
 
 		$form_key = 'acp_shoutbox';
 		add_form_key($form_key);
@@ -142,13 +142,9 @@ class acp_module {
 			$type = explode(':', $vars['type']);
 
 			$l_explain = '';
-			if ($vars['explain'] && isset($vars['lang_explain']))
+			if ($vars['explain'] && isset($user->lang[$vars['lang'] . '_EXPLAIN']))
 			{
-				$l_explain = (isset($user->lang[$vars['lang_explain']])) ? $user->lang[$vars['lang_explain']] : $vars['lang_explain'];
-			}
-			else if ($vars['explain'])
-			{
-				$l_explain = (isset($user->lang[$vars['lang'] . '_EXPLAIN'])) ? $user->lang[$vars['lang'] . '_EXPLAIN'] : '';
+				$l_explain =  $user->lang[$vars['lang'] . '_EXPLAIN'];
 			}
 
 			$content = build_cfg_template($type, $config_key, $this->new_config, $config_key, $vars);
