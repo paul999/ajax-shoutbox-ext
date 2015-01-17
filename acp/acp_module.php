@@ -12,8 +12,17 @@ namespace paul999\ajaxshoutbox\acp;
 
 
 class acp_module {
-	var $u_action;
-	var $new_config = array();
+	/** @var  string */
+	public $u_action;
+
+	/** @var array  */
+	public $new_config = array();
+
+	/** @var   */
+	public $page_title;
+
+	/** @var   */
+	public $tpl_name;
 
 	function main($id, $mode)
 	{
