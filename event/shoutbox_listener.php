@@ -48,6 +48,7 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 			'core.index_modify_page_title'          => 'index',
 			'core.permissions'			        	=> 'add_permission',
 			'forumhulp.cronstatus.modify_cron_task' => 'modify_cron_date',
+			'boardtools.cronstatus.modify_cron_task'=> 'modify_cron_date',
 		);
 	}
 
