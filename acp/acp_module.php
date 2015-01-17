@@ -74,8 +74,6 @@ class acp_module {
 					)
 				);
 				break;
-
-
 			default:
 				trigger_error('NO_MODE', E_USER_ERROR);
 				break;
