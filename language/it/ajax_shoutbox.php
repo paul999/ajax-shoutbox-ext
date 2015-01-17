@@ -46,5 +46,6 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'Messaggio vuoto',
 		'AJAX_SHOUTBOX_ERROR'            => 'Errore',
 		'AJAX_SHOUTBOX_MISSING_ID'       => 'Impossibile rimuovere il messaggio',
+		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Impossibile trovare il messaggio',
 	)
 );
