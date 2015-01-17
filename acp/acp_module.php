@@ -41,7 +41,7 @@ class acp_module {
 				$display_vars = array(
 					'title'	=> 'ACP_BOARD_SETTINGS',
 					'vars'	=> array(
-						'legend1'				=> 'ACP_BOARD_SETTINGS',
+						/*'legend1'				=> 'ACP_BOARD_SETTINGS',
 						'sitename'				=> array('lang' => 'SITE_NAME',				'validate' => 'string',	'type' => 'text:40:255', 'explain' => false),
 						'site_desc'				=> array('lang' => 'SITE_DESC',				'validate' => 'string',	'type' => 'text:40:255', 'explain' => false),
 						'site_home_url'			=> array('lang' => 'SITE_HOME_URL',			'validate' => 'string',	'type' => 'url:40:255', 'explain' => true),
@@ -60,7 +60,7 @@ class acp_module {
 
 						'legend3'				=> 'WARNINGS',
 						'warnings_expire_days'	=> array('lang' => 'WARNINGS_EXPIRE',		'validate' => 'int:0:9999',	'type' => 'number:0:9999', 'explain' => true, 'append' => ' ' . $user->lang['DAYS']),
-
+*/
 						'legend4'					=> 'ACP_SUBMIT_CHANGES',
 					)
 				);
