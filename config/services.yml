@@ -5,6 +5,7 @@ services:
     paul999.ajaxshoutbox.listener:
         class: paul999\ajaxshoutbox\event\shoutbox_listener
         arguments:
+            - @config
             - @user
             - @template
             - @controller.helper

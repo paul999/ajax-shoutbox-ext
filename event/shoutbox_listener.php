@@ -11,6 +11,8 @@ namespace paul999\ajaxshoutbox\event;
 
 class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
+	/** @var \phpbb\config\config  */
+	private $config;
 
 	/** @var \phpbb\user */
 	private $user;
@@ -30,8 +32,10 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	 * @param \phpbb\controller\helper $helper
 	 * @param \phpbb\auth\auth         $auth
 	 */
-	public function __construct(\phpbb\user $user, \phpbb\template\template $template, \phpbb\controller\helper $helper, \phpbb\auth\auth $auth)
+	public function __construct(\phpbb\config\config $config, \phpbb\user $user, \phpbb\template\template $template,
+	                            \phpbb\controller\helper $helper, \phpbb\auth\auth $auth)
 	{
+		$this->config   = $config;
 		$this->user     = $user;
 		$this->template = $template;
 		$this->helper   = $helper;
@@ -51,6 +55,7 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	{
 		if ($event['task_name'] == 'cron.task.shoutbox_prune')
 		{
+			$event['task_date'] = $this->config['shoutbox_prune_gc'];
 			if ($event['task_date'] > 0)
 			{
 				$new_task = $event['task_date'] + 24 * 3600;
