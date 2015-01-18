@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="shoutbox-ext" default="build">
+
+    <!-- Format: V1.0.0-BETA1 -->
+    <property name="version" value="82bb9cc5cb1af99711daa07a1b15020470b36b10" />
+
+    <target name="export">
+        <echo msg="Exporting archive" />
+
+        <mkdir dir="${dir}paul999/ajaxshoutbox" />
+
+        <exec dir="."
+              command="git archive ${revision} | tar -xf - -C ${dir}paul999/ajaxshoutbox/"
+              checkreturn="true" />
+
+        <echo msg="Run composer" />
+        <exec dir="${dir}paul999/ajaxshoutbox" command="composer.phar install --no-dev --optimize-autoloader" checkreturn="true" />
+        <echo msg="Deleting files" />
+
+        <delete file="${dir}paul999/ajaxshoutbox/composer.lock" />
+        <delete dir="${dir}paul999/ajaxshoutbox/travis/" />
+        <delete file="${dir}paul999/ajaxshoutbox/.gitignore" />
+        <delete file="${dir}paul999/ajaxshoutbox/.travis.yml" />
+
+
+    </target>
+
+    <target name="release">
+        <echo msg="CREATING RELEASE!" />
+        <exec dir="." command="git tag ${version}" checkreturn="true" />
+        <phingcall target="build">
+
+        </phingcall>
+        <exec dir="." command="git push --tags" />
+
+        <echo msg="Release created" />
+    </target>
+
+    <target name="build">
+        <delete dir="build/" />
+        <mkdir dir="build/" />
+
+        <phingcall target="export">
+            <property name="revision" value="${version}" />
+            <property name="dir" value="build/" />
+        </phingcall>
+
+        <exec dir="." command="php vendor/bin/EPV.php run --dir='./build/'" checkreturn="true" />
+
+        <echo msg="zipping files"/>
+
+        <zip destfile="/tmp/ajaxshoutbox-${version}.zip">
+            <fileset dir="./build">
+                <include name="*" />
+            </fileset>
+        </zip>
+        <echo msg="Zipping done, finished and all!" />
+    </target>
+</project>

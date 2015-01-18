@@ -18,7 +18,8 @@
     },
     "require-dev":{
         "phpbb/epv": "dev-master",
-        "phpbb/phpbb": "~3.1.0"
+        "phpbb/phpbb": "~3.1.0",
+        "phing/phing": "2.*"
     },
     "extra": {
         "display-name": "Ajax Shoutbox",
