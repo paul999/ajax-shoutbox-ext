@@ -22,6 +22,7 @@
         <delete dir="${dir}paul999/ajaxshoutbox/travis/" />
         <delete file="${dir}paul999/ajaxshoutbox/.gitignore" />
         <delete file="${dir}paul999/ajaxshoutbox/.travis.yml" />
+        <delete dir="${dir}paul999/ajaxshoutbox/vendor/kriswallsmith/buzz/test/" />
 
 
     </target>
@@ -51,8 +52,8 @@
         <echo msg="zipping files"/>
 
         <zip destfile="/tmp/ajaxshoutbox-${version}.zip">
-            <fileset dir="./build">
-                <include name="*" />
+            <fileset dir="./build/">
+                <include name="**" />
             </fileset>
         </zip>
         <echo msg="Zipping done, finished and all!" />
