@@ -3,7 +3,7 @@
     "type": "phpbb-extension",
     "description": "A simple shoutbox for phpBB 3.1",
     "homepage": "https://www.ajax-shoutbox.com",
-    "version": "1.0.0-BETA1",
+    "version": "1.0.0-BETA2",
     "time": "2014-11-29",
     "license": "GPL-2.0",
     "authors": [{
