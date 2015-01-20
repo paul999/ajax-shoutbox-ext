@@ -47,5 +47,5 @@ $lang = array_merge(
 		'ACP_AJAX_SHOUTBOX'          => 'الدردشة أجاكس',
 		'ACP_AJAX_SHOUTBOX_SETTINGS' => 'الإعدادات',
 		
-		)
+	)
 );
