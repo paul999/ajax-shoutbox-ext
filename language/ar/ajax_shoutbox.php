@@ -39,12 +39,15 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge(
-	$lang, array(
-		"AJAX_SHOUTBOX"    => "الدردشة أجاكس",
-		"SHOUTBOX_MESSAGE" => "ارسل رسالتك",
-		"ONLY_AJAX"        => "المعذرة , يجب تفعيل الجافا سكربت لكي تعمل هذه الدردشة.",
-		"AJAX_SHOUTBOX_NO_PERMISSION"   => 'لا توجد صلاحية لتنفيذ هذا الأمر.',
-		'AJAX_SHOUTBOX_MESSAGE_EMPTY'   => 'الرسالة فارغة',
-		'AJAX_SHOUTBOX_ERROR'           => 'يوجد خطأ',
-	)
+	$lang, array(		
+		'AJAX_SHOUTBOX'                  => 'الدردشة أجاكس',
+		'AJAX_SHOUTBOX_MESSAGE'          => 'ارسل رسالتك',
+		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'المعذرة , يجب تفعيل الجافا سكربت لكي تعمل هذه الدردشة.',
+		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'لا توجد صلاحية لتنفيذ هذا الأمر',
+		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'الرسالة فارغة',
+		'AJAX_SHOUTBOX_ERROR'            => 'خطأ',
+		'AJAX_SHOUTBOX_MISSING_ID'       => 'لا يُمكن حذف المشاركة',
+		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'لا يُمكن العثور على المشاركة',
+		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'الخدمة عير متوفرة حالياً',
+		)
 );
