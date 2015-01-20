@@ -40,6 +40,12 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
-		"LOG_AJAX_SHOUTBOX_ERROR"    => "هناك خطأ غير مقصود حدث اثناء ارسال رسالتك إلى سيرفر خارجي."
-	)
+		'LOG_AJAX_SHOUTBOX_ERROR'    => '<strong>هناك خطأ غير مقصود حدث اثناء ارسال رسالتك إلى سيرفر الخدمة</strong>',
+		'LOG_AJAX_SHOUTBOX_PRUNED'   => '<strong>تم التهذيب وحذف عدد %d رسائل دردشة</strong>',
+		'LOG_AJAX_SHOUTBOX_CONFIG_SETTINGS' => '<strong>تم تحديث الإعدادات بنجاح</strong>',
+
+		'ACP_AJAX_SHOUTBOX'          => 'الدردشة أجاكس',
+		'ACP_AJAX_SHOUTBOX_SETTINGS' => 'الإعدادات',
+		
+		)
 );
