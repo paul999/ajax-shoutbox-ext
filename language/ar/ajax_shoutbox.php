@@ -49,5 +49,5 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_MISSING_ID'       => 'لا يُمكن حذف المشاركة',
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'لا يُمكن العثور على المشاركة',
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'الخدمة عير متوفرة حالياً',
-		)
+	)
 );
