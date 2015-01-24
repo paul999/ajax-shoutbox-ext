@@ -17,6 +17,7 @@ class release_100rc1 extends migration
 	{
 		return array(
 			'\paul999\ajaxshoutbox\migrations\release_100beta2',
+			'\paul999\ajaxshoutbox\migrations\add_date_config',
 		);
 	}
 
