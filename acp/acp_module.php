@@ -11,8 +11,6 @@
 namespace paul999\ajaxshoutbox\acp;
 
 
-use DateTimeZone;
-
 class acp_module {
 	/** @var  string */
 	public $u_action;
