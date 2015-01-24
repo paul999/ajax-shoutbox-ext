@@ -51,20 +51,10 @@ class acp_module {
 		{
 			$display_vars['vars'] += array(
 				'legend2'                     => 'ACP_AJAXSHOUTBOX_PUSH',
-				'ajaxshoutbox_validation_id'  => array('lang' => 'AJAXSHOUTBOX_ACTIVATION_KEY', 'validate' => 'string',
-													   'type' => 'custom', 'explain' => false, 'method' => 'key'
-				),
-				'ajaxshoutbox_push_enabled'   => array('lang' => 'ACP_AJAXSHOUTBOX_ENABLE_PUSH', 'validate' => 'bool',
-													   'type' => 'radio:yes_no', 'explain' => true
-				),
-				'ajaxshoutbox_api_key'        => array('lang'     => 'ACP_AJAXSHOUTBOX_API_KEY_PUSH',
-													   'validate' => 'string', 'type' => 'text:40:255',
-													   'explain'  => true
-				),
-				'ajaxshoutbox_connection_key' => array('lang'     => 'ACP_AJAXSHOUTBOX_CON_KEY_PUSH',
-													   'validate' => 'string', 'type' => 'text:40:255',
-													   'explain'  => true
-				),
+				'ajaxshoutbox_validation_id'  => array('lang'     => 'AJAXSHOUTBOX_ACTIVATION_KEY', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'key'),
+				'ajaxshoutbox_push_enabled'   => array('lang'     => 'ACP_AJAXSHOUTBOX_ENABLE_PUSH', 'validate' => 'bool', 'type' => 'radio:yes_no', 'explain' => true),
+				'ajaxshoutbox_api_key'        => array('lang'     => 'ACP_AJAXSHOUTBOX_API_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain'  => true),
+				'ajaxshoutbox_connection_key' => array('lang'     => 'ACP_AJAXSHOUTBOX_CON_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain'  => true),
 			);
 		}
 
