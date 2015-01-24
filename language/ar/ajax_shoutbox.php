@@ -39,7 +39,7 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge(
-	$lang, array(		
+	$lang, array(
 		'AJAX_SHOUTBOX'                  => 'الدردشة أجاكس',
 		'AJAX_SHOUTBOX_MESSAGE'          => 'ارسل رسالتك',
 		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'المعذرة , يجب تفعيل الجافا سكربت لكي تعمل هذه الدردشة.',
