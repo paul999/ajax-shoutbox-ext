@@ -94,7 +94,7 @@
             // The ajaxify call for the form will be called later in the method!
         }
 
-        if (front && lastId) {
+        if (front && lastId != -1) {
             $("#shout" + lastId).before(element);
             lastId = post.id;
         }
