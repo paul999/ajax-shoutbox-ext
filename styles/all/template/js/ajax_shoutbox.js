@@ -1,7 +1,7 @@
 (function($) { // Avoid conflicts with other libraries
     var timeout;
-    var lastId;
-    var firstId;
+    var lastId = -1;
+    var firstId = -1;
     var waitingEarlier;
 
     /**
@@ -55,6 +55,12 @@
         clearTimeout(timeout);
         $("#submit_shoutbox").fadeIn();
         $("#ajaxshoutbox_loadbefore").fadeIn();
+
+        if (lastId == -1)
+        {
+            loadFirstPosts();
+            return;
+        }
 
         $.ajax({
             url: AJAX_SHOUTBOX_POSTS_NEW.replace("0", lastId),
@@ -128,6 +134,11 @@
      * Load data when we are scrolled to the end.
      */
     function loadData() {
+        if (firstId == -1)
+        {
+            return;
+        }
+
         $("#ajaxshoutbox_loadafter").fadeIn();
         $.ajax({
             url: AJAX_SHOUTBOX_POSTS_OLD.replace("0", firstId),
@@ -136,14 +147,19 @@
     }
 
     // Once the document is ready, we start collecting posts.
-    $(document).ready(function(){
+    $(document).ready(function() {
         console.log("Loading ajax shoutbox");
+
+        loadFirstPosts();
+    });
+
+    function loadFirstPosts() {
         $.ajax({
             url: AJAX_SHOUTBOX_POSTS,
             success: addPostsFront
         });
         waitingEarlier = false;
-    });
+    };
 
     $("#shoutbox_scroll").scroll(function () {
         if (!waitingEarlier && $("#shoutbox_scroll").scrollTop() >= $("#shoutbox_content").height() - $("#shoutbox_scroll").height() - 25) {
