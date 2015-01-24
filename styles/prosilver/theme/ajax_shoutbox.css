@@ -47,22 +47,23 @@ ul.shoutboxlist dl {
     position: relative;
 }
 
-ul.shoutboxlist dt {
+ul.ajaxshoutlist dt {
     width: 10%;
+}
+
+ul.shoutboxlist dt, ul.shoutboxlist dd  {
     font-size: 1.1em;
     margin-right: 5px;
     padding-left: 5px;
 }
 ul.shoutboxlist dd.ajaxshoutbox_date {
     width: 15%;
-    margin-right: 5px;
-    padding-left: 5px;
 }
 ul.shoutboxlist dd.ajaxshoutbox_message {
     width: 70%;
 }
 ul.shoutboxlist dd.ajaxshoutbox_message_with_delete {
-    width: 65% !important;
+    width: 68% !important;
 }
 ul.shoutboxlist dd.ajaxshoutbox_delete {
     width: 5%;
