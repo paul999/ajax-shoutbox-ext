@@ -144,7 +144,7 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	{
 		if ($event['task_name'] == 'cron.task.shoutbox_prune')
 		{
-			$event['task_date'] = (int)$this->config['shoutbox_prune_gc'];
+			$event['task_date'] = (int) $this->config['shoutbox_prune_gc'];
 			if ($event['task_date'] > 0)
 			{
 				$new_task = $event['task_date'] + 24 * 3600;

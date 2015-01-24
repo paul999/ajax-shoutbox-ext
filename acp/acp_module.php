@@ -191,7 +191,7 @@ class acp_module {
 		$old_tz = $user->timezone;
 		try
 		{
-			$user->timezone = new DateTimeZone($config['board_timezone']);
+			$user->timezone = new \DateTimeZone($config['board_timezone']);
 		}
 		catch (\Exception $e)
 		{
