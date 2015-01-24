@@ -48,5 +48,8 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_MISSING_ID'       => 'No se puede eliminar el mensaje',
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'No se puede encontrar el mensaje',
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'El servidor de inserción remoto no está disponible',
+
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'My shoutbox date format',
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specify a date format for just the shoutbox. You should not use a relative date format.',
 	)
 );

@@ -50,6 +50,9 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'تفعيل تهذيب المشاركات',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'تهذيب المشاركات بعد',
 
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Date format',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Default date format for the shoutbox. You shouldn’t use the relative dates, the date won’t update on refresh of the shoutbox',
+
 		'ACP_AJAXSHOUTBOX_PUSH'         => 'تهئية التطبيق',
 		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'رمز التفعيل ',
 		'ACP_AJAXSHOUTBOX_ENABLE_PUSH'  => 'تفعيل تطبيق الأندرويد والـ iOS ',

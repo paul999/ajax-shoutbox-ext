@@ -51,6 +51,9 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'Enable pruning of posts',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'Prune posts after',
 
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Date format',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Default date format for the shoutbox. You shouldn’t use the relative dates, the date won’t update on refresh of the shoutbox',
+
 		'ACP_AJAXSHOUTBOX_PUSH'         => 'App configuration',
 		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'Activation code',
 		'ACP_AJAXSHOUTBOX_ENABLE_PUSH'  => 'Enable android and iOS app',

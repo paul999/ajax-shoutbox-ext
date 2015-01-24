@@ -49,6 +49,9 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'Activer l’archivage',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'Archiver après',
 
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Date format',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Default date format for the shoutbox. You shouldn’t use the relative dates, the date won’t update on refresh of the shoutbox',
+
 		'ACP_AJAXSHOUTBOX_PUSH'         => 'Paramètres des applications',
 		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'Code d’activation',
 		'ACP_AJAXSHOUTBOX_ENABLE_PUSH'  => 'Activer applications Android et iOS',

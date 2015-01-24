@@ -50,6 +50,9 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'Abilita cancellazione automatica dei messaggi',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'Cancella automaticamente messaggi più vecchi di',
 
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Date format',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Default date format for the shoutbox. You shouldn’t use the relative dates, the date won’t update on refresh of the shoutbox',
+
 		'ACP_AJAXSHOUTBOX_PUSH'         => 'Configurazione applicazione',
 		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'Codice di attivazione',
 		'ACP_AJAXSHOUTBOX_ENABLE_PUSH'  => 'Abilita l’applicazione per Android e iOS',

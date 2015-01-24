@@ -1,0 +1,9 @@
+<dl>
+    <dt><label for="ajaxshoutbox_format">{L_AJAXSHOUTBOX_BOARD_DATE_FORMAT}{L_COLON}</label><br /><span>{L_AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN}</span></dt>
+    <dd>
+        <select name="ajaxshoutbox_dateoptions" id="ajaxshoutbox_dateoptions" onchange="if(this.value=='custom'){phpbb.toggleDisplay('ajaxshoutbox_custom_date',1);}else{phpbb.toggleDisplay('ajaxshoutbox_custom_date',-1);} if (this.value == 'custom') { document.getElementById('ajaxshoutbox_custom_date').value = default_dateformat; } else { document.getElementById('dateformat').value = this.value; }">
+            {S_SHOUTBOX_DATEFORMAT_OPTIONS}
+        </select>
+    </dd>
+    <dd id="ajaxshoutbox_custom_date" style="display:none;"><input type="text" name="ajaxshoutbox_format" id="ajaxshoutbox_format" value="{AJAXSHOUTBOX_DATE_FORMAT}" maxlength="30" class="inputbox narrow" style="margin-top: 3px;" /></dd>
+</dl>
