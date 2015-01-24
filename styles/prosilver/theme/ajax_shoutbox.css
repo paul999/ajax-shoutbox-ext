@@ -64,20 +64,13 @@ ul.ajaxshoutboxpost dd
     padding-bottom: 0px;
     margin-bottom: 0px;
     margin-top: 0px;
-    height: 20px;
+    min-height: 20px;
 }
 
 ul.shoutboxlist dd.ajaxshoutbox_date {
     width: 15%;
 }
-ul.shoutboxlist dd.ajaxshoutbox_message {
-    width: 70%;
-}
-ul.shoutboxlist dd.ajaxshoutbox_message_with_delete {
-    width: 65% !important;
-}
 ul.shoutboxlist dd.ajaxshoutbox_delete {
-    width: 5%;
     display: none;
     float: right;
     margin-right: 0px;
@@ -101,16 +94,6 @@ ul.ajaxshoutboxpost dd {
 @media only screen and (max-width: 700px), only screen and (max-device-width: 700px) {
     ul.shoutboxlist dd.ajaxshoutbox_date {
         display: none;
-    }
-    ul.shoutboxlist dd.ajaxshoutbox_message {
-        display: block;
-        width: 85%;
-    }
-    ul.shoutboxlist dd.ajaxshoutbox_message_with_delete {
-        width: 80% !important;
-    }
-    ul.shoutboxlist dd.ajaxshoutbox_delete {
-        width: 5%;
     }
     ul.shoutboxlist dt {
         padding-left: 1px;
