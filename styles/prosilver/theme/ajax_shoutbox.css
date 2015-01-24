@@ -80,6 +80,7 @@ ul.shoutboxlist dd.ajaxshoutbox_delete {
     width: 5%;
     display: none;
     float: right;
+    margin-right: 0px;
 }
 
 ul.ajaxshoutboxpost dt {
@@ -91,7 +92,7 @@ ul.ajaxshoutboxpost dt {
 ul.ajaxshoutboxpost dd {
     float: right;
     min-height: 25px;
-    min-widht: 25px;
+    min-width: 25px;
 }
 #text_shoutbox {
     width: 75%;
