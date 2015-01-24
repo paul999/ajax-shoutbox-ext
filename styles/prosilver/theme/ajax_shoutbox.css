@@ -95,6 +95,9 @@ ul.ajaxshoutboxpost dd {
     ul.shoutboxlist dd.ajaxshoutbox_date {
         display: none;
     }
+    ul.shoutboxlist dd.ajaxshoutbox_message {
+        display: block;
+    }
     ul.shoutboxlist dt {
         padding-left: 1px;
         margin-right: 5px !important;
