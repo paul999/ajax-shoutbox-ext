@@ -28,7 +28,7 @@ class add_date_config extends \phpbb\db\migration\migration
 		return array(
 			'add_columns'        => array(
 				$this->table_prefix . 'users'        => array(
-					'ajaxshoutbox_format'    => array('VCHAR:30', 'd M Y H:i'),
+					'user_ajaxshoutbox_format'    => array('VCHAR:30', 'd M Y H:i'),
 				),
 			),
 		);
@@ -39,7 +39,7 @@ class add_date_config extends \phpbb\db\migration\migration
 		return array(
 			'drop_columns'        => array(
 				$this->table_prefix . 'users'        => array(
-					'ajaxshoutbox_format',
+					'user_ajaxshoutbox_format',
 				),
 			),
 		);

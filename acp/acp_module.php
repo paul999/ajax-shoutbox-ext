@@ -32,6 +32,7 @@ class acp_module {
 		global $config, $phpbb_dispatcher, $phpbb_log;
 
 		$user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
+		$user->add_lang('acp/board');
 
 		$submit = isset($_POST['submit']);
 
