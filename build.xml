@@ -19,6 +19,7 @@
         <echo msg="Deleting files" />
 
         <delete file="${dir}paul999/ajaxshoutbox/composer.lock" />
+        <delete file="${dir}paul999/ajaxshoutbox/README.md" />
         <delete dir="${dir}paul999/ajaxshoutbox/travis/" />
         <delete file="${dir}paul999/ajaxshoutbox/.gitignore" />
         <delete file="${dir}paul999/ajaxshoutbox/.travis.yml" />
