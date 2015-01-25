@@ -47,6 +47,7 @@ class acp_module {
 			)
 		);
 
+		// We only show the app settings if it is enabled.
 		if (defined('AJAXSHOUTBOX_SHOW_APP'))
 		{
 			$display_vars['vars'] += array(
@@ -65,6 +66,13 @@ class acp_module {
 													   'validate' => 'string', 'type' => 'text:40:255',
 													   'explain'  => true
 				),
+			);
+		}
+		else
+		{
+			$display_vars['vars'] += array(
+				'legend2'       => 'ACP_AJAXSHOUTBOX_PUSH',
+				'ajaxshoutbox_push_disabled'  => array('lang' => 'ACP_AJAXSHOUTBOX_PUSH_DISABLED', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'push_disabled',),
 			);
 		}
 
@@ -86,6 +94,7 @@ class acp_module {
 		extract($phpbb_dispatcher->trigger_event('paul999.ajaxshoutbox.shoutbox_config_edit_add', compact($vars)));
 
 		$this->new_config = $config;
+		// Copied from acp_board.php
 		$cfg_array = (isset($_REQUEST['config'])) ? utf8_normalize_nfc($request->variable('config', array('' => ''), true)) : $this->new_config;
 		$error = array();
 
@@ -105,7 +114,7 @@ class acp_module {
 		// We go through the display_vars to make sure no one is trying to set variables he/she is not allowed to...
 		foreach ($display_vars['vars'] as $config_name => $null)
 		{
-			if (!isset($cfg_array[$config_name]) || strpos($config_name, 'legend') !== false || $config_name == 'ajaxshoutbox_validation_id')
+			if (!isset($cfg_array[$config_name]) || strpos($config_name, 'legend') !== false || $config_name == 'ajaxshoutbox_validation_id' || $config_name == 'ajaxshoutbox_push_disabled')
 			{
 				continue;
 			}
@@ -192,6 +201,17 @@ class acp_module {
 		global $config;
 
 		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong>';
+	}
+	function push_disabled()
+	{
+		global $user;
+
+		// Yes, I agree, it should be in the html file.
+		// However, as the files are generated based on acp_board, and this code is temporary,
+		// I put it here for now.
+		$html = '<div class="codebox"><code>define("AJAXSHOUTBOX_SHOW_APP", true);</code></div>';
+
+		return $user->lang['ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'] . $html;
 	}
 
 	/**

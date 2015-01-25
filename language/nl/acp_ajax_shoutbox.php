@@ -66,5 +66,8 @@ $lang = array_merge(
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH' => 'Connection ID',
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH_EXPLAIN' => 'Deze ID zal je ontvangen wanneer je je forum toevoegt op www.shoutbox-app.com.
 			<br />Je gebruikers kunnen dit ID gebruiken om je forum te vinden in de APP.',
-	)
+
+		'AJAXSHOUTBOX_PUSH_DISABLED'            => 'Push features uitgeschakeld',
+		'AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'De push features zijn, standaard, uitgeschakeld. Wanneer je deze functionaliteit wilt inschakelen voeg je de volgende code toe aan je config.php:',
+	     )
 );
