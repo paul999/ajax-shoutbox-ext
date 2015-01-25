@@ -39,7 +39,7 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
-		'ACL_U_SHOUTBOX_VIEW'   => 'Mag ajax shoutbox bekijkenCan view ajax shoutbox',
+		'ACL_U_SHOUTBOX_VIEW'   => 'Mag ajax shoutbox bekijken',
 		'ACL_U_SHOUTBOX_POST'   => 'Mag berichten posten in ajax shoutbox',
 		'ACL_U_SHOUTBOX_QUOTE'  => 'Mag quote gebruiken in ajax shoutbox',
 		'ACL_U_SHOUTBOX_BBCODE' => 'Mag BBCode gebruiken in ajax shoutbox',

@@ -1,10 +1,11 @@
 ajax-shoutbox-ext
 =================
-[![Build Status](https://travis-ci.org/paul999/ajax-shoutbox-ext.svg)](https://travis-ci.org/paul999/ajax-shoutbox-ext)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/paul999/ajax-shoutbox-ext/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/paul999/ajax-shoutbox-ext/?branch=master)
+[![Build Status](https://travis-ci.org/paul999/ajax-shoutbox-ext.svg?branch=develop-stable)](https://travis-ci.org/paul999/ajax-shoutbox-ext)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/paul999/ajax-shoutbox-ext/badges/quality-score.png?b=develop-stable)](https://scrutinizer-ci.com/g/paul999/ajax-shoutbox-ext/?branch=develop-stable)
 
 # Support
-Support is only provide at [http://www.ajax-shoutbox.com](http://www.ajax-shoutbox.com). Support requested at other places will be ignored or redirected.
+Support is mainly provided at [http://www.ajax-shoutbox.com](http://www.ajax-shoutbox.com).
+Support for the iOS and Android app is only provide for BETA testers at [http://www.ajax-shoutbox.com](http://www.ajax-shoutbox.com).
 
 # Installation
 
@@ -15,7 +16,7 @@ After that enable it in ACP -> Customise -> Extensions and enable the ajax shout
 
 ## From git:
 Clone the repository into your ext/ directory for phpBB:
-git clone https://github.com/paul999/profile-guestbook-ext.git phpBB3/ext/paul999/ajaxshoutbox
+git clone -b develop-stable https://github.com/paul999/ajax-shoutbox-ext.git phpBB3/ext/paul999/ajaxshoutbox
 
 After that enable it in ACP -> Customise -> Extensions and enable the ajax shoutbox extension.
 
@@ -27,10 +28,10 @@ Please submit your translation as pull request in github. Make sure to use a pro
 
 PRs with incomplete translations or without proper commit message will be closed.
 
+Please try to keep your translation up to date. If to many strings are untranslated before a release, it might be removed.
+
 # License
 
 [GPLv2](license.txt)
 
-# Known issues
- - The time is not updated when the shoutbox refreshes, causing issues when using relative time.
 
