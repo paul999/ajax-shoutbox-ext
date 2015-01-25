@@ -104,6 +104,10 @@ class main_controller
 	public function validate($id)
 	{
 		$result = array();
+
+		// Language used here won't be seen by the user.
+		// It is used on shoutbox-app.com to specify the result.
+		// Do not change.
 		if ($this->config['ajaxshoutbox_push_enabled']) {
 			if ($id == $this->config['ajaxshoutbox_validation_id']) {
 				$result['ok'] = 'ok';
@@ -327,7 +331,6 @@ class main_controller
 			'id'      => $row['shout_id'],
 			'user'    => $username,
 			'date'    => $this->user->format_date($row['post_time'], $this->user->data['user_ajaxshoutbox_format']),
-			// This will cause issues with non refreshing posts.
 			'message' => $text,
 			'delete'  => ($this->auth->acl_get('m_shoutbox_delete') || ($this->auth->acl_get('u_shoutbox_delete') && $row['user_id'] == $this->user->data['user_id'])),
 		);

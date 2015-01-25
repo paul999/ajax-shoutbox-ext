@@ -119,13 +119,10 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 			$dateformat_options .= '</option>';
 		}
 
-		$s_custom = false;
-
 		$dateformat_options .= '<option value="custom"';
 		if (!isset($this->user->lang['dateformats'][$data['ajaxshoutbox_format']]))
 		{
 			$dateformat_options .= ' selected="selected"';
-			$s_custom = true;
 		}
 		$dateformat_options .= '>' . $this->user->lang['CUSTOM_DATEFORMAT'] . '</option>';
 
