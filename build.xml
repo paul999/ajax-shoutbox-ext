@@ -3,7 +3,7 @@
 <project name="shoutbox-ext" default="build">
 
     <!-- Format: V1.0.0-BETA1 -->
-    <property name="version" value="V1.0.0-RC1" />
+    <property name="version" value="V1.0.0" />
 
     <target name="export">
         <echo msg="Exporting archive" />
