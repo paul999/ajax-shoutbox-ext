@@ -41,7 +41,7 @@ $lang = array_merge(
 	$lang, array(
 		'ACP_AJAXSHOUTBOX_SETTINGS'     => 'Paramètres Ajax Shoutbox',
 		'ACP_AJAXSHOUTBOX_SETTINGS_EXPLAIN'     => 'Sur cette page vous pouvez modifier les paramètres spécifiques à la shoutbox<br /><br />
-		Si vous voulez permettre à vos utilisateurs l’usage des applications Android et iOS (actuellements en béta fermée mais il pourront l’utiliser si ils y ont accès. Voir <a href="http://www.ajax-shoutbox.com/viewtopic.php?f=2&t=9">here</a> pour plus d’informations)
+		Si vous voulez permettre à vos utilisateurs l’usage des applications Android et iOS (actuellements en béta fermée mais il pourront l’utiliser si ils y ont accès. Voir <a href="http://www.ajax-shoutbox.com/viewtopic.php?f=2&t=9">ici</a> pour plus d’informations)
 		, vous devez créer un compte sur <a href="https://www.shoutbox-app.com/">www.shoutbox-app.com</a> 
 		et ajouter un nouveau forum. Un code d’activation vous sera demandé. Ce code est affiché ci-dessous :',
 
@@ -61,7 +61,7 @@ $lang = array_merge(
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH' => 'ID Connection',
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH_EXPLAIN' => 'Vous recevrez cette clé après avoir ajouter votre forum sur www.shoutbox-app.com<br />Vos utilisateurs utiliseront cet ID pour trouver votre plateforme dans l’application mobile.',
 
-		'AJAXSHOUTBOX_PUSH_DISABLED'            => 'Push functionality disabled',
-		'AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'The Push functionality is, by default, disabled. If you want to use this functionality add the following line to config.php: ',
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED'            => 'Push functionality disabled',
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'The Push functionality is, by default, disabled. If you want to use this functionality add the following line to config.php: ',
 	)
 );
