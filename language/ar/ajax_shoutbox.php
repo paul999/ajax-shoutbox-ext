@@ -6,6 +6,7 @@
  * @copyright (c) 2014 Paul Sohier <http://www.ajax-shoutbox.com>
  * @license       GNU General Public License, version 2 (GPL-2.0)
  *
+ * Translated By : Bassel Taha Alhitary - www.alhitary.net
  */
 
 /**
@@ -39,15 +40,15 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
-		'AJAX_SHOUTBOX'                  => 'Shoutbox',
-		'AJAX_SHOUTBOX_MESSAGE'          => 'Add message',
-		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'Sorry, posting in the shoutbox is only supported when JavaScript is enabled',
-		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'No permission for the selected action',
-		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'Message empty',
-		'AJAX_SHOUTBOX_ERROR'            => 'Error',
-		'AJAX_SHOUTBOX_MISSING_ID'       => 'Unable to delete post',
-		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Unable to find post',
-		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'The remote push server is currently not available',
+		'AJAX_SHOUTBOX'                  => 'الدردشة أجاكس',
+		'AJAX_SHOUTBOX_MESSAGE'          => 'ارسل رسالتك',
+		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'المعذرة , يجب تفعيل الجافا سكربت لكي تعمل هذه الدردشة.',
+		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'لا توجد صلاحية لتنفيذ هذا الأمر',
+		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'الرسالة فارغة',
+		'AJAX_SHOUTBOX_ERROR'            => 'خطأ',
+		'AJAX_SHOUTBOX_MISSING_ID'       => 'لا يُمكن حذف المشاركة',
+		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'لا يُمكن العثور على المشاركة',
+		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'الخدمة عير متوفرة حالياً',
 
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'My shoutbox date format',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specify a date format for just the shoutbox. You should not use a relative date format.',

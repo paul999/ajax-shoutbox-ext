@@ -326,7 +326,7 @@ class main_controller
 		return array(
 			'id'      => $row['shout_id'],
 			'user'    => $username,
-			'date'    => $this->user->format_date($row['post_time']),
+			'date'    => $this->user->format_date($row['post_time'], $this->user->data['user_ajaxshoutbox_format']),
 			// This will cause issues with non refreshing posts.
 			'message' => $text,
 			'delete'  => ($this->auth->acl_get('m_shoutbox_delete') || ($this->auth->acl_get('u_shoutbox_delete') && $row['user_id'] == $this->user->data['user_id'])),

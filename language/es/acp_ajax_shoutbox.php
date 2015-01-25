@@ -51,6 +51,9 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'Habilitar purgado de mensajes',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'Purgar mensajes después',
 
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Date format',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Default date format for the shoutbox. You shouldn’t use the relative dates, the date won’t update on refresh of the shoutbox',
+
 		'ACP_AJAXSHOUTBOX_PUSH'         => 'Configuración de App',
 		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'Código de activación',
 		'ACP_AJAXSHOUTBOX_ENABLE_PUSH'  => 'Habilitar iOS y Android App',

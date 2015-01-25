@@ -50,23 +50,30 @@ ul.shoutboxlist dl {
 ul.shoutboxlist dt {
     width: 10%;
     font-size: 1.1em;
+}
+
+ul.shoutboxlist dt,
+ul.shoutboxlist dd.ajaxshoutbox_date,
+ul.shoutboxlist dd.ajaxshoutbox_message,
+ul.shoutboxlist dd.ajaxshoutbox_delete,
+ul.ajaxshoutboxpost dd
+{
     margin-right: 5px;
     padding-left: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    min-height: 20px;
 }
+
 ul.shoutboxlist dd.ajaxshoutbox_date {
     width: 15%;
-    margin-right: 5px;
-    padding-left: 5px;
-}
-ul.shoutboxlist dd.ajaxshoutbox_message {
-    width: 70%;
-}
-ul.shoutboxlist dd.ajaxshoutbox_message_with_delete {
-    width: 65% !important;
 }
 ul.shoutboxlist dd.ajaxshoutbox_delete {
-    width: 5%;
     display: none;
+    float: right;
+    margin-right: 0px;
 }
 
 ul.ajaxshoutboxpost dt {
@@ -76,9 +83,9 @@ ul.ajaxshoutboxpost dt {
     min-height: 25px;
 }
 ul.ajaxshoutboxpost dd {
-    width: 15%;
-    margin-right: 5px;
-    padding-left: 5px;
+    float: right;
+    min-height: 25px;
+    min-width: 25px;
 }
 #text_shoutbox {
     width: 75%;
@@ -90,13 +97,6 @@ ul.ajaxshoutboxpost dd {
     }
     ul.shoutboxlist dd.ajaxshoutbox_message {
         display: block;
-        width: 85%;
-    }
-    ul.shoutboxlist dd.ajaxshoutbox_message_with_delete {
-        width: 80% !important;
-    }
-    ul.shoutboxlist dd.ajaxshoutbox_delete {
-        width: 5%;
     }
     ul.shoutboxlist dt {
         padding-left: 1px;

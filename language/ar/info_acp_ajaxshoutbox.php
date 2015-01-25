@@ -6,6 +6,7 @@
  * @copyright (c) 2014 Paul Sohier <http://www.ajax-shoutbox.com>
  * @license       GNU General Public License, version 2 (GPL-2.0)
  *
+ * Translated By : Bassel Taha Alhitary - www.alhitary.net
  */
 
 /**
@@ -39,17 +40,11 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
-		'AJAX_SHOUTBOX'                  => 'Shoutbox',
-		'AJAX_SHOUTBOX_MESSAGE'          => 'Add message',
-		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'Sorry, posting in the shoutbox is only supported when JavaScript is enabled',
-		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'No permission for the selected action',
-		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'Message empty',
-		'AJAX_SHOUTBOX_ERROR'            => 'Error',
-		'AJAX_SHOUTBOX_MISSING_ID'       => 'Unable to delete post',
-		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Unable to find post',
-		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'The remote push server is currently not available',
+		'LOG_AJAX_SHOUTBOX_ERROR'    => '<strong>هناك خطأ غير مقصود حدث اثناء ارسال رسالتك إلى سيرفر الخدمة</strong>',
+		'LOG_AJAX_SHOUTBOX_PRUNED'   => '<strong>تم التهذيب وحذف عدد %d رسائل دردشة</strong>',
+		'LOG_AJAX_SHOUTBOX_CONFIG_SETTINGS' => '<strong>تم تحديث الإعدادات بنجاح</strong>',
 
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'My shoutbox date format',
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specify a date format for just the shoutbox. You should not use a relative date format.',
+		'ACP_AJAX_SHOUTBOX'          => 'الدردشة أجاكس',
+		'ACP_AJAX_SHOUTBOX_SETTINGS' => 'الإعدادات',
 	)
 );

@@ -1,0 +1,38 @@
+<!-- IF A_AJAXSHOUTBOX_DATE_FORMAT -->
+    <script type="text/javascript">
+        // <![CDATA[
+        (function($) { // Avoid conflicts with other libraries
+
+            var ajaxshoutbox_date_format = '{A_AJAXSHOUTBOX_DATE_FORMAT}';
+            var default_dateformat = '{A_DEFAULT_DATEFORMAT}';
+            function customShoutboxDates()
+            {
+                var e = document.getElementById('ajaxshoutbox_dateoptions');
+                e.selectedIndex = e.length - 1;
+                // Loop and match date_format in menu
+                for (var i = 0; i < e.length; i++)
+                {
+                    if (e.options[i].value == date_format)
+                    {
+                        e.selectedIndex = i;
+                        break;
+                    }
+                }
+                // Show/hide custom field
+                if (e.selectedIndex == e.length - 1)
+                {
+                    phpbb.toggleDisplay('ajaxshoutbox_custom_date',1);
+                }
+                else
+                {
+                    phpbb.toggleDisplay('ajaxshoutbox_custom_date',-1);
+                }
+            }
+
+            $(document).ready(function() {
+                customShoutboxDates();
+            });
+        })(jQuery);
+        // ]]>
+    </script>
+<!-- ENDIF -->

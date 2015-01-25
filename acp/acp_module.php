@@ -30,6 +30,7 @@ class acp_module {
 		global $config, $phpbb_dispatcher, $phpbb_log;
 
 		$user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
+		$user->add_lang('acp/board');
 
 		$submit = isset($_POST['submit']);
 
@@ -42,6 +43,7 @@ class acp_module {
 				'legend1'				=> 'ACP_AJAXSHOUTBOX_PRUNE',
 				'ajaxshoutbox_enable_prune'			=> array('lang' => 'AJAXSHOUTBOX_ENABLE_PRUNE',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => false),
 				'ajaxshoutbox_prune_days'			=> array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS',			'validate' => 'int',	'type' => 'number:0:9999','explain' => false, 'append' => ' ' . $user->lang['DAYS']),
+				'ajaxshoutbox_date_format'      	=> array('lang' => 'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT',	'validate' => 'string',	'type' => 'custom', 'method' => 'dateformat_select', 'explain' => true),
 
 				'legend2'               => 'ACP_AJAXSHOUTBOX_PUSH',
 				'ajaxshoutbox_validation_id'		=> array('lang' => 'AJAXSHOUTBOX_ACTIVATION_KEY',			'validate' => 'string',	'type' => 'custom','explain' => false, 'method' => 'key'),
@@ -172,5 +174,49 @@ class acp_module {
 		global $config;
 
 		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong>';
+	}
+
+	/**
+	 * Set the date format.
+	 * @param $value
+	 * @param $key
+	 *
+	 * @return string
+	 */
+	function dateformat_select($value, $key)
+	{
+		global $user, $config;
+		// Let the format_date function operate with the acp values
+		$old_tz = $user->timezone;
+		try
+		{
+			$user->timezone = new \DateTimeZone($config['board_timezone']);
+		}
+		catch (\Exception $e)
+		{
+			// If the board timezone is invalid, we just use the users timezone.
+		}
+		$dateformat_options = '';
+		foreach ($user->lang['dateformats'] as $format => $null)
+		{
+			if (strpos($format, '|') === 0) // Skip relative formats!
+			{
+				continue;
+			}
+
+			$dateformat_options .= '<option value="' . $format . '"' . (($format == $value) ? ' selected="selected"' : '') . '>';
+			$dateformat_options .= $user->format_date(time(), $format, false) . ((strpos($format, '|') !== false) ? $user->lang['VARIANT_DATE_SEPARATOR'] . $user->format_date(time(), $format, true) : '');
+			$dateformat_options .= '</option>';
+		}
+		$dateformat_options .= '<option value="custom"';
+		if (!isset($user->lang['dateformats'][$value]))
+		{
+			$dateformat_options .= ' selected="selected"';
+		}
+		$dateformat_options .= '>' . $user->lang['CUSTOM_DATEFORMAT'] . '</option>';
+		// Reset users date options
+		$user->timezone = $old_tz;
+		return "<select name=\"dateoptions\" id=\"dateoptions\" onchange=\"if (this.value == 'custom') { document.getElementById('" . addslashes($key) . "').value = '" . addslashes($value) . "'; } else { document.getElementById('" . addslashes($key) . "').value = this.value; }\">$dateformat_options</select>
+		<input type=\"text\" name=\"config[$key]\" id=\"$key\" value=\"$value\" maxlength=\"30\" />";
 	}
 }
