@@ -18,6 +18,7 @@
         <exec dir="${dir}paul999/ajaxshoutbox" command="composer.phar install --no-dev --optimize-autoloader" checkreturn="true" />
         <echo msg="Deleting files" />
 
+        <delete file="${dir}paul999/ajaxshoutbox/build.xml" />
         <delete file="${dir}paul999/ajaxshoutbox/composer.lock" />
         <delete file="${dir}paul999/ajaxshoutbox/README.md" />
         <delete dir="${dir}paul999/ajaxshoutbox/travis/" />
