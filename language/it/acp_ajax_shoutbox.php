@@ -49,7 +49,10 @@ $lang = array_merge(
 		'ACP_AJAXSHOUTBOX_PRUNE'        => 'Impostazioni cancellazione automatica',
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'Abilita cancellazione automatica dei messaggi',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'Cancella automaticamente messaggi più vecchi di',
-		
+
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Formato data',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Formato data predefinito per la bacheca. Non è consigliato l’uso di formati data relativi: la data non si aggiornerebbe quando la bacheca si ricarica',
+
 		'ACP_AJAXSHOUTBOX_PUSH'         => 'Configurazione applicazione',
 		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'Codice di attivazione',
 		'ACP_AJAXSHOUTBOX_ENABLE_PUSH'  => 'Abilita l’applicazione per Android e iOS',
@@ -59,5 +62,9 @@ $lang = array_merge(
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH' => 'ID connessione',
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH_EXPLAIN' => 'Riceverai questa chiave dopo aver aggiunto il tuo forum su www.shoutbox-app.com.<br />
 			I tuoi utenti useranno questo ID per trovare il tuo forum nell’applicazione.',
+
+ 		'ACP_AJAXSHOUTBOX_PUSH_DISABLED'            => 'Funzione push disattivata',
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'Per impostazione predefinita, la funzione push è disattivata. Per poterla usare, aggiungere la seguente riga di codice al file config.php: ',
 	)
 );
+
