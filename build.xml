@@ -3,7 +3,7 @@
 <project name="shoutbox-ext" default="build">
 
     <!-- Format: V1.0.0-BETA1 -->
-    <property name="version" value="V1.0.0" />
+    <property name="version" value="V1.0.2" />
 
     <target name="export">
         <echo msg="Exporting archive" />
@@ -35,7 +35,7 @@
         <phingcall target="build">
 
         </phingcall>
-        <exec dir="." command="git push --tags" />
+        <!--<exec dir="." command="git push - -tags" /> -->
 
         <echo msg="Release created" />
     </target>

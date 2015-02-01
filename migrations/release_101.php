@@ -17,7 +17,6 @@ class release_101 extends migration
 	{
 		return array(
 			'\paul999\ajaxshoutbox\migrations\release_100',
-//			'\paul999\ajaxshoutbox\migrations\release_101rc2',
 		);
 	}
 
