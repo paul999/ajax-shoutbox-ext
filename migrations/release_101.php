@@ -11,19 +11,20 @@ namespace paul999\ajaxshoutbox\migrations;
 
 use phpbb\db\migration\migration;
 
-class release_100 extends migration
+class release_101 extends migration
 {
 	static public function depends_on()
 	{
 		return array(
-			'\paul999\ajaxshoutbox\migrations\release_100rc1',
+			'\paul999\ajaxshoutbox\migrations\release_100',
+//			'\paul999\ajaxshoutbox\migrations\release_101rc2',
 		);
 	}
 
 	public function update_data()
 	{
 		return array(
-			array('config.update', array('profile_guestbook_version', '1.0.0'))
+			array('config.update', array('profile_guestbook_version', '1.0.1'))
 		);
 	}
 }
