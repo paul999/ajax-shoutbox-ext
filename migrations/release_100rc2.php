@@ -16,7 +16,7 @@ class release_100rc2 extends migration
 	static public function depends_on()
 	{
 		return array(
-			'\paul999\ajaxshoutbox\migrations\release_100rc2',
+			'\paul999\ajaxshoutbox\migrations\release_100rc1',
 		);
 	}
 
