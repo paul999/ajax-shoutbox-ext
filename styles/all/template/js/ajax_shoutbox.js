@@ -91,7 +91,14 @@
             $(element).find("[data-type='delete-id']").attr('value', post.id);
             $(element).find("[data-type='message']").addClass('ajaxshoutbox_message_with_delete');
 
+            $(element).find("[data-type='delete-form-time']").attr('value', post.creation_time);
+            $(element).find("[data-type='delete-form-token']").attr('value', post.form_token);
+
             // The ajaxify call for the form will be called later in the method!
+        }
+        else
+        {
+            $(element).find("[data-type='delete']").hide()
         }
 
         if (front && lastId != -1) {

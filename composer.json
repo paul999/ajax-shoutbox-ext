@@ -3,8 +3,8 @@
     "type": "phpbb-extension",
     "description": "A simple shoutbox for phpBB 3.1",
     "homepage": "https://www.ajax-shoutbox.com",
-    "version": "1.0.1",
-    "time": "2015-02-01",
+    "version": "1.0.2",
+    "time": "2015-03-07",
     "license": "GPL-2.0",
     "authors": [{
         "name": "Paul Sohier",

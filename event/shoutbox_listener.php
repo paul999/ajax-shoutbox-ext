@@ -160,6 +160,8 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	{
 		$this->user->add_lang_ext('paul999/ajaxshoutbox', 'ajax_shoutbox');
 
+		add_form_key('ajaxshoutbox_posting');
+
 		$this->template->assign_vars(
 			array(
 				'S_AJAX_SHOUTBOX'    => $this->auth->acl_get('u_shoutbox_view'),
