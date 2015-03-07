@@ -55,8 +55,8 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	 */
 	public function run()
 	{
-		$time = strtotime('- ' . $this->config['ajaxshoutbox_prune_days']  . ' days');
-		$sql = 'SELECT * FROM ' . $this->table . ' WHERE post_time <= ' . $time;
+		$time = strtotime('- ' . (int) $this->config['ajaxshoutbox_prune_days']  . ' days');
+		$sql = 'SELECT * FROM ' . $this->table . ' WHERE post_time <= ' . (int) $time;
 
 		$result = $this->db->sql_query($sql);
 		$canpush = $this->push->canPush();
@@ -86,7 +86,7 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 
 			if (!$uuid)
 			{
-				$uuid = ANONYMOUS;
+				$uuid = ANONYMOUS; // the log interface doesn't fall back to ANONYMOUS as the add_log function did...
 			}
 
 			$this->log->add('admin', $uuid, $this->user->ip, 'LOG_AJAX_SHOUTBOX_PRUNED', time(), array(sizeof($delete)));
@@ -109,6 +109,6 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	 */
 	public function should_run()
 	{
-		return $this->config['shoutbox_prune_gc'] < strtotime('24 hours ago');
+		return (int) $this->config['shoutbox_prune_gc'] < strtotime('24 hours ago');
 	}
 }

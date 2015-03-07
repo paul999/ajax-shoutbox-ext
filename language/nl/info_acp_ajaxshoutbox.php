@@ -39,18 +39,12 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
-		'AJAX_SHOUTBOX'                  => 'Bacheca',
-		'AJAX_SHOUTBOX_MESSAGE'          => 'Messaggio',
-		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'Per poter utilizzare la bacheca è necessario abilitare JavaScript',
-		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'Permessi insufficienti per l’azione selezionata',
-		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'Messaggio vuoto',
-		'AJAX_SHOUTBOX_ERROR'            => 'Errore',
-		'AJAX_SHOUTBOX_MISSING_ID'       => 'Impossibile rimuovere il messaggio',
-		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Impossibile trovare il messaggio',
-		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'Il server push remoto non è al momento disponibile',
+		'LOG_AJAX_SHOUTBOX_ERROR'    => '<strong>Een exceptie trad op tijdens het pushen van een shoutbox bericht naar de remote server.</strong>',
+		'LOG_AJAX_SHOUTBOX_PRUNED'   => '<strong>Shoutbox pruned en %s berichten verwijderd</strong>',
+		'LOG_AJAX_SHOUTBOX_CONFIG_SETTINGS' => '<strong>Ajax shoutbox instellingen aangepast</strong>',
 
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Formato data bacheca',
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specificare un formato data per la bacheca. Non è consigliato l’uso di formati data relativi.',
+		'ACP_AJAX_SHOUTBOX'          => 'Ajax Shoutbox',
+		'ACP_AJAX_SHOUTBOX_SETTINGS' => 'Shoutbox instellingen',
+
 	)
 );
-

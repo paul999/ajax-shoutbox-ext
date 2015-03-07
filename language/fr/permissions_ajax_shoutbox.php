@@ -2,6 +2,7 @@
 /**
  *
  * Ajax Shoutbox extension for the phpBB Forum Software package.
+ * @translated into French by Psykofloyd & Galixte (http://www.galixte.com)
  *
  * @copyright (c) 2014 Paul Sohier <http://www.ajax-shoutbox.com>
  * @license       GNU General Public License, version 2 (GPL-2.0)
@@ -42,9 +43,9 @@ $lang = array_merge(
 		'ACL_U_SHOUTBOX_VIEW'   => 'Peut voir la shoutbox',
 		'ACL_U_SHOUTBOX_POST'   => 'Peut poster dans la shoutbox',
 		'ACL_U_SHOUTBOX_QUOTE'  => 'Peut citer dans la shoutbox',
-		'ACL_U_SHOUTBOX_BBCODE' => 'Peut utiliser BBCode dans la shoutbox',
-		'ACL_U_SHOUTBOX_DELETE' => 'Peut supprimer ses post dans la shoutbox',
-		'ACL_M_SHOUTBOX_DELETE' => 'Peut supprimer les post dans la shoutbox',
-		'ACL_M_SHOUTBOX_EDIT'   => 'Peut editer dans la shoutbox',
+		'ACL_U_SHOUTBOX_BBCODE' => 'Peut utiliser les BBCodes dans la shoutbox',
+		'ACL_U_SHOUTBOX_DELETE' => 'Peut supprimer ses messages dans la shoutbox',
+		'ACL_M_SHOUTBOX_DELETE' => 'Peut supprimer les messages dans la shoutbox',
+		'ACL_M_SHOUTBOX_EDIT'   => 'Peut modifier dans la shoutbox',
 	)
 );

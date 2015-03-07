@@ -61,5 +61,9 @@ $lang = array_merge(
 		'ACP_AJAXSHOUTBOX_API_KEY_PUSH_EXPLAIN' => 'سوف تستلم هذا المفتاح بعد إضافة منتداك إلى www.shoutbox-app.com',
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH' => 'مفتاح الإتصال ',
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH_EXPLAIN' => 'سوف تستلم هذا المفتاح بعد إضافة منتداك إلى www.shoutbox-app.com.<br />يجب على أعضاء منتداك استخدام هذا المفتاح للعثور على منتداك في التطبيق.',
+
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED'            => 'Push functionality disabled',
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'The Push functionality is, by default, disabled. If you want to use this functionality add the following line to config.php: ',
+
 	)
 );

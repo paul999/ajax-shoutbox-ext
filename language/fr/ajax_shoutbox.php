@@ -2,6 +2,7 @@
 /**
  *
  * Ajax Shoutbox extension for the phpBB Forum Software package.
+ * @translated into French by Psykofloyd & Galixte (http://www.galixte.com)
  *
  * @copyright (c) 2014 Paul Sohier <http://www.ajax-shoutbox.com>
  * @license       GNU General Public License, version 2 (GPL-2.0)
@@ -40,16 +41,16 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge(
 	$lang, array(
 		'AJAX_SHOUTBOX'                  => 'Shoutbox',
-		'AJAX_SHOUTBOX_MESSAGE'          => 'Poster message',
-		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'Désolé, JavaScript doit être activé',
-		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'Vous n’avez pas la permission d’effectuer l’action séléctionée.',
+		'AJAX_SHOUTBOX_MESSAGE'          => 'Poster un message',
+		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'Désolé, pour poster dans la shoutbox JavaScript doit être activé',
+		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'Vous n’avez pas l’autorisation d’effectuer l’action sélectionnée.',
 		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'Message vide',
 		'AJAX_SHOUTBOX_ERROR'            => 'Erreur',
-		'AJAX_SHOUTBOX_MISSING_ID'       => 'Impossible de supprimer ce post',
-		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Post introuvable',
+		'AJAX_SHOUTBOX_MISSING_ID'       => 'Impossible de supprimer ce message',
+		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Message introuvable',
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'Le serveur distant n’est pas disponible.',
 
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'My shoutbox date format',
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specify a date format for just the shoutbox. You should not use a relative date format.',
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Format de la date de la shoutbox',
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Spécifiez un format de la date dédié uniquement à la shoutbox. Vous ne devriez pas utiliser un format relatif pour la date.',
 	)
 );

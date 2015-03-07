@@ -39,18 +39,12 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
-		'AJAX_SHOUTBOX'                  => 'Bacheca',
-		'AJAX_SHOUTBOX_MESSAGE'          => 'Messaggio',
-		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'Per poter utilizzare la bacheca è necessario abilitare JavaScript',
-		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'Permessi insufficienti per l’azione selezionata',
-		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'Messaggio vuoto',
-		'AJAX_SHOUTBOX_ERROR'            => 'Errore',
-		'AJAX_SHOUTBOX_MISSING_ID'       => 'Impossibile rimuovere il messaggio',
-		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Impossibile trovare il messaggio',
-		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'Il server push remoto non è al momento disponibile',
-
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Formato data bacheca',
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specificare un formato data per la bacheca. Non è consigliato l’uso di formati data relativi.',
+		'ACL_U_SHOUTBOX_VIEW'   => 'Mag ajax shoutbox bekijken',
+		'ACL_U_SHOUTBOX_POST'   => 'Mag berichten posten in ajax shoutbox',
+		'ACL_U_SHOUTBOX_QUOTE'  => 'Mag quote gebruiken in ajax shoutbox',
+		'ACL_U_SHOUTBOX_BBCODE' => 'Mag BBCode gebruiken in ajax shoutbox',
+		'ACL_U_SHOUTBOX_DELETE' => 'Kan eigen berichten verwijderen in ajax shoutbox',
+		'ACL_M_SHOUTBOX_DELETE' => 'Kan berichten verwijderen in ajax shoutbox',
+		'ACL_M_SHOUTBOX_EDIT'   => 'Mag berichten bewerken in ajax shoutbox',
 	)
 );
-
