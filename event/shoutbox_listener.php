@@ -30,10 +30,12 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	private $request;
 
 	/**
+	 * @param \phpbb\config\config     $config
 	 * @param \phpbb\user              $user
 	 * @param \phpbb\template\template $template
 	 * @param \phpbb\controller\helper $helper
 	 * @param \phpbb\auth\auth         $auth
+	 * @param \phpbb\request\request   $request
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\user $user, \phpbb\template\template $template,
 								\phpbb\controller\helper $helper, \phpbb\auth\auth $auth, \phpbb\request\request $request)

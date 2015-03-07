@@ -26,6 +26,7 @@ class push
 
 	/**
 	 * @param \phpbb\config\config $config
+	 * @param \phpbb\user          $user
 	 * @param \phpbb\log\log       $log
 	 *
 	 */

@@ -63,8 +63,8 @@ class main_controller
 	 * @param \phpbb\db\driver\driver_interface    $db
 	 * @param \phpbb\auth\auth                     $auth
 	 * @param \phpbb\log\log                       $log
-	 * @param \paul999\ajaxshoutbox\actions\Delete $delete
-	 * @param \paul999\ajaxshoutbox\actions\Push   $push
+	 * @param \paul999\ajaxshoutbox\actions\delete $delete
+	 * @param \paul999\ajaxshoutbox\actions\push   $push
 	 * @param string                               $root_path
 	 * @param string                               $php_ext
 	 * @param string                               $table
@@ -73,7 +73,7 @@ class main_controller
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
 								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
 								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\log\log $log,
-								\paul999\ajaxshoutbox\actions\Delete $delete, \paul999\ajaxshoutbox\actions\Push $push,
+								\paul999\ajaxshoutbox\actions\delete $delete, \paul999\ajaxshoutbox\actions\push $push,
 								$root_path, $php_ext, $table, $usertable)
 	{
 		$this->config    = $config;
@@ -139,9 +139,10 @@ class main_controller
 
 		if ($this->request->is_ajax())
 		{
-			$message = $msg     = trim(utf8_normalize_nfc($this->request->variable('text_shoutbox', '', true)));
+			$message = $msg     = trim($this->request->variable('text_shoutbox', '', true));
 
-			if (empty($message)) {
+			if (empty($message))
+			{
 				return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_MESSAGE_EMPTY', 500);
 			}
 
@@ -167,7 +168,8 @@ class main_controller
 			$sql    = 'INSERT INTO ' . $this->table . ' ' . $this->db->sql_build_array('INSERT', $insert);
 			$this->db->sql_query($sql);
 
-			if ($this->push->canPush()) {
+			if ($this->push->canPush())
+			{
 				// User configured us to submit the shoutbox post to the iOS/Android app
 				$this->push->post($msg, $insert['post_time'], $this->user->data['username'], $this->db->sql_nextid());
 			}
@@ -315,7 +317,8 @@ class main_controller
 	 */
 	private function getPost($row)
 	{
-		if (!defined('PHPBB_USE_BOARD_URL_PATH')) {
+		if (!defined('PHPBB_USE_BOARD_URL_PATH'))
+		{
 			define('PHPBB_USE_BOARD_URL_PATH', true); // Require full URL to smilies.
 		}
 

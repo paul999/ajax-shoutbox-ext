@@ -21,7 +21,7 @@ class acp_info {
 				'settings'	=> array(
 					'title' => 'ACP_AJAX_SHOUTBOX_SETTINGS',
 					'auth' => 'ext_paul999/ajaxshoutbox && acl_a_board',
-					'cat' => array('ACP_BOARD_ANNOUNCEMENTS')
+					'cat' => array('ACP_AJAX_SHOUTBOX')
 				),
 			),
 		);
