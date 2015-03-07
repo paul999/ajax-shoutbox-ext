@@ -399,7 +399,7 @@ class main_controller
 
 		return array(
 			'creation_time' => $now,
-	        'form_token' => $token,
+			'form_token' => $token,
 		);
 	}
 }
