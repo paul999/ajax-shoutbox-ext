@@ -40,7 +40,7 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge(
 	$lang, array(
 		'AJAX_SHOUTBOX'                  => 'Bacheca',
-		'AJAX_SHOUTBOX_MESSAGE'          => 'Scrivi un messaggio',
+		'AJAX_SHOUTBOX_MESSAGE'          => 'Messaggio',
 		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'Per poter utilizzare la bacheca è necessario abilitare JavaScript',
 		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'Permessi insufficienti per l’azione selezionata',
 		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'Messaggio vuoto',
@@ -49,7 +49,7 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Impossibile trovare il messaggio',
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'Il server push remoto non è al momento disponibile',
 
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'My shoutbox date format',
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specify a date format for just the shoutbox. You should not use a relative date format.',
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Formato data bacheca',
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specificare un formato data per la bacheca. Non è consigliato l’uso di formati data relativi.',
 	)
 );

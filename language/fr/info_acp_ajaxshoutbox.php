@@ -2,6 +2,7 @@
 /**
  *
  * Ajax Shoutbox extension for the phpBB Forum Software package.
+ * @translated into French by Psykofloyd & Galixte (http://www.galixte.com)
  *
  * @copyright (c) 2014 Paul Sohier <http://www.ajax-shoutbox.com>
  * @license       GNU General Public License, version 2 (GPL-2.0)
@@ -40,11 +41,11 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge(
 	$lang, array(
 		'LOG_AJAX_SHOUTBOX_ERROR'    => '<strong>Une erreur s’est produite durant l’envoi de votre message au serveur.</strong>',
-		'LOG_AJAX_SHOUTBOX_PRUNED'   => '<strong>Shoutbox nettoyée et %d messages supprimés</strong>',
-		'LOG_AJAX_SHOUTBOX_CONFIG_SETTINGS' => '<strong>Paramètres Ajax Shoutbox mis à jour</strong>',
+		'LOG_AJAX_SHOUTBOX_PRUNED'   => '<strong>La Shoutbox a été nettoyée et %d de ses messages ont été supprimés.</strong>',
+		'LOG_AJAX_SHOUTBOX_CONFIG_SETTINGS' => '<strong>Les paramètres de la Shoutbox Ajax ont été mis à jour.</strong>',
 
-		'ACP_AJAX_SHOUTBOX'          => 'Ajax Shoutbox',
-		'ACP_AJAX_SHOUTBOX_SETTINGS' => 'Paramètres Ajax Shoutbox',
+		'ACP_AJAX_SHOUTBOX'          => 'Shoutbox Ajax',
+		'ACP_AJAX_SHOUTBOX_SETTINGS' => 'Paramètres de la Shoutbox',
 
 	)
 );
