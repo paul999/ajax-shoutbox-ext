@@ -67,4 +67,3 @@ $lang = array_merge(
 		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'Per impostazione predefinita, la funzione push è disattivata. Per poterla usare, aggiungere la seguente riga di codice al file config.php: ',
 	)
 );
-

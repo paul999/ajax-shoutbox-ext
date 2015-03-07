@@ -53,4 +53,3 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specificare un formato data per la bacheca. Non è consigliato l’uso di formati data relativi.',
 	)
 );
-
