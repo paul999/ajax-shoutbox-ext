@@ -16,7 +16,7 @@ class release_102 extends migration
 	static public function depends_on()
 	{
 		return array(
-			'\paul999\ajaxshoutbox\migrations\release_102',
+			'\paul999\ajaxshoutbox\migrations\release_101',
 			'\phpbb\db\migration\data\v310\gold',
 		);
 	}
