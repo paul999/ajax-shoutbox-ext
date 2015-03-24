@@ -40,12 +40,12 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
 	$lang, array(
-		'ACL_U_SHOUTBOX_VIEW'   => 'Peut voir la shoutbox',
-		'ACL_U_SHOUTBOX_POST'   => 'Peut poster dans la shoutbox',
-		'ACL_U_SHOUTBOX_QUOTE'  => 'Peut citer dans la shoutbox',
-		'ACL_U_SHOUTBOX_BBCODE' => 'Peut utiliser les BBCodes dans la shoutbox',
-		'ACL_U_SHOUTBOX_DELETE' => 'Peut supprimer ses messages dans la shoutbox',
-		'ACL_M_SHOUTBOX_DELETE' => 'Peut supprimer les messages dans la shoutbox',
-		'ACL_M_SHOUTBOX_EDIT'   => 'Peut modifier dans la shoutbox',
+		'ACL_U_SHOUTBOX_VIEW'   => 'Peut voir la shoutbox.',
+		'ACL_U_SHOUTBOX_POST'   => 'Peut poster dans la shoutbox.',
+		'ACL_U_SHOUTBOX_QUOTE'  => 'Peut citer dans la shoutbox.',
+		'ACL_U_SHOUTBOX_BBCODE' => 'Peut utiliser les BBCodes dans la shoutbox.',
+		'ACL_U_SHOUTBOX_DELETE' => 'Peut supprimer ses messages dans la shoutbox.',
+		'ACL_M_SHOUTBOX_DELETE' => 'Peut supprimer les messages dans la shoutbox.',
+		'ACL_M_SHOUTBOX_EDIT'   => 'Peut modifier dans la shoutbox.',
 	)
 );
