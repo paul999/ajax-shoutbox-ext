@@ -49,6 +49,9 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Post niet gevonden',
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'De remote push server is niet beschikbaar.',
 
+
+        'AJAXSHOUTBOX_CONNECTION_INFO'   => 'Verbindings informatie voor de shoutbox App',
+
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Shoutbox datum formaat',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Kies een datum formaat specifiek voor de shoutbox.
 			Je kan beter geen relatief datum formaat gebruiken.',

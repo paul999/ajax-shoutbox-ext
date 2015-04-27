@@ -49,6 +49,9 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Impossibile trovare il messaggio',
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'Il server push remoto non è al momento disponibile',
 
+
+        'AJAXSHOUTBOX_CONNECTION_INFO'   => 'Connection info for Shoutbox app',
+
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Formato data bacheca',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specificare un formato data per la bacheca. Non è consigliato l’uso di formati data relativi.',
 	)
