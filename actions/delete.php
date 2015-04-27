@@ -32,23 +32,25 @@ class delete
 	/** @var \phpbb\user  */
 	private $user;
 
-	/** @var \paul999\ajaxshoutbox\actions\Push  */
+	/** @var \paul999\ajaxshoutbox\actions\push  */
 	private $push;
 
 	/** @var string */
 	private $table;
+
 	/**
-	 * @param \phpbb\config\config              $config
-	 * @param \phpbb\db\driver\driver_interface $db
-	 * @param \phpbb\auth\auth                  $auth
-	 * @param \phpbb\log\log                    $log
-	 * @param \phpbb\request\request            $request
-	 * @param \phpbb\user                       $user
-	 * @param string                            $table
+	 * @param \phpbb\config\config               $config
+	 * @param \phpbb\db\driver\driver_interface  $db
+	 * @param \phpbb\auth\auth                   $auth
+	 * @param \phpbb\log\log                     $log
+	 * @param \phpbb\request\request             $request
+	 * @param \phpbb\user                        $user
+	 * @param \paul999\ajaxshoutbox\actions\push $push
+	 * @param string                             $table
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db,
 								\phpbb\auth\auth $auth, \phpbb\log\log $log, \phpbb\request\request $request,
-								\phpbb\user $user, \paul999\ajaxshoutbox\actions\Push $push, $table)
+								\phpbb\user $user, \paul999\ajaxshoutbox\actions\push $push, $table)
 	{
 		$this->config   = $config;
 		$this->db       = $db;
@@ -63,6 +65,9 @@ class delete
 	/**
 	 * Delete a shoutbox post
 	 *
+	 * If push is enabled, we first make sure it is deleted on the server.
+	 * When we delete first here, we have a problem when the server fails.
+	 *
 	 * @param int $id
 	 *
 	 * @throws \paul999\ajaxshoutbox\exceptions\shoutbox_exception
@@ -73,7 +78,9 @@ class delete
 		{
 			$id = $this->request->variable('id', 0);
 		}
-		$sql = 'SELECT user_id FROM ' . $this->table . ' WHERE shout_id = ' . (int) $id;
+		$sql = 'SELECT user_id
+					FROM ' . $this->table . '
+					WHERE shout_id = ' . (int) $id;
 		$result = $this->db->sql_query($sql);
 		$row = $this->db->sql_fetchrow();
 		$this->db->sql_freeresult($result);
@@ -103,7 +110,8 @@ class delete
 				throw new shoutbox_exception('AJAX_SHOUTBOX_PUSH_NOT_AVAIL');
 			}
 		}
-		$sql = 'DELETE FROM ' . $this->table .' WHERE shout_id =  ' . (int) $id;
+		$sql = 'DELETE FROM ' . $this->table .'
+					WHERE shout_id =  ' . (int) $id;
 		$this->db->sql_query($sql);
 	}
 }

@@ -11,16 +11,20 @@ namespace paul999\ajaxshoutbox\migrations;
 
 use phpbb\db\migration\migration;
 
-class add_permissions extends migration
+class release_102 extends migration
 {
+	static public function depends_on()
+	{
+		return array(
+			'\paul999\ajaxshoutbox\migrations\release_101',
+			'\phpbb\db\migration\data\v310\gold',
+		);
+	}
+
 	public function update_data()
 	{
 		return array(
-			array('permission.add', array('u_shoutbox_view')),
-			array('permission.add', array('u_shoutbox_post')),
-			array('permission.add', array('u_shoutbox_bbcode')),
-			array('permission.add', array('u_shoutbox_delete')),
-			array('permission.add', array('m_shoutbox_delete')),
+			array('config.update', array('profile_guestbook_version', '1.0.2'))
 		);
 	}
 }

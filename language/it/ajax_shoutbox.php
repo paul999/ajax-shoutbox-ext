@@ -54,6 +54,11 @@ $lang = array_merge(
 
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Formato data bacheca',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specificare un formato data per la bacheca. Non è consigliato l’uso di formati data relativi.',
+
+		'AJAXSHOUTBOX_UNSUPPORTED_STYLE'    => 'It seems you are using a non prosilver based style, or the style doesn’t inherit prosilver correctly.
+			<br />If you are using a style based on prosilver, make sure it inherits prosilver correctly.
+			<br />If you are using a style not based on prosilver, you will need to create a template for the shoutbox,
+				or ask the style author to provide a working template for the shoutbox.
+			<br />I don’t provide support for non prosilver styles (Including subsilver2!). This message is only shown to admins.',
 	)
 );
-

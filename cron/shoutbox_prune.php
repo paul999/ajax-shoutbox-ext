@@ -56,7 +56,10 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	public function run()
 	{
 		$time = strtotime('- ' . (int) $this->config['ajaxshoutbox_prune_days']  . ' days');
-		$sql = 'SELECT * FROM ' . $this->table . ' WHERE post_time <= ' . (int) $time;
+		$sql = 'SELECT *
+					FROM ' . $this->table . '
+					WHERE
+						post_time <= ' . (int) $time;
 
 		$result = $this->db->sql_query($sql);
 		$canpush = $this->push->canPush();
@@ -80,7 +83,8 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 
 		if (sizeof($delete))
 		{
-			$sql = 'DELETE FROM ' . $this->table . ' WHERE ' . $this->db->sql_in_set('shout_id', $delete);
+			$sql = 'DELETE FROM ' . $this->table . '
+						WHERE ' . $this->db->sql_in_set('shout_id', $delete);
 			$this->db->sql_query($sql);
 			$uuid = $this->user->data['user_id'];
 
