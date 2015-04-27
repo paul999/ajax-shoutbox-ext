@@ -17,5 +17,5 @@ vendor/bin/phpcs 			     								\
 	--standard=travis/code_sniffer/ruleset-php-extensions.xml	\
 	"--ignore=tests/*"					                    	\
 	"--ignore=/vendor/*"		                				\
-	"--ignore=/travis*"                                         \
+	"--ignore=/travis/*"                                         \
 	"."
