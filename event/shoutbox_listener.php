@@ -165,14 +165,16 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 		$this->user->add_lang_ext('paul999/ajaxshoutbox', 'ajax_shoutbox');
 
 		add_form_key('ajaxshoutbox_posting');
+        $con_id = $this->push->getConnectionId();
 
 		$this->template->assign_vars(
 			array(
 				'S_AJAX_SHOUTBOX'               => $this->auth->acl_get('u_shoutbox_view'),
 				'S_CAN_POST_SHOUT'              => $this->auth->acl_get('u_shoutbox_post') && $this->user->data['user_id'] != ANONYMOUS,
                 'S_AJAX_SHOUTBOX_PUSH_ENABLED'  => $this->push->canPush(),
-                'L_AJAX_SHOUTBOX_CONNECTIONID'  => sprintf($this->user->lang['AJAX_SHOUTBOX_CONNECTIONID'], $this->push->getConnectionId()),
-                'U_AJAX_SHOUTBOX_QR_CONNECTION' => $this->helper->route('paul999_ajaxshoutbox_qr', array('code' => $this->push->getConnectionId())),
+                'AJAX_SHOUTBOX_CONNECTION_ID'   => $con_id,
+                'L_AJAX_SHOUTBOX_CONNECTIONID'  => sprintf($this->user->lang['AJAX_SHOUTBOX_CONNECTIONID'], $con_id),
+                'U_AJAX_SHOUTBOX_QR_CONNECTION' => (!empty($con_id)) ? $this->helper->route('paul999_ajaxshoutbox_qr', array('code' => $con_id)) : '',
 				'U_SUBMIT_SHOUTBOX'             => $this->helper->route('paul999_ajaxshoutbox_post'),
 				'U_DELETE_SHOUTBOX'             => $this->helper->route('paul999_ajaxshoutbox_delete'),
 				'UA_GET_POST_ACTION'            => htmlspecialchars($this->helper->route('paul999_ajaxshoutbox_get_all')),
