@@ -158,6 +158,11 @@
         console.log("Loading ajax shoutbox");
 
         loadFirstPosts();
+
+        $("#connection_link").click(function () {
+            $("#connection_info").toggle()
+            return false;
+        });
     });
 
     function loadFirstPosts() {

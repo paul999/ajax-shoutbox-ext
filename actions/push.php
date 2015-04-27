@@ -12,6 +12,7 @@ namespace paul999\ajaxshoutbox\actions;
 
 use Buzz\Browser;
 use Buzz\Client\Curl;
+use paul999\ajaxshoutbox\exceptions\shoutbox_exception;
 
 class push
 {
@@ -37,15 +38,20 @@ class push
 		$this->log    = $log;
 	}
 
-	/**
-	 * Delete a shoutbox post
-	 *
-	 * @param int $id
-	 *
-	 * @return mixed
-	 */
+    /**
+     * Delete a shoutbox post
+     *
+     * @param int $id
+     * @return mixed
+     * @throws shoutbox_exception
+     */
 	public function delete($id)
 	{
+        if (!$this->canPush())
+        {
+            // This should really not happen!
+            throw new shoutbox_exception('AJAX_SHOUTBOX_PUSH_DISABLED');
+        }
 		$data = array(
 			'authkey'   => $this->config['ajaxshoutbox_api_key'],
 			'localId'   => $id,
@@ -53,14 +59,21 @@ class push
 		return $this->postData($data, 'delete');
 	}
 
-	/**
-	 * @param string $message Message that has been send
-	 * @param int    $date    Date in UNIX timestamp
-	 * @param string $user    Username (Not the user id!)
-	 * @param int    $post_id ID of the post (used for deletion)
-	 */
+    /**
+     * @param string $message Message that has been send
+     * @param int $date Date in UNIX timestamp
+     * @param string $user Username (Not the user id!)
+     * @param int $post_id ID of the post (used for deletion)
+     * @throws shoutbox_exception
+     */
 	public function post($message, $date, $user, $post_id)
 	{
+        if (!$this->canPush())
+        {
+            // This should really not happen!
+            throw new shoutbox_exception('AJAX_SHOUTBOX_PUSH_DISABLED');
+        }
+
 		$data = array(
 			'message'   => $message,
 			'date'      => $date,
@@ -133,4 +146,17 @@ class push
 		}
 		return true;
 	}
+
+    /**
+     * get the connection ID to show for the user.
+     * @return string
+     */
+    public function getConnectionId()
+    {
+        if ($this->canPush() && !empty($this->config['ajaxshoutbox_connection_key']))
+        {
+            return $this->config['ajaxshoutbox_connection_key'];
+        }
+        return '';
+    }
 }

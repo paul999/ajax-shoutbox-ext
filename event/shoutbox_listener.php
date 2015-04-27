@@ -28,6 +28,8 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 
 	/** @var \phpbb\request\request  */
 	private $request;
+    /** @var \paul999\ajaxshoutbox\actions\push  */
+    private $push;
 
 	/**
 	 * @param \phpbb\config\config     $config
@@ -38,7 +40,8 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 	 * @param \phpbb\request\request   $request
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\user $user, \phpbb\template\template $template,
-								\phpbb\controller\helper $helper, \phpbb\auth\auth $auth, \phpbb\request\request $request)
+								\phpbb\controller\helper $helper, \phpbb\auth\auth $auth, \phpbb\request\request $request,
+                                \paul999\ajaxshoutbox\actions\push $push)
 	{
 		$this->config   = $config;
 		$this->user     = $user;
@@ -46,6 +49,7 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 		$this->helper   = $helper;
 		$this->auth     = $auth;
 		$this->request  = $request;
+        $this->push     = $push;
 	}
 
 	static public function getSubscribedEvents()
@@ -164,13 +168,16 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 
 		$this->template->assign_vars(
 			array(
-				'S_AJAX_SHOUTBOX'    => $this->auth->acl_get('u_shoutbox_view'),
-				'S_CAN_POST_SHOUT'   => $this->auth->acl_get('u_shoutbox_post') && $this->user->data['user_id'] != ANONYMOUS,
-				'U_SUBMIT_SHOUTBOX'  => $this->helper->route('paul999_ajaxshoutbox_post'),
-				'U_DELETE_SHOUTBOX'  => $this->helper->route('paul999_ajaxshoutbox_delete'),
-				'UA_GET_POST_ACTION' => htmlspecialchars($this->helper->route('paul999_ajaxshoutbox_get_all')),
-				'UA_GET_POST_ACTION_NEW'    => htmlspecialchars($this->helper->route('paul999_ajaxshoutbox_get_after', array('id' => 0))),
-				'UA_GET_POST_ACTION_OLD'    => htmlspecialchars($this->helper->route('paul999_ajaxshoutbox_get_before', array('id' => 0))),
+				'S_AJAX_SHOUTBOX'               => $this->auth->acl_get('u_shoutbox_view'),
+				'S_CAN_POST_SHOUT'              => $this->auth->acl_get('u_shoutbox_post') && $this->user->data['user_id'] != ANONYMOUS,
+                'S_AJAX_SHOUTBOX_PUSH_ENABLED'  => $this->push->canPush(),
+                'L_AJAX_SHOUTBOX_CONNECTIONID'  => sprintf($this->user->lang['AJAX_SHOUTBOX_CONNECTIONID'], $this->push->getConnectionId()),
+                'U_AJAX_SHOUTBOX_QR_CONNECTION' => $this->helper->route('paul999_ajaxshoutbox_qr', array('code' => $this->push->getConnectionId())),
+				'U_SUBMIT_SHOUTBOX'             => $this->helper->route('paul999_ajaxshoutbox_post'),
+				'U_DELETE_SHOUTBOX'             => $this->helper->route('paul999_ajaxshoutbox_delete'),
+				'UA_GET_POST_ACTION'            => htmlspecialchars($this->helper->route('paul999_ajaxshoutbox_get_all')),
+				'UA_GET_POST_ACTION_NEW'        => htmlspecialchars($this->helper->route('paul999_ajaxshoutbox_get_after', array('id' => 0))),
+				'UA_GET_POST_ACTION_OLD'        => htmlspecialchars($this->helper->route('paul999_ajaxshoutbox_get_before', array('id' => 0))),
 			)
 		);
 	}

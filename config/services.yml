@@ -11,6 +11,7 @@ services:
             - @controller.helper
             - @auth
             - @request
+            - @paul999.ajaxshoutbox.push
         tags:
             - { name: event.listener }
 

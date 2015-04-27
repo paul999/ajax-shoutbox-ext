@@ -67,12 +67,15 @@
                 </li>
             </ul>
         </div>
+        <!-- IF S_AJAX_SHOUTBOX_PUSH_ENABLED -->
         <div id="shoutbox-app">
             <img src="" />
             <img src="" />
             <br />
-            {L_AJAXSHOUTBOX_CONNECTION_INFO}
+            <a href="#" id="connection_link">{L_AJAXSHOUTBOX_CONNECTION_INFO}</a>
+            <div id="connection_info">{L_AJAX_SHOUTBOX_CONNECTIONID}<br /><img src="{U_AJAX_SHOUTBOX_QR_CONNECTION}" /></div>
         </div>
+        <!-- ENDIF -->
 
     </div>
 </div>
