@@ -52,5 +52,11 @@ $lang = array_merge(
 
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Format de la date de la shoutbox',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Spécifiez un format de la date dédié uniquement à la shoutbox. Vous ne devriez pas utiliser un format relatif pour la date.',
+
+		'AJAXSHOUTBOX_UNSUPPORTED_STYLE'    => 'It seems you are using a non prosilver based style, or the style doesn’t inherit prosilver correctly.
+			<br />If you are using a style based on prosilver, make sure it inherits prosilver correctly.
+			<br />If you are using a style not based on prosilver, you will need to create a template for the shoutbox,
+				or ask the style author to provide a working template for the shoutbox.
+			<br />I don’t provide support for non prosilver styles (Including subsilver2!). This message is only shown to admins.',
 	)
 );

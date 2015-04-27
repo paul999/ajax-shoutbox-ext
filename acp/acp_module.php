@@ -32,7 +32,7 @@ class acp_module {
 		$user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
 		$user->add_lang('acp/board');
 
-		$submit = isset($_POST['submit']);
+		$submit = $request->is_set('submit');
 
 		$form_key = 'acp_shoutbox';
 		add_form_key($form_key);
@@ -42,7 +42,8 @@ class acp_module {
 			'vars'	=> array(
 				'legend1'				=> 'ACP_AJAXSHOUTBOX_PRUNE',
 				'ajaxshoutbox_enable_prune'			=> array('lang' => 'AJAXSHOUTBOX_ENABLE_PRUNE',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => false),
-				'ajaxshoutbox_prune_days'			=> array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS',			'validate' => 'int',	'type' => 'number:0:9999','explain' => false, 'append' => ' ' . $user->lang['DAYS']),
+				'ajaxshoutbox_prune_days'			=> array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS',			'validate' => 'int',	'type' => 'number:1:9999','explain' => false, 'append' => ' ' . $user->lang['DAYS']),
+				'legend2'				=> 'ACP_AJAXSHOUTBOX_SETTINGS',
 				'ajaxshoutbox_date_format'      	=> array('lang' => 'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT',	'validate' => 'string',	'type' => 'custom', 'method' => 'dateformat_select', 'explain' => true),
 			)
 		);
@@ -51,7 +52,7 @@ class acp_module {
 		if (defined('AJAXSHOUTBOX_SHOW_APP'))
 		{
 			$display_vars['vars'] += array(
-				'legend2'                     => 'ACP_AJAXSHOUTBOX_PUSH',
+				'legend3'                     => 'ACP_AJAXSHOUTBOX_PUSH',
 				'ajaxshoutbox_validation_id'  => array('lang'     => 'AJAXSHOUTBOX_ACTIVATION_KEY', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'key'),
 				'ajaxshoutbox_push_enabled'   => array('lang'     => 'ACP_AJAXSHOUTBOX_ENABLE_PUSH', 'validate' => 'bool', 'type' => 'radio:yes_no', 'explain' => true),
 				'ajaxshoutbox_api_key'        => array('lang'     => 'ACP_AJAXSHOUTBOX_API_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain'  => true),
@@ -61,7 +62,7 @@ class acp_module {
 		else
 		{
 			$display_vars['vars'] += array(
-				'legend2'       => 'ACP_AJAXSHOUTBOX_PUSH',
+				'legend3'       => 'ACP_AJAXSHOUTBOX_PUSH',
 				'ajaxshoutbox_push_disabled'  => array('lang' => 'ACP_AJAXSHOUTBOX_PUSH_DISABLED', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'push_disabled',),
 			);
 		}
