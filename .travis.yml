@@ -56,7 +56,7 @@ before_script:
   - travis/setup-database.sh $DB $TRAVIS_PHP_VERSION
 
 script:
-  - sh -c "if [ '$SNIFF' != '0' ]; then travis/ext-sniff-local.sh $DB $TRAVIS_PHP_VERSION $EXTNAME; fi"
+  - sh -c "if [ '$SNIFF' != '0' ]; then phpBB/ext/$EXTNAME/travis/ext-sniff-local.sh $DB $TRAVIS_PHP_VERSION $EXTNAME; fi"
   - sh -c "if [ '$IMAGE_ICC' != '0' ]; then travis/check-image-icc-profiles.sh $DB $TRAVIS_PHP_VERSION; fi"
   - phpBB/vendor/bin/phpunit --configuration phpBB/ext/$EXTNAME/travis/phpunit-$DB-travis.xml --bootstrap ./tests/bootstrap.php
   - phpBB/ext/$EXTNAME/vendor/bin/EPV.php run --dir="phpBB/ext/$EXTNAME/"
