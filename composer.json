@@ -14,7 +14,8 @@
     }],
     "require": {
         "php": ">=5.3.3",
-        "kriswallsmith/buzz": "~0.13"
+        "kriswallsmith/buzz": "~0.13",
+        "endroid/qrcode": "1.5.1"
     },
     "require-dev":{
         "phpbb/epv": "dev-master",
