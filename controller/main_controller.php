@@ -96,30 +96,30 @@ class main_controller
 		$this->user->add_lang_ext("paul999/ajaxshoutbox", "ajax_shoutbox");
 	}
 
-    /**
-     * Create a image with a QR code.
-     * The image will be directly returned, with correct HTTP headers.
-     *
-     * The code in the URL will be embedded in the QR code.
-     *
-     * @param String $code Code to embed in the QR code
-     * @return Response
-     */
-    public function qrCode($code)
-    {
-        $qr = new QrCode();
+	/**
+	 * Create a image with a QR code.
+	 * The image will be directly returned, with correct HTTP headers.
+	 *
+	 * The code in the URL will be embedded in the QR code.
+	 *
+	 * @param String $code Code to embed in the QR code
+	 * @return Response
+	 */
+	public function qrCode($code)
+	{
+		$qr = new QrCode();
 
-        $image = $qr->setText($code)
-            ->setSize(300)
-            ->setPadding(10)
-            ->setErrorCorrection('high')
-            ->setForegroundColor(array('r' => 0, 'g' => 0, 'b' => 0, 'a' => 0))
-            ->setBackgroundColor(array('r' => 255, 'g' => 255, 'b' => 255, 'a' => 0))
-            ->setLabelFontSize(16)
-            ->get();
+		$image = $qr->setText($code)
+			->setSize(300)
+			->setPadding(10)
+			->setErrorCorrection('high')
+			->setForegroundColor(array('r' => 0, 'g' => 0, 'b' => 0, 'a' => 0))
+			->setBackgroundColor(array('r' => 255, 'g' => 255, 'b' => 255, 'a' => 0))
+			->setLabelFontSize(16)
+			->get();
 
-        return new Response($image, 200, array('Content-Type' =>  'image/jpeg'));
-    }
+		return new Response($image, 200, array('Content-Type' =>  'image/jpeg'));
+	}
 
 	/**
 	 * Validate the push connection with shoutbox-app.com

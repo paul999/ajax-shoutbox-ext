@@ -50,9 +50,9 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'De remote push server is niet beschikbaar.',
 
 
-        'AJAX_SHOUTBOX_CONNECTION_INFO'  => 'Verbindings informatie voor de shoutbox App',
-        'AJAX_SHOUTBOX_PUSH_DISABLED'    => 'Geprobeerd om een remote push functie aan te roepen terwijl functie is uitgeschakeld. Dit hoort niet te gebeuren.',
-        'AJAX_SHOUTBOX_CONNECTIONID'     => 'Voeg een nieuw forum toe in de app en vul %s in voor de connectie ID, of scan de QR code hier beneden.',
+		'AJAX_SHOUTBOX_CONNECTION_INFO'  => 'Verbindings informatie voor de shoutbox App',
+		'AJAX_SHOUTBOX_PUSH_DISABLED'    => 'Geprobeerd om een remote push functie aan te roepen terwijl functie is uitgeschakeld. Dit hoort niet te gebeuren.',
+		'AJAX_SHOUTBOX_CONNECTIONID'     => 'Voeg een nieuw forum toe in de app en vul %s in voor de connectie ID, of scan de QR code hier beneden.',
 
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Shoutbox datum formaat',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Kies een datum formaat specifiek voor de shoutbox.

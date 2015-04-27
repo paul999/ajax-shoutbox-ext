@@ -50,9 +50,9 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'Il server push remoto non è al momento disponibile',
 
 
-        'AJAX_SHOUTBOX_CONNECTION_INFO'   => 'Connection info for Shoutbox app',
-        'AJAX_SHOUTBOX_PUSH_DISABLED'    => 'Trying to call a push function with push disabled. This should not happen.',
-        'AJAX_SHOUTBOX_CONNECTIONID'     => 'Add a new forum in the app and fill in %s for the connection ID, or scan the QR code below.',
+		'AJAX_SHOUTBOX_CONNECTION_INFO'   => 'Connection info for Shoutbox app',
+		'AJAX_SHOUTBOX_PUSH_DISABLED'    => 'Trying to call a push function with push disabled. This should not happen.',
+		'AJAX_SHOUTBOX_CONNECTIONID'     => 'Add a new forum in the app and fill in %s for the connection ID, or scan the QR code below.',
 
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Formato data bacheca',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specificare un formato data per la bacheca. Non è consigliato l’uso di formati data relativi.',

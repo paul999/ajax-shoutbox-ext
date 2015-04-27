@@ -49,11 +49,11 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'No se puede encontrar el mensaje',
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'El servidor de inserción remoto no está disponible',
 
-        'AJAX_SHOUTBOX_CONNECTION_INFO'   => 'Connection info for Shoutbox app',
-        'AJAX_SHOUTBOX_PUSH_DISABLED'    => 'Trying to call a push function with push disabled. This should not happen.',
-        'AJAX_SHOUTBOX_CONNECTIONID'     => 'Add a new forum in the app and fill in %s for the connection ID, or scan the QR code below.',
+		'AJAX_SHOUTBOX_CONNECTION_INFO'   => 'Connection info for Shoutbox app',
+		'AJAX_SHOUTBOX_PUSH_DISABLED'    => 'Trying to call a push function with push disabled. This should not happen.',
+		'AJAX_SHOUTBOX_CONNECTIONID'     => 'Add a new forum in the app and fill in %s for the connection ID, or scan the QR code below.',
 
-        'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'My shoutbox date format',
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'My shoutbox date format',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specify a date format for just the shoutbox. You should not use a relative date format.',
 
 		'AJAXSHOUTBOX_UNSUPPORTED_STYLE'    => 'It seems you are using a non prosilver based style, or the style doesn’t inherit prosilver correctly.

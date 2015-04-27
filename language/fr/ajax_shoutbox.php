@@ -50,9 +50,9 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Message introuvable',
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'Le serveur distant n’est pas disponible.',
 
-        'AJAX_SHOUTBOX_CONNECTION_INFO'   => 'Connection info for Shoutbox app',
-        'AJAX_SHOUTBOX_PUSH_DISABLED'    => 'Trying to call a push function with push disabled. This should not happen.',
-        'AJAX_SHOUTBOX_CONNECTIONID'     => 'Add a new forum in the app and fill in %s for the connection ID, or scan the QR code below.',
+		'AJAX_SHOUTBOX_CONNECTION_INFO'   => 'Connection info for Shoutbox app',
+		'AJAX_SHOUTBOX_PUSH_DISABLED'    => 'Trying to call a push function with push disabled. This should not happen.',
+		'AJAX_SHOUTBOX_CONNECTIONID'     => 'Add a new forum in the app and fill in %s for the connection ID, or scan the QR code below.',
 
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Format de la date de la shoutbox',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Spécifiez un format de la date dédié uniquement à la shoutbox. Vous ne devriez pas utiliser un format relatif pour la date.',

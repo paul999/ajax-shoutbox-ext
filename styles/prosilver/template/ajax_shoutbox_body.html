@@ -69,13 +69,22 @@
         </div>
         <!-- IF S_AJAX_SHOUTBOX_PUSH_ENABLED -->
         <div id="shoutbox-app">
-            <img src="" />
-            <img src="" />
-            <br />
-            <!-- IF AJAX_SHOUTBOX_CONNECTION_ID -->
-                <a href="#" id="connection_link">{L_AJAXSHOUTBOX_CONNECTION_INFO}</a>
-                <div id="connection_info">{L_AJAX_SHOUTBOX_CONNECTIONID}<br /><img src="{U_AJAX_SHOUTBOX_QR_CONNECTION}" /></div>
-            <!-- ENDIF -->
+            <ul class="topiclist ajaxshoutbox_app forums">
+                <li class="row">
+                    <dl>
+                        <dt>
+                            <img src="" />
+                            <img src="" />
+                            <br />
+                            <!-- IF AJAX_SHOUTBOX_CONNECTION_ID -->
+                            <a href="#" id="connection_link">{L_AJAXSHOUTBOX_CONNECTION_INFO}</a>
+                        <div id="connection_info">{L_AJAX_SHOUTBOX_CONNECTIONID}<br /><img src="{U_AJAX_SHOUTBOX_QR_CONNECTION}" /></div>
+                        <!-- ENDIF -->
+                        </dt>
+                    </dl>
+                </li>
+            </ul>
+
         </div>
         <!-- ENDIF -->
 
