@@ -41,6 +41,7 @@ branches:
 
 install:
   - ls -l /var/run/mysqld
+  - service mysql status
   - composer install --dev --no-interaction --prefer-source
   - travis/prepare-phpbb.sh $EXTNAME $PHPBB_BRANCH
   - cd ../../phpBB3
@@ -49,6 +50,7 @@ install:
 
 before_script:
   - ls -l /var/run/mysqld
+  - service mysql status
   - travis/setup-database.sh $DB $TRAVIS_PHP_VERSION
 
 script:
