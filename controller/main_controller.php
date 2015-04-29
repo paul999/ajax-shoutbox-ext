@@ -110,7 +110,7 @@ class main_controller
 		$qr = new QrCode();
 
 		$image = $qr->setText($code)
-			->setSize(300)
+			->setSize(75)
 			->setPadding(10)
 			->setErrorCorrection('high')
 			->setForegroundColor(array('r' => 0, 'g' => 0, 'b' => 0, 'a' => 0))
