@@ -1,5 +1,11 @@
 <div class="forabg">
     <div class="inner">
+        <!-- INCLUDEJS @paul999_ajaxshoutbox/js/ajax_shoutbox.js -->
+        <script>
+            var AJAX_SHOUTBOX_POSTS = "{UA_GET_POST_ACTION}";
+            var AJAX_SHOUTBOX_POSTS_NEW = "{UA_GET_POST_ACTION_NEW}";
+            var AJAX_SHOUTBOX_POSTS_OLD = "{UA_GET_POST_ACTION_OLD}";
+        </script>
         <ul class="topiclist">
             <li class="header">
                 <dl class="icon">
@@ -8,68 +14,68 @@
                     </dt>
                 </dl>
             </li>
-        </ul>
-        <!-- IF S_CAN_POST_SHOUT -->
-        <form action="{U_SUBMIT_SHOUTBOX}" id="ajaxshoutbox_post" method="post">
-            <input type="hidden" name="sid" value="{SESSION_ID}" />
-            {S_FORM_TOKEN}
-            <ul class="topiclist ajaxshoutboxpost forums">
-                <li class="row">
+            <!-- IF S_CAN_POST_SHOUT -->
+                <li>
                     <dl>
-                        <dt>{L_AJAX_SHOUTBOX_MESSAGE}{L_COLON} <input type="text" name="text_shoutbox" id="text_shoutbox"/>
-                            <input type="submit" name="submit" value="{L_SUBMIT}" class="button2" id="submit_shoutbox">
+                        <dt>
+                            <form action="{U_SUBMIT_SHOUTBOX}" id="ajaxshoutbox_post" method="post">
+                                <input type="hidden" name="sid" value="{SESSION_ID}" />
+                                {S_FORM_TOKEN}
+                                <ul class="topiclist ajaxshoutboxpost forums">
+                                    <li class="row">
+                                        <dl>
+                                            <dt>{L_AJAX_SHOUTBOX_MESSAGE}{L_COLON} <input type="text" name="text_shoutbox" id="text_shoutbox"/>
+                                                <input type="submit" name="submit" value="{L_SUBMIT}" class="button2" id="submit_shoutbox">
+                                            </dt>
+                                            <dd><div class="ajaxshoutbox_loadingbar" id="ajaxshoutbox_loadbefore"></div></dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </form>
                         </dt>
-                        <dd><div class="ajaxshoutbox_loadingbar" id="ajaxshoutbox_loadbefore"></div></dd>
                     </dl>
                 </li>
-            </ul>
-        </form>
-        <!-- ENDIF -->
-        <!-- INCLUDEJS @paul999_ajaxshoutbox/js/ajax_shoutbox.js -->
-        <script>
-            var AJAX_SHOUTBOX_POSTS = "{UA_GET_POST_ACTION}";
-            var AJAX_SHOUTBOX_POSTS_NEW = "{UA_GET_POST_ACTION_NEW}";
-            var AJAX_SHOUTBOX_POSTS_OLD = "{UA_GET_POST_ACTION_OLD}";
-        </script>
-        <noscript>
-            <ul class="topiclist forums">
+            <!-- ENDIF -->
+
+            <noscript>
                 <li class="row">
                     <dl>
                         <dt>{L_NO_JS}</dt>
                     </dl>
                 </li>
-            </ul>
-        </noscript>
-        <div id="shoutbox_scroll">
-            <ul class="topiclist shoutboxlist forums" id="shoutbox_content">
-                <li class="row" id="copy">
-                    <dl>
-                        <dt data-type="user"></dt>
-                        <dd data-type="date" class="ajaxshoutbox_date"></dd>
-                        <dd data-type="delete" class="ajaxshoutbox_delete">
-                            <form action="{U_DELETE_SHOUTBOX}" data-type="submit-delete" method="post">
-                                <input type="hidden" name="sid" value="{SESSION_ID}" />
-                                <input data-type="delete-id" type="hidden" name="id" value="" />
-                                <input data-type="delete-form-time" type="hidden" name="creation_time" value="" />
-                                <input data-type="delete-form-token" type="hidden" name="form_token" value="" />
-                                <input type="submit" name="delete" value="{L_DELETE}" class="button2" />
-                            </form>
-                        </dd>
-                        <dd data-type="message" class="ajaxshoutbox_message"></dd>
-                    </dl>
-                </li>
-            </ul>
-            <ul class="topiclist waitinglist forums" id="ajaxshoutbox_loadafter">
-                <li class="row">
-                    <dl>
-                        <dt><div class="ajaxshoutbox_loadingbar"></div></dt>
-                    </dl>
-                </li>
-            </ul>
-        </div>
-        <!-- IF S_AJAX_SHOUTBOX_PUSH_ENABLED -->
-        <div id="shoutbox-app">
-            <ul class="topiclist ajaxshoutbox_app forums">
+            </noscript>
+            <li>
+                <dl>
+                    <dt id="shoutbox_scroll">
+                        <ul class="topiclist shoutboxlist forums" id="shoutbox_content">
+                            <li class="row" id="copy">
+                                <dl>
+                                    <dt data-type="user"></dt>
+                                    <dd data-type="date" class="ajaxshoutbox_date"></dd>
+                                    <dd data-type="delete" class="ajaxshoutbox_delete">
+                                        <form action="{U_DELETE_SHOUTBOX}" data-type="submit-delete" method="post">
+                                            <input type="hidden" name="sid" value="{SESSION_ID}" />
+                                            <input data-type="delete-id" type="hidden" name="id" value="" />
+                                            <input data-type="delete-form-time" type="hidden" name="creation_time" value="" />
+                                            <input data-type="delete-form-token" type="hidden" name="form_token" value="" />
+                                            <input type="submit" name="delete" value="{L_DELETE}" class="button2" />
+                                        </form>
+                                    </dd>
+                                    <dd data-type="message" class="ajaxshoutbox_message"></dd>
+                                </dl>
+                            </li>
+                        </ul>
+                        <ul class="topiclist waitinglist forums" id="ajaxshoutbox_loadafter">
+                            <li class="row">
+                                <dl>
+                                    <dt><div class="ajaxshoutbox_loadingbar"></div></dt>
+                                </dl>
+                            </li>
+                        </ul>
+                    </dt>
+                </dl>
+            </li>
+            <!-- IF S_AJAX_SHOUTBOX_PUSH_ENABLED -->
                 <li class="row">
                     <dl>
                         <dt>
@@ -83,10 +89,7 @@
                         </dt>
                     </dl>
                 </li>
-            </ul>
-
-        </div>
-        <!-- ENDIF -->
-
+            <!-- ENDIF -->
+        </ul>
     </div>
 </div>
