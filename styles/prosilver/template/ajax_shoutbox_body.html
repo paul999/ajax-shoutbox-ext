@@ -6,7 +6,7 @@
             var AJAX_SHOUTBOX_POSTS_NEW = "{UA_GET_POST_ACTION_NEW}";
             var AJAX_SHOUTBOX_POSTS_OLD = "{UA_GET_POST_ACTION_OLD}";
         </script>
-        <ul class="topiclist">
+        <ul class="topiclist forums">
             <li class="header">
                 <dl class="icon">
                     <dt>
@@ -83,9 +83,12 @@
                             <img src="" />
                             <br />
                             <!-- IF AJAX_SHOUTBOX_CONNECTION_ID -->
-                            <a href="#" id="connection_link">{L_AJAX_SHOUTBOX_CONNECTION_INFO}</a>
-                        <div id="connection_info">{L_AJAX_SHOUTBOX_CONNECTIONID}<br /><img src="{U_AJAX_SHOUTBOX_QR_CONNECTION}" /></div>
-                        <!-- ENDIF -->
+                                <a href="#" id="connection_link">{L_AJAX_SHOUTBOX_CONNECTION_INFO}</a>
+                                <div id="connection_info">
+                                    <p>{L_AJAX_SHOUTBOX_CONNECTIONID}</p><br />
+                                    <img src="{U_AJAX_SHOUTBOX_QR_CONNECTION}" />
+                                </div>
+                            <!-- ENDIF -->
                         </dt>
                     </dl>
                 </li>
