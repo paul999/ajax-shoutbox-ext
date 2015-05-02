@@ -189,9 +189,9 @@ class acp_module {
 
 	function key()
 	{
-		global $config, $phpbb_path_helper;
+		global $config, $phpbb_container;
 
-		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong><br /><img src="' . $phpbb_path_helper->route('paul999_ajaxshoutbox_qr', array('code' => $config['ajaxshoutbox_validation_id'])) . '" />';
+		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong><br /><img src="' . $phpbb_container->get('controller.helper')->route('paul999_ajaxshoutbox_qr', array('code' => $config['ajaxshoutbox_validation_id'])) . '" />';
 	}
 	function push_disabled()
 	{
