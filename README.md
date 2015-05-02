@@ -1,6 +1,6 @@
 ajax-shoutbox-ext
 =================
-[![Build Status](https://travis-ci.org/paul999/ajax-shoutbox-ext.svg?branch=develop-stable)](https://travis-ci.org/paul999/ajax-shoutbox-ext)
+[![Build Status](https://travis-ci.org/paul999/ajax-shoutbox-ext.svg?branch=develop-v110)](https://travis-ci.org/paul999/ajax-shoutbox-ext)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/paul999/ajax-shoutbox-ext/badges/quality-score.png?b=develop-stable)](https://scrutinizer-ci.com/g/paul999/ajax-shoutbox-ext/?branch=develop-stable)
 
 # Support
