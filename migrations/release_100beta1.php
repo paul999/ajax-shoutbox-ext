@@ -27,7 +27,7 @@ class release_100beta1 extends migration
 	public function update_data()
 	{
 		return array(
-			array('config.add', array('profile_guestbook_version', '1.0.0-BETA1'))
+			array('config.add', array('ajaxshoutbox_version', '1.0.0-BETA1'))
 		);
 	}
 }
