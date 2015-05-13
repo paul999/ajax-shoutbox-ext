@@ -10,8 +10,8 @@
  */
 
 /**
- * DO NOT CHANGE
- */
+* DO NOT CHANGE
+*/
 if (!defined('IN_PHPBB'))
 {
 	exit;
@@ -35,14 +35,14 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 //
 // Some characters you may want to copy&paste:
-// ’ » “ ” …
+// ’ « » “ ” …
 //
 
 $lang = array_merge(
 	$lang, array(
 		'AJAX_SHOUTBOX'                  => 'Shoutbox',
 		'AJAX_SHOUTBOX_MESSAGE'          => 'Poster un message',
-		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'Désolé, pour poster dans la shoutbox JavaScript doit être activé',
+		'AJAX_SHOUTBOX_ONLY_AJAX'        => 'Désolé, pour poster dans la shoutbox le langage JavaScript doit être activé.',
 		'AJAX_SHOUTBOX_NO_PERMISSION'    => 'Vous n’avez pas l’autorisation d’effectuer l’action sélectionnée.',
 		'AJAX_SHOUTBOX_MESSAGE_EMPTY'    => 'Message vide',
 		'AJAX_SHOUTBOX_ERROR'            => 'Erreur',
@@ -53,10 +53,10 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Format de la date de la shoutbox',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Spécifiez un format de la date dédié uniquement à la shoutbox. Vous ne devriez pas utiliser un format relatif pour la date.',
 
-		'AJAXSHOUTBOX_UNSUPPORTED_STYLE'    => 'It seems you are using a non prosilver based style, or the style doesn’t inherit prosilver correctly.
-			<br />If you are using a style based on prosilver, make sure it inherits prosilver correctly.
-			<br />If you are using a style not based on prosilver, you will need to create a template for the shoutbox,
-				or ask the style author to provide a working template for the shoutbox.
-			<br />I don’t provide support for non prosilver styles (Including subsilver2!). This message is only shown to admins.',
+		'AJAXSHOUTBOX_UNSUPPORTED_STYLE'    => 'Il semble que vous utilisiez un style qui n’est pas basé sur « prosilver », ou le style n’hérite pas correctement de « prosilver ».
+			<br />Si vous utilisez un style basé sur « prosilver », assurez-vous qu’il hérite correctement de ce dernier.
+			<br />Si vous utilisez un style qui n’est pas basé sur « prosilver », vous aurez besoin de créer un modèle adapté pour la shoutbox,
+				ou demander à l’auteur de ce style de fournir un modèle adapté pour la shoutbox.
+			<br />Je ne fournis pas de support pour les styles qui ne sont pas basés sur « prosilver » (incluant subsilver2 !). Ce message est uniquement affiché aux administrateurs.',
 	)
 );
