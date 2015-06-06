@@ -191,7 +191,9 @@ class acp_module {
 	{
 		global $config, $phpbb_container;
 
-		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong><br /><img src="' . $phpbb_container->get('controller.helper')->route('paul999_ajaxshoutbox_qr', array('code' => $config['ajaxshoutbox_validation_id'])) . '" />';
+        $code = $config['ajaxshoutbox_validation_id'] . '||' . generate_board_url();
+
+		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong><br /><img src="' . $phpbb_container->get('controller.helper')->route('paul999_ajaxshoutbox_qr', array('code' => $code)) . '" />';
 	}
 	function push_disabled()
 	{
