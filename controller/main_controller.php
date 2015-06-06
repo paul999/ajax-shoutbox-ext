@@ -107,6 +107,7 @@ class main_controller
 	 */
 	public function qrCode($code)
 	{
+        $code = str_replace(':__', '://', $code);
 		$qr = new QrCode();
 
 		$image = $qr->setText($code)

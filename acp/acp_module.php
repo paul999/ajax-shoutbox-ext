@@ -191,7 +191,7 @@ class acp_module {
 	{
 		global $config, $phpbb_container;
 
-        $code = $config['ajaxshoutbox_validation_id'] . '||' . generate_board_url();
+        $code = $config['ajaxshoutbox_validation_id'] . '||' . str_replace('://', ':__', generate_board_url());
 
 		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong><br /><img src="' . $phpbb_container->get('controller.helper')->route('paul999_ajaxshoutbox_qr', array('code' => $code)) . '" />';
 	}
