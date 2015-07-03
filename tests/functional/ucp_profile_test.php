@@ -21,4 +21,8 @@ class ucp_profile_test extends \phpbb_functional_test_case{
     {
         return array('paul999/ajaxshoutbox');
     }
+
+    public function test_ucp_page() {
+        $crawler = self::request('GET', 'ucp.php');
+    }
 }
