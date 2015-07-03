@@ -10,7 +10,6 @@
 
 namespace paul999\ajaxshoutbox\cron;
 
-
 class shoutbox_prune extends \phpbb\cron\task\base {
 
 	/** @var \phpbb\config\config  */
