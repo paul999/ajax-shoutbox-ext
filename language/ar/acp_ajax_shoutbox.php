@@ -5,8 +5,7 @@
  *
  * @copyright (c) 2014 Paul Sohier <http://www.ajax-shoutbox.com>
  * @license       GNU General Public License, version 2 (GPL-2.0)
- *
-  * Translated By : Bassel Taha Alhitary - www.alhitary.net
+ * Translated By : Bassel Taha Alhitary - www.alhitary.net
  */
 
 /**
@@ -42,7 +41,7 @@ $lang = array_merge(
 	$lang, array(
 		'ACP_AJAXSHOUTBOX_SETTINGS'     => 'اعدادات الدردشة أجاكس',
 		'ACP_AJAXSHOUTBOX_SETTINGS_EXPLAIN'     => 'من هنا تستطيع ضبط اعدادات الدردشة أجاكس <br /><br />
-			يجب عليك انشاء حساب و إضافة منتداك في الموقع <a href="https://www.shoutbox-app.com/">www.shoutbox-app.com</a> لكي يستطيع الأعضاء لديك من استخدام تطبيق الأندرويد و الـiOS ( حالياً في النسخة بيتا ) 
+			يجب عليك انشاء حساب و إضافة منتداك في الموقع <a href="https://www.shoutbox-app.com/">www.shoutbox-app.com</a> لكي يستطيع الأعضاء لديك من استخدام تطبيق الأندرويد و الـiOS ( حالياً في النسخة بيتا )
 			<br />بعد ذلك سيتم طلب رمز التفعيل منك ( سيتم اظهار هذا الرمز هنا بالأسفل ).
 		',
 

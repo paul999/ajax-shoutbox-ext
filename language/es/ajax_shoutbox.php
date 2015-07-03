@@ -53,13 +53,13 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_PUSH_DISABLED'    => 'Trying to call a push function with push disabled. This should not happen.',
 		'AJAX_SHOUTBOX_CONNECTIONID'     => 'Add a new forum in the app and fill in %s for the connection ID, or scan the QR code below.',
 
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'My shoutbox date format',
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specify a date format for just the shoutbox. You should not use a relative date format.',
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Mi formato de fecha en el cuadro de charla',
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Especifique un formato de fecha para sólo el cuadro de charla. No debe usar un formato de fecha relativa.',
 
-		'AJAXSHOUTBOX_UNSUPPORTED_STYLE'    => 'It seems you are using a non prosilver based style, or the style doesn’t inherit prosilver correctly.
-			<br />If you are using a style based on prosilver, make sure it inherits prosilver correctly.
-			<br />If you are using a style not based on prosilver, you will need to create a template for the shoutbox,
-				or ask the style author to provide a working template for the shoutbox.
-			<br />I don’t provide support for non prosilver styles (Including subsilver2!). This message is only shown to admins.',
+		'AJAXSHOUTBOX_UNSUPPORTED_STYLE'    => 'Parece que está usando un estilo no basado en prosilver, o el estilo no hereda prosilver correctamente.
+			<br />Si está usando un estilo basado en prosilver, asegúrese de que hereda prosilver correctamente.
+			<br />Si está usando un estilo no basado en prosilver, tendrá que crear una plantilla para el cuadro de charla, 
+				o pedir al autor del estilo que le proporciene una plantilla que trabaje correctamente con el cuadro de charla.
+			<br />No proporciono soporte a estilos no prosilver (¡ Incluyendo subsilver2 !). Este mensaje sólo se muestra a los Administradores.',
 	)
 );

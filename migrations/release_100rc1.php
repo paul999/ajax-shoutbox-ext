@@ -24,7 +24,7 @@ class release_100rc1 extends migration
 	public function update_data()
 	{
 		return array(
-			array('config.update', array('profile_guestbook_version', '1.0.0-RC1'))
+			array('config.update', array('ajaxshoutbox_version', '1.0.0-RC1'))
 		);
 	}
 }
