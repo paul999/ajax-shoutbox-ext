@@ -96,7 +96,7 @@ class push
 				$rsp = @json_decode($rsp, true);
 
 				if (isset($rsp['error']))
-                {
+				{
 					throw new \Exception(htmlspecialchars($rsp['error'])); // ;)
 				}
 				return $rsp;

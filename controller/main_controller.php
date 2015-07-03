@@ -109,9 +109,9 @@ class main_controller
 		// It is used on shoutbox-app.com to specify the result.
 		// Do not change.
 		if ($this->config['ajaxshoutbox_push_enabled'])
-        {
+		{
 			if ($id == $this->config['ajaxshoutbox_validation_id'])
-            {
+			{
 				$result['ok'] = 'ok';
 				$result['key'] = $this->config['ajaxshoutbox_validation_id'];
 			}
@@ -120,8 +120,8 @@ class main_controller
 				$result['error'] = 'Incorrect key';
 			}
 		}
-        else
-        {
+		else
+		{
 			$result['error'] = 'disabled';
 		}
 
