@@ -89,23 +89,26 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 
 		if ($event['submit'])
 		{
-			$error = validate_data($data, array(
-				'ajaxshoutbox_format'			=> array('timezone'),
-			));
+            if (version_compare(PHP_VERSION, '5.5.0') >= 0)
+            {
+                $error = validate_data($data, array(
+                    'ajaxshoutbox_format' => array('timezone'),
+                ));
 
-			if (sizeof($error) > 0)
-			{
-				if (isset($event['error']))
-				{
-					$event['error'] = array_merge($event['error'], $error);
-				}
-				else
-				{
-					// 3.1.3 and lower don't provide us with $error.
-					// Set submit to false instead.
-					$event['submit'] = false;
-				}
-			}
+                if (sizeof($error) > 0)
+                {
+                    if (isset($event['error'])) {
+
+                        $event['error'] = array_merge($event['error'], $error);
+                    }
+                    else
+                    {
+                        // 3.1.3 and lower don't provide us with $error.
+                        // Set submit to false instead.
+                        $event['submit'] = false;
+                    }
+                }
+            }
 		}
 
 		$dateformat_options = '';
