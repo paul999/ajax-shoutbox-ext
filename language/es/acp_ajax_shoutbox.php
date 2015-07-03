@@ -51,8 +51,8 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'Habilitar purgado de mensajes',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'Purgar mensajes después',
 
-		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Date format',
-		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Default date format for the shoutbox. You shouldn’t use the relative dates, the date won’t update on refresh of the shoutbox',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Formato de fecha',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Formato de fecha por defecto para el cuadro de charla. Usted no debe usar fechas relativas, la fecha no se actualizará en el refresco del cuadro de charla.',
 
 		'ACP_AJAXSHOUTBOX_PUSH'         => 'Configuración de App',
 		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'Código de activación',
@@ -63,7 +63,7 @@ $lang = array_merge(
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH' => 'ID de conexión',
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH_EXPLAIN' => 'Usted recibirá esta clave después de añadir su foro en www.shoutbox-app.com.<br />Sus usuarios utilizarán este ID para encontrar su foro en la App.',
 
-		'ACP_AJAXSHOUTBOX_PUSH_DISABLED'            => 'Push functionality disabled',
-		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'The Push functionality is, by default, disabled. If you want to use this functionality add the following line to config.php: ',
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED'            => 'Funcionalidad de empuje (Push) deshabilitada',
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'La funcionalidad de empuje (Push) está, por defecto, deshabilitada. Si desea utilizar esta funcionalidad, añada la siguiente línea al config.php: ',
 	)
 );

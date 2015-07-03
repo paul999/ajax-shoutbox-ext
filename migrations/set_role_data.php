@@ -17,21 +17,25 @@ class set_role_data extends migration
 	{
 		$data = array();
 
-		if ($this->role_exists('ROLE_MOD_FULL')) {
+		if ($this->role_exists('ROLE_MOD_FULL'))
+		{
 			$data[] = array('permission.permission_set', array('ROLE_MOD_FULL', 'm_shoutbox_delete'));
 		}
-		if ($this->role_exists('ROLE_MOD_STANDARD')) {
+		if ($this->role_exists('ROLE_MOD_STANDARD'))
+		{
 			$data[] = array('permission.permission_set', array('ROLE_MOD_STANDARD', 'm_shoutbox_delete'));
 		}
 
-		if ($this->role_exists('ROLE_FORUM_FULL')) {
+		if ($this->role_exists('ROLE_FORUM_FULL'))
+		{
 			$data[] = array('permission.permission_set', array('ROLE_FORUM_FULL', 'u_shoutbox_view'));
 			$data[] = array('permission.permission_set', array('ROLE_FORUM_FULL', 'u_shoutbox_post'));
 			$data[] = array('permission.permission_set', array('ROLE_FORUM_FULL', 'u_shoutbox_bbcode'));
 			$data[] = array('permission.permission_set', array('ROLE_FORUM_FULL', 'u_shoutbox_delete'));
 		}
 
-		if ($this->role_exists('ROLE_FORUM_STANDARD')) {
+		if ($this->role_exists('ROLE_FORUM_STANDARD'))
+		{
 			$data[] = array('permission.permission_set', array('ROLE_FORUM_STANDARD', 'u_shoutbox_view'));
 			$data[] = array('permission.permission_set', array('ROLE_FORUM_STANDARD', 'u_shoutbox_post'));
 			$data[] = array('permission.permission_set', array('ROLE_FORUM_STANDARD', 'u_shoutbox_bbcode'));
@@ -49,8 +53,8 @@ class set_role_data extends migration
 	protected function role_exists($role)
 	{
 		$sql = 'SELECT role_id
-        FROM ' . ACL_ROLES_TABLE . "
-        WHERE role_name = '" . $this->db->sql_escape($role) . "'";
+		FROM ' . ACL_ROLES_TABLE . "
+		WHERE role_name = '" . $this->db->sql_escape($role) . "'";
 		$result = $this->db->sql_query_limit($sql, 1);
 		$role_id = $this->db->sql_fetchfield('role_id');
 		$this->db->sql_freeresult($result);

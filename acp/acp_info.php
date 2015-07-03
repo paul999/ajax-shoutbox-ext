@@ -10,7 +10,6 @@
 
 namespace paul999\ajaxshoutbox\acp;
 
-
 class acp_info {
 	function module()
 	{
