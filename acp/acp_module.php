@@ -10,7 +10,6 @@
 
 namespace paul999\ajaxshoutbox\acp;
 
-
 class acp_module {
 	/** @var  string */
 	public $u_action;

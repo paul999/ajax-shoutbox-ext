@@ -35,17 +35,17 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 //
 // Some characters you may want to copy&paste:
-// ’ » “ ” …
+// ’ « » “ ” …
 //
 
 $lang = array_merge(
 	$lang, array(
 		'LOG_AJAX_SHOUTBOX_ERROR'    => '<strong>Une erreur s’est produite durant l’envoi de votre message au serveur.</strong>',
-		'LOG_AJAX_SHOUTBOX_PRUNED'   => '<strong>La Shoutbox a été nettoyée et %d de ses messages ont été supprimés.</strong>',
-		'LOG_AJAX_SHOUTBOX_CONFIG_SETTINGS' => '<strong>Les paramètres de la Shoutbox Ajax ont été mis à jour.</strong>',
+		'LOG_AJAX_SHOUTBOX_PRUNED'   => '<strong>La shoutbox a été nettoyée et %d de ses messages ont été supprimés.</strong>',
+		'LOG_AJAX_SHOUTBOX_CONFIG_SETTINGS' => '<strong>Les paramètres de la shoutbox Ajax ont été mis à jour.</strong>',
 
 		'ACP_AJAX_SHOUTBOX'          => 'Shoutbox Ajax',
-		'ACP_AJAX_SHOUTBOX_SETTINGS' => 'Paramètres de la Shoutbox',
+		'ACP_AJAX_SHOUTBOX_SETTINGS' => 'Paramètres de la shoutbox',
 
 	)
 );

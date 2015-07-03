@@ -10,7 +10,6 @@
 
 namespace paul999\ajaxshoutbox\exceptions;
 
-
 class shoutbox_exception  extends \Exception {
 
 }
