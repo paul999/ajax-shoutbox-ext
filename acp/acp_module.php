@@ -23,77 +23,115 @@ class acp_module {
 	/** @var   */
 	public $tpl_name;
 
+	/** @var \phpbb\template\template */
+	private $template;
+
+	/** @var \phpbb\user  */
+	private $user;
+
+	/** @var \phpbb\request\request_interface  */
+	private $request;
+
+	/** @var \phpbb\config\config  */
+	private $config;
+
+	/** @var \phpbb\event\dispatcher_interface  */
+	private $phpbb_dispatcher;
+
+	/** @var \phpbb\log\log_interface  */
+	private $log;
+
+	/** @var  array */
+	private $display_vars;
+
+	/** @var string  */
+	private $form_key = 'acp_shoutbox';
+
 	public function main($id, $mode)
 	{
 		global $user, $template, $request;
 		global $config, $phpbb_dispatcher, $phpbb_log;
 
-		$user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
-		$user->add_lang('acp/board');
+		$this->user 			= $user;
+		$this->template 		= $template;
+		$this->request 			= $request;
+		$this->config 			= $config;
+		$this->phpbb_dispatcher = $phpbb_dispatcher;
+		$this->log 				= $phpbb_log;
 
-		$submit = $request->is_set('submit');
+		$this->setup();
+		$this->saveConfig($mode);
+	}
 
-		$form_key = 'acp_shoutbox';
-		add_form_key($form_key);
+	private function setup()
+	{
+		$this->user->add_lang_ext("paul999/ajaxshoutbox", "acp_ajax_shoutbox");
+		$this->user->add_lang('acp/board');
 
-		$display_vars = array(
-			'title'	=> 'ACP_AJAXSHOUTBOX_SETTINGS',
-			'vars'	=> array(
-				'legend1'				=> 'ACP_AJAXSHOUTBOX_PRUNE',
-				'ajaxshoutbox_enable_prune'			=> array('lang' => 'AJAXSHOUTBOX_ENABLE_PRUNE',			'validate' => 'bool',	'type' => 'radio:yes_no','explain' => false),
-				'ajaxshoutbox_prune_days'			=> array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS',			'validate' => 'int',	'type' => 'number:1:9999','explain' => false, 'append' => ' ' . $user->lang['DAYS']),
-				'legend2'				=> 'ACP_AJAXSHOUTBOX_SETTINGS',
-				'ajaxshoutbox_date_format'      	=> array('lang' => 'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT',	'validate' => 'string',	'type' => 'custom', 'method' => 'dateformat_select', 'explain' => true),
+		add_form_key($this->form_key);
+
+		$this->display_vars = array(
+			'title' => 'ACP_AJAXSHOUTBOX_SETTINGS',
+			'vars' => array(
+				'legend1' => 'ACP_AJAXSHOUTBOX_PRUNE',
+				'ajaxshoutbox_enable_prune' => array('lang' => 'AJAXSHOUTBOX_ENABLE_PRUNE', 'validate' => 'bool', 'type' => 'radio:yes_no', 'explain' => false),
+				'ajaxshoutbox_prune_days' => array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS', 'validate' => 'int', 'type' => 'number:1:9999', 'explain' => false, 'append' => ' ' . $this->user->lang['DAYS']),
+				'legend2' => 'ACP_AJAXSHOUTBOX_SETTINGS',
+				'ajaxshoutbox_date_format' => array('lang' => 'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT', 'validate' => 'string', 'type' => 'custom', 'method' => 'dateformat_select', 'explain' => true),
 			)
 		);
 
 		// We only show the app settings if it is enabled.
-		if (defined('AJAXSHOUTBOX_SHOW_APP'))
-		{
-			$display_vars['vars'] += array(
-				'legend3'                     => 'ACP_AJAXSHOUTBOX_PUSH',
-				'ajaxshoutbox_validation_id'  => array('lang'     => 'AJAXSHOUTBOX_ACTIVATION_KEY', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'key'),
-				'ajaxshoutbox_push_enabled'   => array('lang'     => 'ACP_AJAXSHOUTBOX_ENABLE_PUSH', 'validate' => 'bool', 'type' => 'radio:yes_no', 'explain' => true),
-				'ajaxshoutbox_api_key'        => array('lang'     => 'ACP_AJAXSHOUTBOX_API_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain'  => true),
-				'ajaxshoutbox_connection_key' => array('lang'     => 'ACP_AJAXSHOUTBOX_CON_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain'  => true),
+		if (defined('AJAXSHOUTBOX_SHOW_APP')) {
+			$this->display_vars['vars'] += array(
+				'legend3' => 'ACP_AJAXSHOUTBOX_PUSH',
+				'ajaxshoutbox_validation_id' => array('lang' => 'AJAXSHOUTBOX_ACTIVATION_KEY', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'key'),
+				'ajaxshoutbox_push_enabled' => array('lang' => 'ACP_AJAXSHOUTBOX_ENABLE_PUSH', 'validate' => 'bool', 'type' => 'radio:yes_no', 'explain' => true),
+				'ajaxshoutbox_api_key' => array('lang' => 'ACP_AJAXSHOUTBOX_API_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain' => true),
+				'ajaxshoutbox_connection_key' => array('lang' => 'ACP_AJAXSHOUTBOX_CON_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain' => true),
 			);
-		}
-		else
-		{
-			$display_vars['vars'] += array(
-				'legend3'       => 'ACP_AJAXSHOUTBOX_PUSH',
-				'ajaxshoutbox_push_disabled'  => array('lang' => 'ACP_AJAXSHOUTBOX_PUSH_DISABLED', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'push_disabled',),
+		} else {
+			$this->display_vars['vars'] += array(
+				'legend3' => 'ACP_AJAXSHOUTBOX_PUSH',
+				'ajaxshoutbox_push_disabled' => array('lang' => 'ACP_AJAXSHOUTBOX_PUSH_DISABLED', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'push_disabled',),
 			);
 		}
 
-		$display_vars['vars'] += array(
+		$this->display_vars['vars'] += array(
 
-			'legend4'				=> 'ACP_SUBMIT_CHANGES',
+			'legend4' => 'ACP_SUBMIT_CHANGES',
 		);
 
 		/**
-		* Event to add and/or modify acp_board configurations
-		*
-		* @event paul999.ajaxshoutbox.shoutbox_config_edit_add
-		* @var	array	display_vars	Array of config values to display and process
-		* @var	string	mode			Mode of the config page we are displaying
-		* @var	boolean	submit			Do we display the form or process the submission
-		* @since 1.0.0-b2
-		*/
+		 * Event to add and/or modify acp_board configurations
+		 *
+		 * @event paul999.ajaxshoutbox.shoutbox_config_edit_add
+		 * @var    array    display_vars    Array of config values to display and process
+		 * @var    string    mode            Mode of the config page we are displaying
+		 * @var    boolean    submit            Do we display the form or process the submission
+		 * @since 1.0.0-b2
+		 */
 		$vars = array('display_vars', 'mode', 'submit');
-		extract($phpbb_dispatcher->trigger_event('paul999.ajaxshoutbox.shoutbox_config_edit_add', compact($vars)));
+		extract($this->phpbb_dispatcher->trigger_event('paul999.ajaxshoutbox.shoutbox_config_edit_add', compact($vars)));
 
-		$this->new_config = $config;
+		$this->new_config = $this->config;
+
+	}
+
+	private function saveConfig($mode)
+	{
+		$submit = $this->request->is_set('submit');
+
 		// Copied from acp_board.php
-		$cfg_array = (isset($_REQUEST['config'])) ? utf8_normalize_nfc($request->variable('config', array('' => ''), true)) : $this->new_config;
+		$cfg_array = (isset($_REQUEST['config'])) ? utf8_normalize_nfc($this->request->variable('config', array('' => ''), true)) : $this->new_config;
 		$error = array();
 
 		// We validate the complete config if wished
-		validate_config_vars($display_vars['vars'], $cfg_array, $error);
+		validate_config_vars($this->display_vars['vars'], $cfg_array, $error);
 
-		if ($submit && !check_form_key($form_key))
+		if ($submit && !check_form_key($this->form_key))
 		{
-			$error[] = $user->lang['FORM_INVALID'];
+			$error[] = $this->user->lang['FORM_INVALID'];
 		}
 		// Do not write values if there is an error
 		if (sizeof($error))
@@ -102,7 +140,7 @@ class acp_module {
 		}
 
 		// We go through the display_vars to make sure no one is trying to set variables he/she is not allowed to...
-		foreach ($display_vars['vars'] as $config_name => $null)
+		foreach ($this->display_vars['vars'] as $config_name => $null)
 		{
 			if (!isset($cfg_array[$config_name]) || strpos($config_name, 'legend') !== false || $config_name == 'ajaxshoutbox_validation_id' || $config_name == 'ajaxshoutbox_push_disabled')
 			{
@@ -113,46 +151,51 @@ class acp_module {
 
 			if ($submit)
 			{
-				$config->set($config_name, $config_value);
+				$this->config->set($config_name, $config_value);
 			}
 		}
 
 		if ($submit)
 		{
-			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'LOG_AJAX_SHOUTBOX_CONFIG_' . strtoupper($mode));
+			$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_AJAX_SHOUTBOX_CONFIG_' . strtoupper($mode));
 
-			$message = $user->lang('CONFIG_UPDATED');
+			$message = $this->user->lang('CONFIG_UPDATED');
 			$message_type = E_USER_NOTICE;
 
 			trigger_error($message . adm_back_link($this->u_action), $message_type);
 		}
 
+		$this->displayConfig($error);
+	}
+
+	/**
+	 * @param $error
+	 */
+	private function displayConfig($error)
+	{
 		$this->tpl_name = 'acp_board';
-		$this->page_title = $display_vars['title'];
+		$this->page_title = $this->display_vars['title'];
 
-		$template->assign_vars(array(
-			'L_TITLE'			=> $user->lang[$display_vars['title']],
-			'L_TITLE_EXPLAIN'	=> $user->lang[$display_vars['title'] . '_EXPLAIN'],
+		$this->template->assign_vars(array(
+			'L_TITLE' => $this->user->lang[$this->display_vars['title']],
+			'L_TITLE_EXPLAIN' => $this->user->lang[$this->display_vars['title'] . '_EXPLAIN'],
 
-			'S_ERROR'			=> (sizeof($error)) ? true : false,
-			'ERROR_MSG'			=> implode('<br />', $error),
+			'S_ERROR' => (sizeof($error)) ? true : false,
+			'ERROR_MSG' => implode('<br />', $error),
 
-			'U_ACTION'			=> $this->u_action,
+			'U_ACTION' => $this->u_action,
 		));
 
 		// Output relevant page
-		foreach ($display_vars['vars'] as $config_key => $vars)
-		{
-			if (!is_array($vars) && strpos($config_key, 'legend') === false)
-			{
+		foreach ($this->display_vars['vars'] as $config_key => $vars) {
+			if (!is_array($vars) && strpos($config_key, 'legend') === false) {
 				continue;
 			}
 
-			if (strpos($config_key, 'legend') !== false)
-			{
-				$template->assign_block_vars('options', array(
-					'S_LEGEND'		=> true,
-					'LEGEND'		=> (isset($user->lang[$vars])) ? $user->lang[$vars] : $vars)
+			if (strpos($config_key, 'legend') !== false) {
+				$this->template->assign_block_vars('options', array(
+						'S_LEGEND' => true,
+						'LEGEND' => (isset($this->user->lang[$vars])) ? $this->user->lang[$vars] : $vars)
 				);
 
 				continue;
@@ -161,28 +204,26 @@ class acp_module {
 			$type = explode(':', $vars['type']);
 
 			$l_explain = '';
-			if ($vars['explain'] && isset($user->lang[$vars['lang'] . '_EXPLAIN']))
-			{
-				$l_explain =  $user->lang[$vars['lang'] . '_EXPLAIN'];
+			if ($vars['explain'] && isset($this->user->lang[$vars['lang'] . '_EXPLAIN'])) {
+				$l_explain = $this->user->lang[$vars['lang'] . '_EXPLAIN'];
 			}
 
 			$content = build_cfg_template($type, $config_key, $this->new_config, $config_key, $vars);
 
-			if (empty($content))
-			{
+			if (empty($content)) {
 				continue;
 			}
 
-			$template->assign_block_vars('options', array(
-				'KEY'			=> $config_key,
-				'TITLE'			=> (isset($user->lang[$vars['lang']])) ? $user->lang[$vars['lang']] : $vars['lang'],
+			$this->template->assign_block_vars('options', array(
+				'KEY' 			=> $config_key,
+				'TITLE' 		=> (isset($this->user->lang[$vars['lang']])) ? $this->user->lang[$vars['lang']] : $vars['lang'],
 				'S_EXPLAIN'		=> $vars['explain'],
-				'TITLE_EXPLAIN'	=> $l_explain,
-				'CONTENT'		=> $content,
+				'TITLE_EXPLAIN' => $l_explain,
+				'CONTENT' 		=> $content,
 
 			));
 
-			unset($display_vars['vars'][$config_key]);
+			unset($this->display_vars['vars'][$config_key]);
 		}
 	}
 
