@@ -423,7 +423,7 @@ class main_controller
 	 *
 	 * @return array
 	 */
-	function add_form_key($form_name)
+	private function add_form_key($form_name)
 	{
 		$now = time();
 		$token_sid = ($this->user->data['user_id'] == ANONYMOUS && !empty($this->config['form_token_sid_guests'])) ? $this->user->session_id : '';

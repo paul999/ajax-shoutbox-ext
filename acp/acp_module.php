@@ -23,7 +23,7 @@ class acp_module {
 	/** @var   */
 	public $tpl_name;
 
-	function main($id, $mode)
+	public function main($id, $mode)
 	{
 		global $user, $template, $request;
 		global $config, $phpbb_dispatcher, $phpbb_log;
@@ -186,7 +186,7 @@ class acp_module {
 		}
 	}
 
-	function key()
+	private function key()
 	{
 		global $config, $phpbb_container;
 
@@ -194,7 +194,7 @@ class acp_module {
 
 		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong><br /><img src="' . $phpbb_container->get('controller.helper')->route('paul999_ajaxshoutbox_qr', array('code' => $code)) . '" />';
 	}
-	function push_disabled()
+	private function push_disabled()
 	{
 		global $user;
 
@@ -213,7 +213,7 @@ class acp_module {
 	 *
 	 * @return string
 	 */
-	function dateformat_select($value, $key)
+	private function dateformat_select($value, $key)
 	{
 		global $user, $config;
 		// Let the format_date function operate with the acp values
