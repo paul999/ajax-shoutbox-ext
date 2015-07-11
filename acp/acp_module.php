@@ -82,7 +82,8 @@ class acp_module {
 		);
 
 		// We only show the app settings if it is enabled.
-		if (defined('AJAXSHOUTBOX_SHOW_APP')) {
+		if (defined('AJAXSHOUTBOX_SHOW_APP'))
+		{
 			$this->display_vars['vars'] += array(
 				'legend3' => 'ACP_AJAXSHOUTBOX_PUSH',
 				'ajaxshoutbox_validation_id' => array('lang' => 'AJAXSHOUTBOX_ACTIVATION_KEY', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'key'),
@@ -90,7 +91,9 @@ class acp_module {
 				'ajaxshoutbox_api_key' => array('lang' => 'ACP_AJAXSHOUTBOX_API_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain' => true),
 				'ajaxshoutbox_connection_key' => array('lang' => 'ACP_AJAXSHOUTBOX_CON_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain' => true),
 			);
-		} else {
+		}
+		else
+		{
 			$this->display_vars['vars'] += array(
 				'legend3' => 'ACP_AJAXSHOUTBOX_PUSH',
 				'ajaxshoutbox_push_disabled' => array('lang' => 'ACP_AJAXSHOUTBOX_PUSH_DISABLED', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'push_disabled',),
@@ -98,7 +101,6 @@ class acp_module {
 		}
 
 		$this->display_vars['vars'] += array(
-
 			'legend4' => 'ACP_SUBMIT_CHANGES',
 		);
 
@@ -187,8 +189,10 @@ class acp_module {
 		));
 
 		// Output relevant page
-		foreach ($this->display_vars['vars'] as $config_key => $vars) {
-			if (!is_array($vars) && strpos($config_key, 'legend') === false) {
+		foreach ($this->display_vars['vars'] as $config_key => $vars)
+		{
+			if (!is_array($vars) && strpos($config_key, 'legend') === false)
+			{
 				continue;
 			}
 
@@ -204,13 +208,15 @@ class acp_module {
 			$type = explode(':', $vars['type']);
 
 			$l_explain = '';
-			if ($vars['explain'] && isset($this->user->lang[$vars['lang'] . '_EXPLAIN'])) {
+			if ($vars['explain'] && isset($this->user->lang[$vars['lang'] . '_EXPLAIN']))
+			{
 				$l_explain = $this->user->lang[$vars['lang'] . '_EXPLAIN'];
 			}
 
 			$content = build_cfg_template($type, $config_key, $this->new_config, $config_key, $vars);
 
-			if (empty($content)) {
+			if (empty($content))
+			{
 				continue;
 			}
 
@@ -229,23 +235,21 @@ class acp_module {
 
 	public function key()
 	{
-		global $config, $phpbb_container;
+		global $phpbb_container;
 
-		$code = $config['ajaxshoutbox_validation_id'] . '||' . str_replace('://', ':__', generate_board_url());
+		$code = $this->config['ajaxshoutbox_validation_id'] . '||' . str_replace('://', ':__', generate_board_url());
 
-		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong><br /><img src="' . $phpbb_container->get('controller.helper')->route('paul999_ajaxshoutbox_qr', array('code' => $code)) . '" />';
+		return '<strong>' . $this->config['ajaxshoutbox_validation_id'] . '</strong><br /><img src="' . $phpbb_container->get('controller.helper')->route('paul999_ajaxshoutbox_qr', array('code' => $code)) . '" />';
 	}
 
 	public function push_disabled()
 	{
-		global $user;
-
 		// Yes, I agree, it should be in the html file.
 		// However, as the files are generated based on acp_board, and this code is temporary,
 		// I put it here for now.
 		$html = '<div class="codebox"><code>define("AJAXSHOUTBOX_SHOW_APP", true);</code></div>';
 
-		return $user->lang['ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'] . $html;
+		return $this->user->lang['ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'] . $html;
 	}
 
 	/**
@@ -257,19 +261,18 @@ class acp_module {
 	 */
 	public function dateformat_select($value, $key)
 	{
-		global $user, $config;
 		// Let the format_date function operate with the acp values
-		$old_tz = $user->timezone;
+		$old_tz = $this->user->timezone;
 		try
 		{
-			$user->timezone = new \DateTimeZone($config['board_timezone']);
+			$this->user->timezone = new \DateTimeZone($this->config['board_timezone']);
 		}
 		catch (\Exception $e)
 		{
 			// If the board timezone is invalid, we just use the users timezone.
 		}
 		$dateformat_options = '';
-		foreach ($user->lang['dateformats'] as $format => $null)
+		foreach ($this->user->lang['dateformats'] as $format => $null)
 		{
 			if (strpos($format, '|') === 0) // Skip relative formats!
 			{
@@ -277,17 +280,17 @@ class acp_module {
 			}
 
 			$dateformat_options .= '<option value="' . $format . '"' . (($format == $value) ? ' selected="selected"' : '') . '>';
-			$dateformat_options .= $user->format_date(time(), $format, false) . ((strpos($format, '|') !== false) ? $user->lang['VARIANT_DATE_SEPARATOR'] . $user->format_date(time(), $format, true) : '');
+			$dateformat_options .= $this->user->format_date(time(), $format, false) . ((strpos($format, '|') !== false) ? $this->user->lang['VARIANT_DATE_SEPARATOR'] . $this->user->format_date(time(), $format, true) : '');
 			$dateformat_options .= '</option>';
 		}
 		$dateformat_options .= '<option value="custom"';
-		if (!isset($user->lang['dateformats'][$value]))
+		if (!isset($this->user->lang['dateformats'][$value]))
 		{
 			$dateformat_options .= ' selected="selected"';
 		}
-		$dateformat_options .= '>' . $user->lang['CUSTOM_DATEFORMAT'] . '</option>';
+		$dateformat_options .= '>' . $this->user->lang['CUSTOM_DATEFORMAT'] . '</option>';
 		// Reset users date options
-		$user->timezone = $old_tz;
+		$this->user->timezone = $old_tz;
 		return "<select name=\"dateoptions\" id=\"dateoptions\" onchange=\"if (this.value == 'custom') { document.getElementById('" . addslashes($key) . "').value = '" . addslashes($value) . "'; } else { document.getElementById('" . addslashes($key) . "').value = this.value; }\">$dateformat_options</select>
 		<input type=\"text\" name=\"config[$key]\" id=\"$key\" value=\"$value\" maxlength=\"30\" />";
 	}
