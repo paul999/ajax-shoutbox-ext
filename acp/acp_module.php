@@ -196,7 +196,8 @@ class acp_module {
 				continue;
 			}
 
-			if (strpos($config_key, 'legend') !== false) {
+			if (strpos($config_key, 'legend') !== false)
+			{
 				$this->template->assign_block_vars('options', array(
 						'S_LEGEND' => true,
 						'LEGEND' => (isset($this->user->lang[$vars])) ? $this->user->lang[$vars] : $vars)
