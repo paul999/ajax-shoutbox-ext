@@ -98,7 +98,7 @@ class shoutbox_listener implements \Symfony\Component\EventDispatcher\EventSubsc
 				if (sizeof($error) > 0)
 				{
 					if (isset($event['error']))
-                    {
+					{
 
 						$event['error'] = array_merge($event['error'], $error);
 					}
