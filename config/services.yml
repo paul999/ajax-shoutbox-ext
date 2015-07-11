@@ -45,6 +45,7 @@ services:
             - @dbal.conn
             - @auth
             - @log
+            - @dispatcher
             - @paul999.ajaxshoutbox.delete
             - @paul999.ajaxshoutbox.push
             - %core.root_path%

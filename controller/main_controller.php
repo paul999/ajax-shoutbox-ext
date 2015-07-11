@@ -50,6 +50,8 @@ class main_controller
 	/** @var \paul999\ajaxshoutbox\actions\Push  */
 	private $push;
 
+	private $dispatcher;
+
 	/** @var  string */
 	private $table;
 
@@ -75,23 +77,25 @@ class main_controller
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
 								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
 								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\log\log $log,
+								\phpbb\event\dispatcher_interface $dispatcher,
 								\paul999\ajaxshoutbox\actions\delete $delete, \paul999\ajaxshoutbox\actions\push $push,
 								$root_path, $php_ext, $table, $usertable)
 	{
-		$this->config    = $config;
-		$this->helper    = $helper;
-		$this->template  = $template;
-		$this->user      = $user;
-		$this->request   = $request;
-		$this->db        = $db;
-		$this->auth      = $auth;
-		$this->log       = $log;
-		$this->delete    = $delete;
-		$this->push      = $push;
-		$this->root_path = $root_path;
-		$this->php_ext   = $php_ext;
-		$this->table     = $table;
-		$this->usertable = $usertable;
+		$this->config     = $config;
+		$this->helper     = $helper;
+		$this->template   = $template;
+		$this->user       = $user;
+		$this->request    = $request;
+		$this->db         = $db;
+		$this->auth       = $auth;
+		$this->log        = $log;
+		$this->dispatcher = $dispatcher;
+		$this->delete     = $delete;
+		$this->push       = $push;
+		$this->root_path  = $root_path;
+		$this->php_ext    = $php_ext;
+		$this->table      = $table;
+		$this->usertable  = $usertable;
 
 		$this->user->add_lang_ext("paul999/ajaxshoutbox", "ajax_shoutbox");
 	}
@@ -261,13 +265,26 @@ class main_controller
 			return $this->error('AJAX_SHOUTBOX_ERROR', 'AJAX_SHOUTBOX_NO_PERMISSION', 403);
 		}
 
+		$limit = 10;
 		$sql    = 'SELECT c.*, u.username, u.user_colour FROM
 					' . $this->table . ' c,
 					' . $this->usertable . ' u
 					WHERE
 						u.user_id = c.user_id
 					ORDER BY post_time DESC';
-		$result = $this->db->sql_query_limit($sql, 10);
+
+		/**
+		 * Change SQL query for getAll
+		 *
+		 * @event paul999.ajaxshoutbox.getAll_change_sql
+		 * @var		string	sql     Query to run
+		 * @var		int		limit	The amount of shouts initially received.
+		 * @since 1.1.0-B1
+		 */
+		$vars = array('sql', 'limit');
+		extract($this->dispatcher->trigger_event('paul999.ajaxshoutbox.getAll_change_sql', compact($vars)));
+
+		$result = $this->db->sql_query_limit($sql, $limit);
 
 		return $this->returnPosts($result);
 	}
@@ -296,6 +313,17 @@ class main_controller
 					AND c.shout_id != ' . (int) $id . '
 					AND u.user_id = c.user_id
 				ORDER BY post_time DESC, shout_id DESC';
+
+		/**
+		 * Change SQL query for getAfter
+		 *
+		 * @event paul999.ajaxshoutbox.getAfter_change_sql
+		 * @var    string    sql     Query to run
+		 * @since 1.1.0-B1
+		 */
+		$vars = array('sql');
+		extract($this->dispatcher->trigger_event('paul999.ajaxshoutbox.getAfter_change_sql', compact($vars)));
+
 		$result = $this->db->sql_query($sql);
 
 		return $this->returnPosts($result);
@@ -325,6 +353,17 @@ class main_controller
 					AND c.shout_id != ' . (int) $id . '
 					AND u.user_id = c.user_id
 				ORDER BY post_time DESC, shout_id ASC';
+
+		/**
+		 * Change SQL query for getBefore
+		 *
+		 * @event paul999.ajaxshoutbox.getBefore_change_sql
+		 * @var    string    sql     Query to run
+		 * @since 1.1.0-B1
+		 */
+		$vars = array('sql');
+		extract($this->dispatcher->trigger_event('paul999.ajaxshoutbox.getBefore_change_sql', compact($vars)));
+
 		$result = $this->db->sql_query_limit($sql, 10);
 
 		return $this->returnPosts($result, false);
@@ -380,6 +419,17 @@ class main_controller
 			'message' => $text,
 			'delete'  => ($this->auth->acl_get('m_shoutbox_delete') || ($this->auth->acl_get('u_shoutbox_delete') && $row['user_id'] == $this->user->data['user_id'])),
 		);
+
+		/**
+		 * Add data to a event row.
+		 *
+		 * @event paul999.ajaxshoutbox.postrow
+		 * @var    array    row     The row with data from the database
+		 * @var    array    result	The current result returned for the template, but without form key. It is (For security reasons) impossible to modify the form key.
+		 * @since 1.1.0-B1
+		 */
+		$vars = array('row', 'result');
+		extract($this->dispatcher->trigger_event('paul999.ajaxshoutbox.postrow', compact($vars)));
 
 		return array_merge($result, $this->add_form_key('ajaxshoutbox_delete_' . $row['shout_id']));
 	}
