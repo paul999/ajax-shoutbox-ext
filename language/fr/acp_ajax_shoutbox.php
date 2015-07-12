@@ -41,10 +41,12 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge(
 	$lang, array(
 		'ACP_AJAXSHOUTBOX_SETTINGS'     => 'Paramètres de la Shoutbox Ajax',
-		'ACP_AJAXSHOUTBOX_SETTINGS_EXPLAIN'     => 'Sur cette page vous pouvez modifier les paramètres spécifiques à la shoutbox.<br /><br />
-		Si vous voulez permettre à vos utilisateurs l’usage des applications Android et iOS (actuellement en version Bêta fermée mais qui peuvent être utilisées si vos utilisateurs y ont accès. Voir <a href="http://www.ajax-shoutbox.com/viewtopic.php?f=2&t=9">ici</a> pour plus d’informations)
-		, vous devez créer un compte sur <a href="https://www.shoutbox-app.com/">www.shoutbox-app.com</a> 
-		et ajouter un nouveau forum. Un code d’activation vous sera demandé. Ce code est affiché ci-dessous :',
+		'ACP_AJAXSHOUTBOX_SETTINGS_EXPLAIN'     => 'Sur cette page vous pouvez modifier les paramètres spécifiques de la shoutbox.<br /><br />
+		Pour permettre à vos utilisateurs l’usage des applications Android et iOS (actuellement en version Bêta fermée et 
+		seulement utilisables si vos utilisateurs y ont accès.
+		Voir <a href="http://www.ajax-shoutbox.com/viewtopic.php?f=2&t=9">ici</a> pour davantage d’informations), il est nécessaire de créer un compte sur
+		<a href="https://www.shoutbox-app.com/">www.shoutbox-app.com</a> et d’ajouter un nouveau forum. Un code d’activation vous sera demandé. Ce code est affiché ci-dessous.
+		',
 
 		'ACP_AJAXSHOUTBOX_PRUNE'        => 'Paramètres d’archivage',
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'Activer l’archivage',
