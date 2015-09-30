@@ -5,8 +5,7 @@
  *
  * @copyright (c) 2014 Paul Sohier <http://www.ajax-shoutbox.com>
  * @license       GNU General Public License, version 2 (GPL-2.0)
- *
-  * Translated By : Bassel Taha Alhitary - www.alhitary.net
+ * Translated By : Bassel Taha Alhitary - www.alhitary.net
  */
 
 /**
@@ -42,13 +41,16 @@ $lang = array_merge(
 	$lang, array(
 		'ACP_AJAXSHOUTBOX_SETTINGS'     => 'اعدادات الدردشة أجاكس',
 		'ACP_AJAXSHOUTBOX_SETTINGS_EXPLAIN'     => 'من هنا تستطيع ضبط اعدادات الدردشة أجاكس <br /><br />
-			يجب عليك انشاء حساب و إضافة منتداك في الموقع <a href="https://www.shoutbox-app.com/">www.shoutbox-app.com</a> لكي يستطيع الأعضاء لديك من استخدام تطبيق الأندرويد و الـiOS ( حالياً في النسخة بيتا ) 
+			يجب عليك انشاء حساب و إضافة منتداك في الموقع <a href="https://www.shoutbox-app.com/">www.shoutbox-app.com</a> لكي يستطيع الأعضاء لديك من استخدام تطبيق الأندرويد و الـiOS ( حالياً في النسخة بيتا )
 			<br />بعد ذلك سيتم طلب رمز التفعيل منك ( سيتم اظهار هذا الرمز هنا بالأسفل ).
 		',
 
 		'ACP_AJAXSHOUTBOX_PRUNE'        => 'إعدادات التهذيب',
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'تفعيل تهذيب المشاركات',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'تهذيب المشاركات بعد',
+
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'تنسيق التاريخ ',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'حدد تنسيق التاريخ الإفتراضي للدردشة. يجب عدم استخدام التواريخ النسبية , كما أنه لن يتم تحديث التاريخ عند تحديث الدردشة',
 
 		'ACP_AJAXSHOUTBOX_PUSH'         => 'تهئية التطبيق',
 		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'رمز التفعيل ',
@@ -58,5 +60,8 @@ $lang = array_merge(
 		'ACP_AJAXSHOUTBOX_API_KEY_PUSH_EXPLAIN' => 'سوف تستلم هذا المفتاح بعد إضافة منتداك إلى www.shoutbox-app.com',
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH' => 'مفتاح الإتصال ',
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH_EXPLAIN' => 'سوف تستلم هذا المفتاح بعد إضافة منتداك إلى www.shoutbox-app.com.<br />يجب على أعضاء منتداك استخدام هذا المفتاح للعثور على منتداك في التطبيق.',
+
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED'            => 'وظائف التطبيق مُعطلة ',
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'وظائف التطبيق مُعطلة بصورة إفتراضية. إذا تريد استخدامها , يجب عليك إضافة السطر التالي إلى الملف config.php : ',
 	)
 );
