@@ -44,31 +44,9 @@ class acp_module {
 				'ajaxshoutbox_prune_days'			=> array('lang' => 'AJAXSHOUTBOX_PRUNE_DAYS',			'validate' => 'int',	'type' => 'number:1:9999','explain' => false, 'append' => ' ' . $user->lang['DAYS']),
 				'legend2'				=> 'ACP_AJAXSHOUTBOX_SETTINGS',
 				'ajaxshoutbox_date_format'      	=> array('lang' => 'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT',	'validate' => 'string',	'type' => 'custom', 'method' => 'dateformat_select', 'explain' => true),
+
+				'legend4'				=> 'ACP_SUBMIT_CHANGES',
 			)
-		);
-
-		// We only show the app settings if it is enabled.
-		if (defined('AJAXSHOUTBOX_SHOW_APP'))
-		{
-			$display_vars['vars'] += array(
-				'legend3'                     => 'ACP_AJAXSHOUTBOX_PUSH',
-				'ajaxshoutbox_validation_id'  => array('lang'     => 'AJAXSHOUTBOX_ACTIVATION_KEY', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'key'),
-				'ajaxshoutbox_push_enabled'   => array('lang'     => 'ACP_AJAXSHOUTBOX_ENABLE_PUSH', 'validate' => 'bool', 'type' => 'radio:yes_no', 'explain' => true),
-				'ajaxshoutbox_api_key'        => array('lang'     => 'ACP_AJAXSHOUTBOX_API_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain'  => true),
-				'ajaxshoutbox_connection_key' => array('lang'     => 'ACP_AJAXSHOUTBOX_CON_KEY_PUSH', 'validate' => 'string', 'type' => 'text:40:255', 'explain'  => true),
-			);
-		}
-		else
-		{
-			$display_vars['vars'] += array(
-				'legend3'       => 'ACP_AJAXSHOUTBOX_PUSH',
-				'ajaxshoutbox_push_disabled'  => array('lang' => 'ACP_AJAXSHOUTBOX_PUSH_DISABLED', 'validate' => 'string', 'type' => 'custom', 'explain' => false, 'method' => 'push_disabled',),
-			);
-		}
-
-		$display_vars['vars'] += array(
-
-			'legend4'				=> 'ACP_SUBMIT_CHANGES',
 		);
 
 		/**
@@ -184,24 +162,6 @@ class acp_module {
 
 			unset($display_vars['vars'][$config_key]);
 		}
-	}
-
-	function key()
-	{
-		global $config;
-
-		return '<strong>' . $config['ajaxshoutbox_validation_id'] . '</strong>';
-	}
-	function push_disabled()
-	{
-		global $user;
-
-		// Yes, I agree, it should be in the html file.
-		// However, as the files are generated based on acp_board, and this code is temporary,
-		// I put it here for now.
-		$html = '<div class="codebox"><code>define("AJAXSHOUTBOX_SHOW_APP", true);</code></div>';
-
-		return $user->lang['ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'] . $html;
 	}
 
 	/**
