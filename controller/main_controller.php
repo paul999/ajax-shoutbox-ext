@@ -45,9 +45,6 @@ class main_controller
 	/** @var \paul999\ajaxshoutbox\actions\Delete  */
 	private $delete;
 
-	/** @var \paul999\ajaxshoutbox\actions\Push  */
-	private $push;
-
 	/** @var  string */
 	private $table;
 
@@ -64,7 +61,6 @@ class main_controller
 	 * @param \phpbb\auth\auth                     $auth
 	 * @param \phpbb\log\log                       $log
 	 * @param \paul999\ajaxshoutbox\actions\delete $delete
-	 * @param \paul999\ajaxshoutbox\actions\push   $push
 	 * @param string                               $root_path
 	 * @param string                               $php_ext
 	 * @param string                               $table
@@ -73,7 +69,7 @@ class main_controller
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
 								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
 								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\log\log $log,
-								\paul999\ajaxshoutbox\actions\delete $delete, \paul999\ajaxshoutbox\actions\push $push,
+								\paul999\ajaxshoutbox\actions\delete $delete,
 								$root_path, $php_ext, $table, $usertable)
 	{
 		$this->config    = $config;
@@ -85,7 +81,6 @@ class main_controller
 		$this->auth      = $auth;
 		$this->log       = $log;
 		$this->delete    = $delete;
-		$this->push      = $push;
 		$this->root_path = $root_path;
 		$this->php_ext   = $php_ext;
 		$this->table     = $table;
@@ -176,12 +171,6 @@ class main_controller
 			);
 			$sql    = 'INSERT INTO ' . $this->table . ' ' . $this->db->sql_build_array('INSERT', $insert);
 			$this->db->sql_query($sql);
-
-			if ($this->push->canPush())
-			{
-				// User configured us to submit the shoutbox post to the iOS/Android app
-				$this->push->post($msg, $insert['post_time'], $this->user->data['username'], $this->db->sql_nextid());
-			}
 
 			return new JsonResponse(array('OK'));
 		}
