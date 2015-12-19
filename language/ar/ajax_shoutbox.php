@@ -50,7 +50,13 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'لا يُمكن العثور على المشاركة',
 		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'الخدمة عير متوفرة حالياً',
 
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'My shoutbox date format',
-		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Specify a date format for just the shoutbox. You should not use a relative date format.',
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'تنسيق التاريخ للدردشة ',
+		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'حدد تنسيق التاريخ للدردشة أجاكس فقط. يجب عدم استخدام التواريخ النسبية.',
+
+		'AJAXSHOUTBOX_UNSUPPORTED_STYLE'    => 'يبدوا أنك لا تستخدم استايل مبني على البروسيلفر الإفتراضي , أو الإستايل لا يتوافق معه بشكل صحيح.
+			<br />إذا تستخدم استايل مبني على البروسيلفر , تأكد من أنه يتوافق معه بشكل صحيح.
+			<br />إذا تستخدم استايل غير مبني على البروسيلفر , فأنت بحاجة إلى إنشاء قالب للدردشة,
+				أو اطلب من مصمم الاستايل الذي تستخدمه انشاء القالب المطلوب للدردشة.
+			<br />نحن لا ندعم الاستايلات الغير مبنية على البروسيلفر ( ومنها أيضاً استايل subsilver2 ! ). هذه الرسالة تظهر فقط  للمدراء.',
 	)
 );
