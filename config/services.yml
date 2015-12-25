@@ -20,7 +20,6 @@ services:
             - @config
             - @dbal.conn
             - @auth
-            - @log
             - @request
             - @user
             - %paul999.ajaxshoutbox.tables.ajaxshoutbox%
@@ -35,7 +34,6 @@ services:
             - @request
             - @dbal.conn
             - @auth
-            - @log
             - @paul999.ajaxshoutbox.delete
             - %core.root_path%
             - %core.php_ext%
