@@ -47,7 +47,6 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_ERROR'            => 'Fout',
 		'AJAX_SHOUTBOX_MISSING_ID'       => 'Niet mogelijk om post te verwijderen',
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Post niet gevonden',
-		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'De remote push server is niet beschikbaar.',
 
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Shoutbox datum formaat',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Kies een datum formaat specifiek voor de shoutbox.

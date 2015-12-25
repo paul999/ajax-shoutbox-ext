@@ -45,6 +45,5 @@ $lang = array_merge(
 		'ACL_U_SHOUTBOX_BBCODE' => 'Puede usar BBCode en el Cuadro de Charla Ajax',
 		'ACL_U_SHOUTBOX_DELETE' => 'Puede borrar sus propios mensajes en el Cuadro de Charla Ajax',
 		'ACL_M_SHOUTBOX_DELETE' => 'Puede borrar mensajes en el Cuadro de Charla Ajax',
-		'ACL_M_SHOUTBOX_EDIT'   => 'Puede editar en el Cuadro de Charla Ajax',
 	)
 );
