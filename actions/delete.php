@@ -23,9 +23,6 @@ class delete
 	/** @var \phpbb\auth\auth  */
 	private $auth;
 
-	/** @var \phpbb\log\log  */
-	private $log;
-
 	/** @var \phpbb\request\request  */
 	private $request;
 
@@ -39,19 +36,17 @@ class delete
 	 * @param \phpbb\config\config               $config
 	 * @param \phpbb\db\driver\driver_interface  $db
 	 * @param \phpbb\auth\auth                   $auth
-	 * @param \phpbb\log\log                     $log
 	 * @param \phpbb\request\request             $request
 	 * @param \phpbb\user                        $user
 	 * @param string                             $table
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db,
-								\phpbb\auth\auth $auth, \phpbb\log\log $log, \phpbb\request\request $request,
+								\phpbb\auth\auth $auth, \phpbb\request\request $request,
 								\phpbb\user $user, $table)
 	{
 		$this->config   = $config;
 		$this->db       = $db;
 		$this->auth     = $auth;
-		$this->log      = $log;
 		$this->request  = $request;
 		$this->user     = $user;
 		$this->table    = $table;

@@ -39,9 +39,6 @@ class main_controller
 	/** @var \phpbb\auth\auth */
 	private $auth;
 
-	/** @var \phpbb\log\log  */
-	private $log;
-
 	/** @var \paul999\ajaxshoutbox\actions\Delete  */
 	private $delete;
 
@@ -59,7 +56,6 @@ class main_controller
 	 * @param \phpbb\request\request               $request
 	 * @param \phpbb\db\driver\driver_interface    $db
 	 * @param \phpbb\auth\auth                     $auth
-	 * @param \phpbb\log\log                       $log
 	 * @param \paul999\ajaxshoutbox\actions\delete $delete
 	 * @param string                               $root_path
 	 * @param string                               $php_ext
@@ -68,7 +64,7 @@ class main_controller
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper,
 								\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,
-								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\log\log $log,
+								\phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth,
 								\paul999\ajaxshoutbox\actions\delete $delete,
 								$root_path, $php_ext, $table, $usertable)
 	{
@@ -79,7 +75,6 @@ class main_controller
 		$this->request   = $request;
 		$this->db        = $db;
 		$this->auth      = $auth;
-		$this->log       = $log;
 		$this->delete    = $delete;
 		$this->root_path = $root_path;
 		$this->php_ext   = $php_ext;
