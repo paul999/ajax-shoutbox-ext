@@ -49,8 +49,8 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'تفعيل تهذيب المشاركات',
 		'AJAXSHOUTBOX_PRUNE_DAYS'       => 'تهذيب المشاركات بعد',
 
-		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Date format',
-		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Default date format for the shoutbox. You shouldn’t use the relative dates, the date won’t update on refresh of the shoutbox',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'تنسيق التاريخ ',
+		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'حدد تنسيق التاريخ الإفتراضي للدردشة. يجب عدم استخدام التواريخ النسبية , كما أنه لن يتم تحديث التاريخ عند تحديث الدردشة',
 
 		'ACP_AJAXSHOUTBOX_PUSH'         => 'تهئية التطبيق',
 		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'رمز التفعيل ',
@@ -61,8 +61,7 @@ $lang = array_merge(
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH' => 'مفتاح الإتصال ',
 		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH_EXPLAIN' => 'سوف تستلم هذا المفتاح بعد إضافة منتداك إلى www.shoutbox-app.com.<br />يجب على أعضاء منتداك استخدام هذا المفتاح للعثور على منتداك في التطبيق.',
 
-		'ACP_AJAXSHOUTBOX_PUSH_DISABLED'            => 'Push functionality disabled',
-		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'The Push functionality is, by default, disabled. If you want to use this functionality add the following line to config.php: ',
-
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED'            => 'وظائف التطبيق مُعطلة ',
+		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'وظائف التطبيق مُعطلة بصورة إفتراضية. إذا تريد استخدامها , يجب عليك إضافة السطر التالي إلى الملف config.php : ',
 	)
 );
