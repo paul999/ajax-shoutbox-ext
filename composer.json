@@ -1,10 +1,10 @@
 {
     "name": "paul999/ajaxshoutbox",
     "type": "phpbb-extension",
-    "description": "A simple shoutbox for phpBB 3.1",
+    "description": "A simple shoutbox for phpBB 3.1 and phpBB 3.2",
     "homepage": "https://www.ajax-shoutbox.com",
-    "version": "1.0.4-DEV",
-    "time": "2015-03-07",
+    "version": "1.0.4",
+    "time": "2015-12-25",
     "license": "GPL-2.0",
     "authors": [{
         "name": "Paul Sohier",
