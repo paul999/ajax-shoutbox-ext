@@ -48,7 +48,6 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_ERROR'            => 'Erreur',
 		'AJAX_SHOUTBOX_MISSING_ID'       => 'Impossible de supprimer ce message',
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'Message introuvable',
-		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'Le serveur distant n’est pas disponible.',
 
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Format de la date de la shoutbox',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Spécifiez un format de la date dédié uniquement à la shoutbox. Vous ne devriez pas utiliser un format relatif pour la date.',

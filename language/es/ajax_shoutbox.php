@@ -47,7 +47,6 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_ERROR'            => 'Error',
 		'AJAX_SHOUTBOX_MISSING_ID'       => 'No se puede eliminar el mensaje',
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'No se puede encontrar el mensaje',
-		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'El servidor de inserción remoto no está disponible',
 
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'Mi formato de fecha en el cuadro de charla',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'Especifique un formato de fecha para sólo el cuadro de charla. No debe usar un formato de fecha relativa.',

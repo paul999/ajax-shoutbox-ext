@@ -42,10 +42,6 @@ $lang = array_merge(
 	$lang, array(
 		'ACP_AJAXSHOUTBOX_SETTINGS'     => 'Paramètres de la Shoutbox Ajax',
 		'ACP_AJAXSHOUTBOX_SETTINGS_EXPLAIN'     => 'Sur cette page vous pouvez modifier les paramètres spécifiques de la shoutbox.<br /><br />
-		Pour permettre à vos utilisateurs l’usage des applications Android et iOS (actuellement en version Bêta fermée et 
-		seulement utilisables si vos utilisateurs y ont accès.
-		Voir <a href="http://www.ajax-shoutbox.com/viewtopic.php?f=2&t=9">ici</a> pour davantage d’informations), il est nécessaire de créer un compte sur
-		<a href="https://www.shoutbox-app.com/">www.shoutbox-app.com</a> et d’ajouter un nouveau forum. Un code d’activation vous sera demandé. Ce code est affiché ci-dessous.
 		',
 
 		'ACP_AJAXSHOUTBOX_PRUNE'        => 'Paramètres d’archivage',
@@ -55,16 +51,5 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Format de la date',
 		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Format par défaut de la date pour la shoutbox. Vous ne devriez pas utiliser les formats relatifs pour la date, la date ne sera pas mise à jour lors de l’actualisation de la shoutbox.',
 
-		'ACP_AJAXSHOUTBOX_PUSH'         => 'Configuration des applications',
-		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'Code d’activation',
-		'ACP_AJAXSHOUTBOX_ENABLE_PUSH'  => 'Activer les applications Android et iOS',
-		'ACP_AJAXSHOUTBOX_ENABLE_PUSH_EXPLAIN'  => 'Vous devez activer cette fonctionnalité avant d’enregistrer votre site.',
-		'ACP_AJAXSHOUTBOX_API_KEY_PUSH' => 'Clé API',
-		'ACP_AJAXSHOUTBOX_API_KEY_PUSH_EXPLAIN' => 'Vous recevrez cette clé après avoir ajouté votre forum sur www.shoutbox-app.com.',
-		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH' => 'ID de connection',
-		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH_EXPLAIN' => 'Vous recevrez cette clé après avoir ajouté votre forum sur www.shoutbox-app.com<br />Vos utilisateurs utiliseront cet ID pour trouver votre forum dans l’application mobile.',
-
-		'ACP_AJAXSHOUTBOX_PUSH_DISABLED'            => 'La fonctionnalité Push est désactivée',
-		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'La fonctionnalité Push est par défaut désactivée. Si vous souhaitez utiliser cette fonctionnalité, ajoutez la ligne suivante dans le fichier config.php : ',
 	)
 );

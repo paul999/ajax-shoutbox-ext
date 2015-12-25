@@ -46,6 +46,5 @@ $lang = array_merge(
 		'ACL_U_SHOUTBOX_BBCODE' => 'يستطيع استخدام أكواد البي بي BBCode في الدردشة أجاكس',
 		'ACL_U_SHOUTBOX_DELETE' => 'يستطيع حذف رسائله في الدردشة أجاكس',
 		'ACL_M_SHOUTBOX_DELETE' => 'يستطيع حذف الرسائل في الدردشة أجاكس',
-		'ACL_M_SHOUTBOX_EDIT'   => 'يستطيع التعديل في الدردشة أجاكس',
 	)
 );

@@ -18,9 +18,6 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	/** @var \phpbb\db\driver\driver_interface  */
 	private $db;
 
-	/** @var \paul999\ajaxshoutbox\actions\push  */
-	private $push;
-
 	/** @var string  */
 	private $table;
 
@@ -35,14 +32,12 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 	 * @param \phpbb\db\driver\driver_interface  $db
 	 * @param \phpbb\log\log                     $log
 	 * @param \phpbb\user                        $user
-	 * @param \paul999\ajaxshoutbox\actions\push $push
 	 * @param                                    $table
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db,
-								\phpbb\log\log $log, \phpbb\user $user, \paul999\ajaxshoutbox\actions\push $push, $table)
+								\phpbb\log\log $log, \phpbb\user $user, $table)
 	{
 		$this->config   = $config;
-		$this->push     = $push;
 		$this->db       = $db;
 		$this->log      = $log;
 		$this->table    = $table;
@@ -61,22 +56,11 @@ class shoutbox_prune extends \phpbb\cron\task\base {
 						post_time <= ' . (int) $time;
 
 		$result = $this->db->sql_query($sql);
-		$canpush = $this->push->canPush();
 		$delete = array();
 
 		while ($row = $this->db->sql_fetchrow($result))
 		{
-			if ($canpush)
-			{
-				if ($this->push->delete($row['shout_id']) !== false)
-				{
-					$delete[] = $row['shout_id'];
-				}
-			}
-			else
-			{
-				$delete[] = $row['shout_id'];
-			}
+			$delete[] = $row['shout_id'];
 		}
 		$this->db->sql_freeresult();
 

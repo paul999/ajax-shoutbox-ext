@@ -45,6 +45,5 @@ $lang = array_merge(
 		'ACL_U_SHOUTBOX_BBCODE' => 'Mag BBCode gebruiken in ajax shoutbox',
 		'ACL_U_SHOUTBOX_DELETE' => 'Kan eigen berichten verwijderen in ajax shoutbox',
 		'ACL_M_SHOUTBOX_DELETE' => 'Kan berichten verwijderen in ajax shoutbox',
-		'ACL_M_SHOUTBOX_EDIT'   => 'Mag berichten bewerken in ajax shoutbox',
 	)
 );

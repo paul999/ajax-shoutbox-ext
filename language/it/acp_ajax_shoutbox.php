@@ -40,11 +40,8 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge(
 	$lang, array(
 		'ACP_AJAXSHOUTBOX_SETTINGS'     => 'Impostazioni bacheca AJAX',
-		'ACP_AJAXSHOUTBOX_SETTINGS_EXPLAIN'     => 'In questa pagina, è possibile cambiare le impostazioni specifiche per la bacheca.<br />
-			<br />Per abilitare gli utenti all’uso delle applicazioni per iOS e Android (al momento in fase BETA privata ma utilizzabile 
-			da chi abbia accesso alla beta, leggere <a href="http://www.ajax-shoutbox.com/viewtopic.php?f=2&t=9">qui</a> per ulteriori informazioni), 
-			è necessario creare un profilo su <a href="https://www.shoutbox-app.com/">www.shoutbox-app.com</a> ed aggiungere un nuovo forum. Sarà 
-			richiesto un codice di attivazione, mostrato qui in basso.',
+		'ACP_AJAXSHOUTBOX_SETTINGS_EXPLAIN'     => 'In questa pagina, è possibile cambiare le impostazioni specifiche per la bacheca.<br /><br />
+		',
 
 		'ACP_AJAXSHOUTBOX_PRUNE'        => 'Impostazioni cancellazione automatica',
 		'AJAXSHOUTBOX_ENABLE_PRUNE'     => 'Abilita cancellazione automatica dei messaggi',
@@ -53,17 +50,5 @@ $lang = array_merge(
 		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT'  => 'Formato data',
 		'AJAXSHOUTBOX_DEFAULT_DATE_FORMAT_EXPLAIN'  => 'Formato data predefinito per la bacheca. Non è consigliato l’uso di formati data relativi: la data non si aggiornerebbe quando la bacheca si ricarica',
 
-		'ACP_AJAXSHOUTBOX_PUSH'         => 'Configurazione applicazione',
-		'AJAXSHOUTBOX_ACTIVATION_KEY'   => 'Codice di attivazione',
-		'ACP_AJAXSHOUTBOX_ENABLE_PUSH'  => 'Abilita l’applicazione per Android e iOS',
-		'ACP_AJAXSHOUTBOX_ENABLE_PUSH_EXPLAIN'  => 'Prima di poter registrare il proprio sito, è necessario abilitare questa funzione.',
-		'ACP_AJAXSHOUTBOX_API_KEY_PUSH' => 'Chiave API',
-		'ACP_AJAXSHOUTBOX_API_KEY_PUSH_EXPLAIN' => 'Riceverai questa chiave dopo aver aggiunto il tuo forum su www.shoutbox-app.com',
-		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH' => 'ID connessione',
-		'ACP_AJAXSHOUTBOX_CON_KEY_PUSH_EXPLAIN' => 'Riceverai questa chiave dopo aver aggiunto il tuo forum su www.shoutbox-app.com.<br />
-			I tuoi utenti useranno questo ID per trovare il tuo forum nell’applicazione.',
-
-		'ACP_AJAXSHOUTBOX_PUSH_DISABLED'            => 'Funzione push disattivata',
-		'ACP_AJAXSHOUTBOX_PUSH_DISABLED_EXPLAIN'    => 'Per impostazione predefinita, la funzione push è disattivata. Per poterla usare, aggiungere la seguente riga di codice al file config.php: ',
 	)
 );

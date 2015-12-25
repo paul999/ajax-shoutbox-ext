@@ -45,6 +45,5 @@ $lang = array_merge(
 		'ACL_U_SHOUTBOX_BBCODE' => 'Può usare BBCode in bacheca',
 		'ACL_U_SHOUTBOX_DELETE' => 'Può rimuovere i propri messaggi dalla bacheca',
 		'ACL_M_SHOUTBOX_DELETE' => 'Può rimuovere messaggi dalla bacheca',
-		'ACL_M_SHOUTBOX_EDIT'   => 'Può modificare messaggi in bacheca',
 	)
 );
