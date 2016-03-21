@@ -48,7 +48,6 @@ $lang = array_merge(
 		'AJAX_SHOUTBOX_ERROR'            => 'خطأ',
 		'AJAX_SHOUTBOX_MISSING_ID'       => 'لا يُمكن حذف المشاركة',
 		'AJAX_SHOUTBOX_NO_SUCH_POST'     => 'لا يُمكن العثور على المشاركة',
-		'AJAX_SHOUTBOX_PUSH_NOT_AVAIL'   => 'الخدمة عير متوفرة حالياً',
 
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT'            => 'تنسيق التاريخ للدردشة ',
 		'AJAXSHOUTBOX_BOARD_DATE_FORMAT_EXPLAIN'    => 'حدد تنسيق التاريخ للدردشة أجاكس فقط. يجب عدم استخدام التواريخ النسبية.',
