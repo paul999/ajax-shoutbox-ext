@@ -19,7 +19,8 @@
         "phpbb/epv": "dev-master",
         "phpbb/phpbb": "~3.1.0",
         "phing/phing": "2.*",
-        "squizlabs/php_codesniffer": "1.*"
+        "squizlabs/php_codesniffer": "1.*",
+        "symfony/dom-crawler": "~2.3"
     },
     "extra": {
         "display-name": "Ajax Shoutbox",
